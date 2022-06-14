@@ -9,7 +9,7 @@ const { dependencies = {} } = require('./package.json')
 
 const inputFile = 'src/index.ts'
 const outputDirectory = 'dist'
-const artifactName = 'template-ts'
+const artifactName = 'index-ts'
 
 const commonBanner = licensePlugin({
   banner: {

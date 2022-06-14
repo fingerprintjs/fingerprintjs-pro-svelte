@@ -4,8 +4,8 @@
   </a>
 </p>
 <p align="center">
-  <a href="https://github.com/fingerprintjs/library-template-typescript/actions/workflows/build.yml">
-    <img src="https://github.com/fingerprintjs/library-template-typescript/actions/workflows/build.yml/badge.svg" alt="Build status">
+  <a href="https://github.com/fingerprintjs/fingerprintjs-pro-svelte/actions/workflows/build.yml">
+    <img src="https://github.com/fingerprintjs/fingerprintjs-pro-svelte/actions/workflows/build.yml/badge.svg" alt="Build status">
   </a>
 </p>
 This is template repository for creating TypeScript libraries by FingerprintJS team.

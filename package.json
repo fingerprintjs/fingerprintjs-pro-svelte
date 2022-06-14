@@ -1,23 +1,23 @@
 {
-  "name": "@fingerprintjs/library-template-typescript",
+  "name": "@fingerprintjs/fingerprintjs-pro-svelte",
   "version": "0.0.1",
-  "description": "Typescript library template project",
+  "description": "FingerprintJS Pro integration for Svelte",
   "author": "FingerprintJS, Inc (https://fingerprintjs.com)",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/fingerprintjs/library-template-typescript.git"
+    "url": "https://github.com/fingerprintjs/fingerprintjs-pro-svelte.git"
   },
   "scripts": {
     "build": "rimraf dist && rollup -c rollup.config.js",
     "lint": "eslint --ext .js,.ts --ignore-path .gitignore --max-warnings 0 .",
     "lint:fix": "yarn lint --fix",
     "test": "jest",
-    "test:dts": "tsc --noEmit --isolatedModules dist/template-ts.d.ts"
+    "test:dts": "tsc --noEmit --isolatedModules dist/index-ts.d.ts"
   },
-  "main": "dist/template-ts.cjs.js",
-  "module": "dist/template-ts.esm.js",
-  "types": "dist/template-ts.d.ts",
+  "main": "dist/index-ts.cjs.js",
+  "module": "dist/index-ts.esm.js",
+  "types": "dist/index-ts.d.ts",
   "sideEffects": false,
   "files": [
     "dist"
@@ -38,6 +38,6 @@
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "prettier": "^2.5.1",
     "ts-jest": "^27.1.3",
-    "typescript": "^4.5.5"
+    "typescript": "^4.7.3"
   }
 }
