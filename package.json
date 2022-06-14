@@ -2,7 +2,7 @@
   "name": "@fingerprintjs/fingerprintjs-pro-svelte",
   "version": "0.0.1",
   "description": "FingerprintJS Pro integration for Svelte",
-  "author": "FingerprintJS, Inc (https://fingerprintjs.com)",
+  "author": "Fingerprint, Inc (https://fingerprint.com)",
   "license": "MIT",
   "repository": {
     "type": "git",
