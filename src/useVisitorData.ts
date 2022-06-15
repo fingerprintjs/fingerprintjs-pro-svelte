@@ -5,17 +5,30 @@ import { getContext, onMount } from 'svelte';
 import { FPJS_CONTEXT } from './symbols';
 import { UseGetVisitorDataResult } from './useVisitorData.types';
 
+/**
+ * API for fetching visitorData.
+ *
+ * @example ```svelte
+ *     <script>
+ *       import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-svelte';
+ *
+ *       const { data, getData, isLoading, error } = useVisitorData(
+ *          { extendedResult: true }
+ *       );
+ *       </script>
+ * ```
+ * */
 export function useVisitorData<TExtended extends boolean>(
   options: GetOptions<TExtended>,
   { immediate = true }: FpjsSvelteQueryOptions
 ): UseGetVisitorDataResult<TExtended> {
-  const dataValue = writable<VisitorData<TExtended> | undefined>();
-  const loadingValue = writable(false);
-  const errorValue = writable<Error | undefined>();
-
   let data: VisitorData<TExtended> | undefined;
   let isLoading = false;
   let error: Error | undefined;
+
+  const dataValue = writable<VisitorData<TExtended> | undefined>();
+  const loadingValue = writable(isLoading);
+  const errorValue = writable<Error | undefined>();
 
   const context = getContext<FpjsSvelteContext>(FPJS_CONTEXT);
 
