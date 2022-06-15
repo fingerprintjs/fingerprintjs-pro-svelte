@@ -1,7 +1,12 @@
 import type { FpjsClient, GetOptions } from '@fingerprintjs/fingerprintjs-pro-spa';
 import { ClearCache, GetVisitorData } from './types';
 
-export function makeClientMethods(client: FpjsClient) {
+interface ClientMethods {
+  clearCache: ClearCache;
+  getVisitorData: GetVisitorData;
+}
+
+export function makeClientMethods(client: FpjsClient): ClientMethods {
   const initPromise = client.init();
 
   const getVisitorData: GetVisitorData = async <TExtended extends boolean>(
