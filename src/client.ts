@@ -1,5 +1,5 @@
 import type { FpjsClient, GetOptions } from '@fingerprintjs/fingerprintjs-pro-spa';
-import { ClearCache, GetVisitorData } from './types';
+import type { ClearCache, GetVisitorData } from './types';
 
 interface ClientMethods {
   clearCache: ClearCache;

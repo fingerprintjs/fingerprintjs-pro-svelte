@@ -3,7 +3,7 @@ import type { FpjsSvelteContext, FpjsSvelteQueryOptions } from './types';
 import { writable } from 'svelte/store';
 import { getContext, onMount } from 'svelte';
 import { FPJS_CONTEXT } from './symbols';
-import { UseGetVisitorDataResult } from './useVisitorData.types';
+import type { UseGetVisitorDataResult } from './useVisitorData.types';
 
 /**
  * API for fetching visitorData.

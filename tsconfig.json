@@ -1,27 +1,13 @@
 {
   "extends": "@tsconfig/svelte/tsconfig.json",
   "compilerOptions": {
-    "outDir": "dist/src",
-    "module": "es6",
-    "moduleResolution": "node",
-    "target": "es2020",
+    "allowJs": true,
+    "checkJs": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "importHelpers": true,
-    "allowSyntheticDefaultImports": true,
-    "noErrorTruncation": true,
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "exactOptionalPropertyTypes": true,
-    "types": ["svelte", "jest"],
-    "isolatedModules": false,
-    "importsNotUsedAsValues": "remove"
-  },
-  "include": ["src/**/*.ts", "__tests__/**/*.ts"],
-  "exclude": [
-    "dist",
-    "node_modules",
-    "**/*.test.ts"
-  ]
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true
+  }
 }

@@ -9,5 +9,5 @@
   "bracketSpacing": true,
   "bracketSameLine": false,
   "arrowParens": "always",
-  "plugins": ["prettier-plugin-svelte"]
+  "svelteSortOrder": "options-scripts-markup-styles"
 }

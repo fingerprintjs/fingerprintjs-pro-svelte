@@ -1,4 +1,4 @@
-<script lang='ts'>
+<script lang="ts">
   import type { FpjsSvelteContext, FpjsSvelteOptions } from '../types';
   import { getOptions } from '../options';
   import { FpjsClient } from '@fingerprintjs/fingerprintjs-pro-spa';

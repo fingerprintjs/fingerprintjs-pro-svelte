@@ -18,11 +18,9 @@ const sveltePlugin = svelte({
   },
 });
 
-const { dependencies = {} } = require('./package.json');
+const { dependencies = {}, main, module, types } = require('./package.json');
 
 const inputFile = 'src/index.ts';
-const outputDirectory = 'dist';
-const artifactName = 'index-ts';
 
 const commonBanner = licensePlugin({
   banner: {
@@ -50,7 +48,6 @@ const commonOutput = {
   exports: 'named',
 };
 
-// https://github.com/ezolenko/rollup-plugin-typescript2/issues/283 for trying to fix import not working without .ts in svelte file
 export default [
   {
     ...commonInput,
@@ -59,14 +56,14 @@ export default [
       // CJS for usage with `require()`
       {
         ...commonOutput,
-        file: `${outputDirectory}/${artifactName}.cjs.js`,
+        file: main,
         format: 'cjs',
       },
 
       // ESM for usage with `import`
       {
         ...commonOutput,
-        file: `${outputDirectory}/${artifactName}.esm.js`,
+        file: module,
         format: 'es',
       },
     ],
@@ -75,9 +72,10 @@ export default [
   // TypeScript definition
   {
     ...commonInput,
-    plugins: [typescript(), dtsPlugin(), sveltePlugin, commonBanner],
+    input: 'src/index.types.ts',
+    plugins: [typescript(), dtsPlugin(), commonBanner],
     output: {
-      file: `${outputDirectory}/${artifactName}.d.ts`,
+      file: types,
       format: 'es',
     },
   },
