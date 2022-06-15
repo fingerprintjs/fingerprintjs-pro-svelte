@@ -14,6 +14,7 @@ const sveltePlugin = svelte({
   preprocess: autoPreprocess(),
   compilerOptions: {
     dev: !production,
+    preserveComments: true,
   },
 });
 
