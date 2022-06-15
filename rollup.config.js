@@ -1,15 +1,27 @@
-import typescript from '@rollup/plugin-typescript'
-import jsonPlugin from '@rollup/plugin-json'
-import external from 'rollup-plugin-peer-deps-external'
-import dtsPlugin from 'rollup-plugin-dts'
-import licensePlugin from 'rollup-plugin-license'
-import { join } from 'path'
+import typescript from 'rollup-plugin-typescript2';
+import jsonPlugin from '@rollup/plugin-json';
+import external from 'rollup-plugin-peer-deps-external';
+import dtsPlugin from 'rollup-plugin-dts';
+import licensePlugin from 'rollup-plugin-license';
+import svelte from 'rollup-plugin-svelte';
+import autoPreprocess from 'svelte-preprocess';
+import resolvePlugin from '@rollup/plugin-node-resolve';
+import { join } from 'path';
 
-const { dependencies = {} } = require('./package.json')
+const production = !process.env.ROLLUP_WATCH;
 
-const inputFile = 'src/index.ts'
-const outputDirectory = 'dist'
-const artifactName = 'index-ts'
+const sveltePlugin = svelte({
+  preprocess: autoPreprocess(),
+  compilerOptions: {
+    dev: !production,
+  },
+});
+
+const { dependencies = {} } = require('./package.json');
+
+const inputFile = 'src/index.ts';
+const outputDirectory = 'dist';
+const artifactName = 'index-ts';
 
 const commonBanner = licensePlugin({
   banner: {
@@ -17,54 +29,28 @@ const commonBanner = licensePlugin({
       file: join(__dirname, 'resources', 'license_banner.txt'),
     },
   },
-})
+});
 
 const commonInput = {
   input: inputFile,
-  plugins: [jsonPlugin(), typescript(), external(), commonBanner],
-}
+  plugins: [
+    resolvePlugin({
+      extensions: ['.js', '.ts', '.svelte'],
+    }),
+    jsonPlugin(),
+    typescript(),
+    sveltePlugin,
+    external(),
+    commonBanner,
+  ],
+};
 
 const commonOutput = {
-  // name: 'MyFpJsLibrary', // Need for IIFE and UMD build. Name of global variable
   exports: 'named',
-}
+};
 
-// Need for IIFE or UMD build
-// const commonTerser = terserPlugin(require('./terser.config.js'))
-
+// https://github.com/ezolenko/rollup-plugin-typescript2/issues/283 for trying to fix import not working without .ts in svelte file
 export default [
-  // UMD and IIFE build config
-  // {
-  //   ...commonInput,
-  //   output: [
-  //     // IIFE build for browser with adding globals to window
-  //     {
-  //       ...commonOutput,
-  //       file: `${outputDirectory}/${artifactName}.js`,
-  //       format: 'iife',
-  //     },
-  //     {
-  //       ...commonOutput,
-  //       file: `${outputDirectory}/${artifactName}.min.js`,
-  //       format: 'iife',
-  //       plugins: [commonTerser],
-  //     },
-  //
-  //     // UMD for users who use Require.js or Electron and want to leverage them
-  //     {
-  //       ...commonOutput,
-  //       file: `${outputDirectory}/${artifactName}.umd.js`,
-  //       format: 'umd',
-  //     },
-  //     {
-  //       ...commonOutput,
-  //       file: `${outputDirectory}/${artifactName}.umd.min.js`,
-  //       format: 'umd',
-  //       plugins: [commonTerser],
-  //     },
-  //   ]
-  // },
-  // NPM bundles. They have all the dependencies excluded for end code size optimization.
   {
     ...commonInput,
     external: Object.keys(dependencies),
@@ -88,10 +74,10 @@ export default [
   // TypeScript definition
   {
     ...commonInput,
-    plugins: [dtsPlugin(), commonBanner],
+    plugins: [typescript(), dtsPlugin(), sveltePlugin, commonBanner],
     output: {
       file: `${outputDirectory}/${artifactName}.d.ts`,
       format: 'es',
     },
   },
-]
+];

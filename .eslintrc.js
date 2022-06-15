@@ -4,7 +4,7 @@ module.exports = {
     es6: true,
     node: true,
   },
-  extends: ['plugin:@typescript-eslint/eslint-recommended'],
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/eslint-recommended', 'plugin:prettier/recommended'],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
@@ -16,20 +16,27 @@ module.exports = {
     },
     ecmaVersion: 2020,
     sourceType: 'module',
+    extraFileExtensions: ['.svelte'],
+    tsconfigRootDir: __dirname,
+    project: ['./tsconfig.json'],
   },
   settings: {
-    react: {
-      version: 'detect',
-    },
+    'svelte3/typescript': () => require('typescript'),
   },
-  plugins: ['@typescript-eslint', 'prettier'],
+  plugins: ['svelte3', '@typescript-eslint', 'prettier'],
   ignorePatterns: ['build/*'],
+  overrides: [
+    {
+      files: ['*.svelte'],
+      processor: 'svelte3/svelte3',
+    },
+  ],
   rules: {
-    semi: ['error', 'never'],
+    semi: 'off',
     'linebreak-style': ['error', 'unix'],
     'prefer-const': 'error',
     'prettier/prettier': 'error',
     '@typescript-eslint/no-unused-vars': ['error'],
     curly: [2, 'all'],
   },
-}
+};

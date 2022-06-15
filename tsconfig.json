@@ -1,4 +1,5 @@
 {
+  "extends": "@tsconfig/svelte/tsconfig.json",
   "compilerOptions": {
     "outDir": "dist/src",
     "module": "es6",
@@ -12,9 +13,12 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "exactOptionalPropertyTypes": true
+    "exactOptionalPropertyTypes": true,
+    "types": ["svelte", "jest"],
+    "isolatedModules": false,
+    "importsNotUsedAsValues": "remove"
   },
-  "files": ["src/index.ts"],
+  "include": ["src/**/*.ts", "__tests__/**/*.ts"],
   "exclude": [
     "dist",
     "node_modules",
