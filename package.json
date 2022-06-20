@@ -11,16 +11,18 @@
   "scripts": {
     "generate-dts": "npx svelte-types-writer --no-js --override ./src/**/*.svelte && prettier src/providers/*.d.ts --write",
     "build": "rimraf dist && rollup -c rollup.config.js",
+    "build-all": "yarn build && yarn --cwd examples/svelte-kit build",
     "lint": "eslint --ext .js,.ts,.svelte --max-warnings 0 .",
     "lint:fix": "yarn lint --fix",
     "test": "jest",
     "test:dts": "tsc --noEmit --isolatedModules dist/index.d.ts",
-    "svelte:check": "svelte-check src"
+    "svelte:check": "svelte-check src && yarn --cwd examples/svelte-kit check"
   },
-  "main": "dist/index.cjs.js",
+  "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "sideEffects": false,
+  "svelte": "src/index.ts",
   "files": [
     "dist"
   ],

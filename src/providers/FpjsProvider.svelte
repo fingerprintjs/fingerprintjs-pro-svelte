@@ -12,12 +12,14 @@
     throw new TypeError('options are missing. Did you forget to pass props to provider?');
   }
 
-  const parsedOptions = getOptions(options);
-  const client = new FpjsClient(parsedOptions);
+  if (typeof window !== 'undefined') {
+    const parsedOptions = getOptions(options);
+    const client = new FpjsClient(parsedOptions);
 
-  const methods = makeClientMethods(client);
+    const methods = makeClientMethods(client);
 
-  setContext<FpjsSvelteContext>(FPJS_CONTEXT, methods);
+    setContext<FpjsSvelteContext>(FPJS_CONTEXT, methods);
+  }
 </script>
 
 <slot />
