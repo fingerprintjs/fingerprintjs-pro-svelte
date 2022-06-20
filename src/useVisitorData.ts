@@ -20,14 +20,10 @@ import type { UseGetVisitorDataResult } from './useVisitorData.types';
  * */
 export function useVisitorData<TExtended extends boolean>(
   options: GetOptions<TExtended>,
-  { immediate = true }: FpjsSvelteQueryOptions
+  { immediate = true }: FpjsSvelteQueryOptions = {}
 ): UseGetVisitorDataResult<TExtended> {
-  let data: VisitorData<TExtended> | undefined;
-  let isLoading = false;
-  let error: Error | undefined;
-
   const dataValue = writable<VisitorData<TExtended> | undefined>();
-  const loadingValue = writable(isLoading);
+  const loadingValue = writable(false);
   const errorValue = writable<Error | undefined>();
 
   const context = getContext<FpjsSvelteContext>(FPJS_CONTEXT);
@@ -58,18 +54,6 @@ export function useVisitorData<TExtended extends boolean>(
     }
   };
 
-  dataValue.subscribe((newData) => {
-    data = newData;
-  });
-
-  loadingValue.subscribe((newLoading) => {
-    isLoading = newLoading;
-  });
-
-  errorValue.subscribe((newError) => {
-    error = newError;
-  });
-
   onMount(async () => {
     if (immediate) {
       await getData();
@@ -77,9 +61,9 @@ export function useVisitorData<TExtended extends boolean>(
   });
 
   return {
-    data,
-    error,
-    isLoading,
+    data: dataValue,
+    error: errorValue,
+    isLoading: loadingValue,
     getData,
   };
 }
