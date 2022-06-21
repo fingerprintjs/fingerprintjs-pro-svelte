@@ -1,4 +1,3 @@
-import { name, version } from '../package.json';
 import path from 'path';
 import fs from 'fs';
 

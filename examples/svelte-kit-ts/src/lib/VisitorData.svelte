@@ -1,7 +1,7 @@
 <script lang="ts">
   import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-svelte';
 
-  export let immediate: boolean = false;
+  export let immediate = false;
 
   const { getData, data, isLoading, error } = useVisitorData({ extendedResult: true }, { immediate });
 </script>
