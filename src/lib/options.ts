@@ -5,13 +5,13 @@ const pkgVersion = '0.0.0';
 const pkgName = '@fingerprintjs/fingerprintjs-pro-svelte';
 
 export function getOptions(options: FpjsClientOptions) {
-	const clientOptions: FpjsClientOptions = {
-		...options,
-		loadOptions: {
-			...options.loadOptions,
-			integrationInfo: [...(options.loadOptions?.integrationInfo ?? []), `${pkgName}/${pkgVersion}`]
-		}
-	};
+  const clientOptions: FpjsClientOptions = {
+    ...options,
+    loadOptions: {
+      ...options.loadOptions,
+      integrationInfo: [...(options.loadOptions?.integrationInfo ?? []), `${pkgName}/${pkgVersion}`],
+    },
+  };
 
-	return clientOptions;
+  return clientOptions;
 }

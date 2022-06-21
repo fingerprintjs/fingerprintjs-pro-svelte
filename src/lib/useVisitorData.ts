@@ -19,51 +19,51 @@ import type { UseGetVisitorDataResult } from './useVisitorData.types';
  * ```
  * */
 export function useVisitorData<TExtended extends boolean>(
-	options: GetOptions<TExtended>,
-	{ immediate = true }: FpjsSvelteQueryOptions = {}
+  options: GetOptions<TExtended>,
+  { immediate = true }: FpjsSvelteQueryOptions = {}
 ): UseGetVisitorDataResult<TExtended> {
-	const dataValue = writable<VisitorData<TExtended> | undefined>();
-	const loadingValue = writable(false);
-	const errorValue = writable<Error | undefined>();
+  const dataValue = writable<VisitorData<TExtended> | undefined>();
+  const loadingValue = writable(false);
+  const errorValue = writable<Error | undefined>();
 
-	const context = getContext<FpjsSvelteContext>(FPJS_CONTEXT);
+  const context = getContext<FpjsSvelteContext>(FPJS_CONTEXT);
 
-	const getData: UseGetVisitorDataResult<TExtended>['getData'] = async (getDataOptions) => {
-		loadingValue.set(true);
+  const getData: UseGetVisitorDataResult<TExtended>['getData'] = async (getDataOptions) => {
+    loadingValue.set(true);
 
-		try {
-			const result = await context.getVisitorData(options, getDataOptions?.ignoreCache);
+    try {
+      const result = await context.getVisitorData(options, getDataOptions?.ignoreCache);
 
-			dataValue.set(result);
-			errorValue.set(undefined);
+      dataValue.set(result);
+      errorValue.set(undefined);
 
-			return result;
-		} catch (error) {
-			dataValue.set(undefined);
+      return result;
+    } catch (error) {
+      dataValue.set(undefined);
 
-			if (error instanceof Error) {
-				error.message = `${error.name}: ${error.message}`;
-				error.name = 'FPJSAgentError';
+      if (error instanceof Error) {
+        error.message = `${error.name}: ${error.message}`;
+        error.name = 'FPJSAgentError';
 
-				errorValue.set(error);
-			}
+        errorValue.set(error);
+      }
 
-			return undefined;
-		} finally {
-			loadingValue.set(false);
-		}
-	};
+      return undefined;
+    } finally {
+      loadingValue.set(false);
+    }
+  };
 
-	onMount(async () => {
-		if (immediate) {
-			await getData();
-		}
-	});
+  onMount(async () => {
+    if (immediate) {
+      await getData();
+    }
+  });
 
-	return {
-		data: dataValue,
-		error: errorValue,
-		isLoading: loadingValue,
-		getData
-	};
+  return {
+    data: dataValue,
+    error: errorValue,
+    isLoading: loadingValue,
+    getData,
+  };
 }
