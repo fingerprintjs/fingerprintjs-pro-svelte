@@ -52,5 +52,6 @@
   "peerDependencies": {
     "svelte": "^3.30.1"
   },
+  "types": "./index.d.ts",
   "type": "module"
 }
