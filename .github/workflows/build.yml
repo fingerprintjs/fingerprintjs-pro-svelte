@@ -26,5 +26,7 @@ jobs:
         run: yarn test
       - name: Build
         run: yarn build-all
+        env:
+          VITE_API_KEY: ${{ secrets.API_KEY }}
       - name: Typecheck
         run: yarn test:dts
