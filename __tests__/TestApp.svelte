@@ -1,22 +1,25 @@
 <script lang="ts">
-  import { useVisitorData } from '../src';
+	import { useVisitorData } from '../src/lib';
 
-  export let immediate: boolean = false;
+	export let immediate = false;
 
-  const { getData, data, isLoading, error } = useVisitorData({ extendedResult: true }, { immediate });
+	const { getData, data, isLoading, error } = useVisitorData(
+		{ extendedResult: true },
+		{ immediate }
+	);
 </script>
 
 <div>
-  <button id="get_data" on:click={() => getData()}> Get data </button>
-  {#if $isLoading}
-    <div id="loading">Loading...</div>
-  {/if}
-  {#if $error}
-    <div id="error">{$error.message}</div>
-  {/if}
-  {#if $data}
-    <pre id="data">
+	<button id="get_data" on:click={() => getData()}> Get data </button>
+	{#if $isLoading}
+		<div id="loading">Loading...</div>
+	{/if}
+	{#if $error}
+		<div id="error">{$error.message}</div>
+	{/if}
+	{#if $data}
+		<pre id="data">
       {JSON.stringify($data, null, 2)}
     </pre>
-  {/if}
+	{/if}
 </div>
