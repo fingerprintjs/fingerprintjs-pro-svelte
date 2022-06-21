@@ -10,7 +10,6 @@
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "devDependencies": {
-
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/kit": "next",
     "svelte": "link:../../node_modules/svelte",

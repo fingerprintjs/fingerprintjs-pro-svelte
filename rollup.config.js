@@ -18,13 +18,11 @@ const sveltePlugin = svelte({
   },
 });
 
-const { dependencies = {}, main, module, types, name: pkgName, svelte: svelteEntry } = require('./package.json');
+const { dependencies = {}, main, module, types, name: pkgName } = require('./package.json');
 const name = pkgName
   .replace(/^(@\S+\/)?(svelte-)?(\S+)/, '$3')
   .replace(/^\w/, (m) => m.toUpperCase())
   .replace(/-\w/g, (m) => m[1].toUpperCase());
-
-console.log({ name });
 
 const inputFile = 'src/index.ts';
 
@@ -41,6 +39,7 @@ const commonInput = {
   plugins: [
     resolvePlugin({
       extensions: ['.js', '.ts', '.svelte'],
+      browser: true,
     }),
     jsonPlugin(),
     typescript(),

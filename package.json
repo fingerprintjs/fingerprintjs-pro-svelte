@@ -11,7 +11,7 @@
   "scripts": {
     "generate-dts": "npx svelte-types-writer --no-js --override ./src/**/*.svelte && prettier src/providers/*.d.ts --write",
     "build": "rimraf dist && rollup -c rollup.config.js",
-    "build-all": "yarn build && yarn --cwd examples/svelte-kit-ts build",
+    "build-all": "yarn build && yarn --cwd examples/svelte-kit-ts build && yarn --cwd examples/svelte-kit build",
     "lint": "eslint --ext .js,.ts,.svelte --max-warnings 0 .",
     "lint:fix": "yarn lint --fix",
     "test": "jest",
