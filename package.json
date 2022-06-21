@@ -10,13 +10,17 @@
   },
   "main": "index.js",
   "scripts": {
+    "prepare": "yarn --cwd examples/svelte-kit-ts && yarn --cwd examples/svelte-kit && yarn --cwd examples/spa",
     "package": "svelte-kit package",
     "package:watch": "svelte-kit package --watch",
     "check": "svelte-check --tsconfig tsconfig.json",
     "check:watch": "svelte-check --tsconfig tsconfig.json --watch",
     "lint": "prettier --check . && eslint --max-warnings 0 .",
     "format": "prettier --write .",
-    "test": "jest"
+    "test": "jest",
+    "test:dts": "tsc --noEmit --isolatedModules dist/index.d.ts",
+    "sync-pkg-version": "node scripts/syncVersion.js && yarn format",
+    "build-all": "yarn package && yarn --cwd examples/svelte-kit build && yarn --cwd examples/spa build && yarn --cwd examples/svelte-kit-ts"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "next",
