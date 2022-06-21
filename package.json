@@ -11,12 +11,12 @@
   "scripts": {
     "generate-dts": "npx svelte-types-writer --no-js --override ./src/**/*.svelte && prettier src/providers/*.d.ts --write",
     "build": "rimraf dist && rollup -c rollup.config.js",
-    "build-all": "yarn build && yarn --cwd examples/svelte-kit build",
+    "build-all": "yarn build && yarn --cwd examples/svelte-kit-ts build",
     "lint": "eslint --ext .js,.ts,.svelte --max-warnings 0 .",
     "lint:fix": "yarn lint --fix",
     "test": "jest",
     "test:dts": "tsc --noEmit --isolatedModules dist/index.d.ts",
-    "svelte:check": "svelte-check src && yarn --cwd examples/svelte-kit check"
+    "svelte:check": "svelte-check src && yarn --cwd examples/svelte-kit-ts check"
   },
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
