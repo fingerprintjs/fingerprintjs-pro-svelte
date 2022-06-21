@@ -33,11 +33,7 @@ describe('TestApp', () => {
 
     const data = cmp.container.querySelector('#data');
     expect(data).toBeTruthy();
-    expect(data?.innerHTML).toMatchInlineSnapshot(`
-      "{
-        \\"visitorId\\": \\"#visitor_id\\"
-      }"
-    `);
+    expect(data?.innerHTML).toContain(testData.visitorId);
   });
 
   it('should show errors', async () => {
