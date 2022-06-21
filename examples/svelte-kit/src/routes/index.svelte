@@ -8,7 +8,7 @@
 
   const options = {
     loadOptions: {
-      apiKey: 'KCgNWtQyyOrqloz8PkFv',
+      apiKey: import.meta.env.VITE_API_KEY,
     },
   };
 </script>
