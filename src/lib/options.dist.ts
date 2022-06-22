@@ -1,7 +1,7 @@
 import type { FpjsClientOptions } from '@fingerprintjs/fingerprintjs-pro-spa';
 
-const pkgVersion = '<version>';
-const pkgName = '<pkg_name>';
+const pkgVersion = '__PACKAGE_VERSION__';
+const pkgName = '__PACKAGE_NAME__';
 
 export function getOptions(options: FpjsClientOptions) {
   const clientOptions: FpjsClientOptions = {

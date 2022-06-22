@@ -12,10 +12,14 @@ const optionFiles = {
   dist: path.resolve('./src/lib/options.dist.ts'),
 };
 
+const tokens = Object.entries({
+  __PACKAGE_VERSION__: pkg.version,
+  __PACKAGE_NAME__: pkg.name,
+});
 const contents = fs.readFileSync(optionFiles.dist, 'utf8').toString();
 
-const newContents = contents
-  .replace(/^(const pkgVersion =).*/gm, `const pkgVersion = '${pkg.version}'`)
-  .replace(/^(const pkgName =).*/gm, `const pkgName = '${pkg.name}'`);
+const newContents = tokens.reduce((acc, [token, value]) => {
+  return acc.replace(token, value);
+}, contents);
 
 fs.writeFileSync(optionFiles.target, newContents);
