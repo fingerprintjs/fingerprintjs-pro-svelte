@@ -7,11 +7,15 @@ import path from 'path';
 import fs from 'fs';
 import pkg from '../package.json' assert { type: 'json' };
 
-const optionsFile = path.resolve('./src/lib/options.ts');
-const contents = fs.readFileSync(optionsFile, 'utf8').toString();
+const optionFiles = {
+  target: path.resolve('./src/lib/options.ts'),
+  dist: path.resolve('./src/lib/options.dist.ts'),
+};
+
+const contents = fs.readFileSync(optionFiles.dist, 'utf8').toString();
 
 const newContents = contents
   .replace(/^(const pkgVersion =).*/gm, `const pkgVersion = '${pkg.version}'`)
   .replace(/^(const pkgName =).*/gm, `const pkgName = '${pkg.name}'`);
 
-fs.writeFileSync(optionsFile, newContents);
+fs.writeFileSync(optionFiles.target, newContents);

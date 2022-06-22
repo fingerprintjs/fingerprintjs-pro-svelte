@@ -10,7 +10,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "prepare": "yarn --cwd examples/svelte-kit-ts && yarn --cwd examples/svelte-kit && yarn --cwd examples/spa",
+    "prepare": "yarn sync-pkg-version && yarn --cwd examples/svelte-kit-ts && yarn --cwd examples/svelte-kit && yarn --cwd examples/spa",
     "package": "svelte-kit package",
     "package:watch": "svelte-kit package --watch",
     "check": "svelte-check --tsconfig tsconfig.json",
