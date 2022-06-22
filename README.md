@@ -121,4 +121,3 @@ pass `ignoreCache=true` inside `getData` function.
 
 This library uses [FingerprintJS Pro agent](https://fingerprintjs.com/github/) internally. The documentation for the
 FingerprintJS Pro agent is available on https://dev.fingerprintjs.com/docs.
-
