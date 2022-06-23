@@ -19,14 +19,14 @@ jobs:
           key: nodemodules-${{ hashFiles('**/yarn.lock') }}
           restore-keys: nodemodules-
       - name: Install Node packages
-        run: yarn install && yarn --cwd examples/svelte-kit && yarn --cwd examples/svelte-kit-ts
-      - name: Lint
-        run: yarn lint
-      - name: Tests
-        run: yarn test
+        run: yarn install
       - name: Build
         run: yarn build-all
         env:
           VITE_API_KEY: ${{ secrets.API_KEY }}
+      - name: Lint
+        run: yarn lint
+      - name: Tests
+        run: yarn test
       - name: Typecheck
         run: yarn test:dts

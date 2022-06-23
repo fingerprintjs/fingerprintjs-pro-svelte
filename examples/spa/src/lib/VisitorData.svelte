@@ -1,5 +1,5 @@
-<script lang="ts">
-  import { useVisitorData } from '../src/lib';
+<script>
+  import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-svelte';
 
   export let immediate = false;
 
@@ -7,7 +7,7 @@
 </script>
 
 <div>
-  <button id="get_data" on:click={() => getData()}> Get data </button>
+  <button id="get_data" on:click={() => getData()}> Get visitor data </button>
   {#if $isLoading}
     <div id="loading">Loading...</div>
   {/if}

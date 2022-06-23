@@ -1,0 +1,19 @@
+{
+  "name": "spa",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^1.0.0-next.30",
+    "svelte": "link:../../node_modules/svelte",
+    "vite": "^2.9.9"
+  },
+  "dependencies": {
+    "@fingerprintjs/fingerprintjs-pro-svelte": "link:../../dist"
+  }
+}

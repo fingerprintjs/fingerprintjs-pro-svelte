@@ -1,6 +1,6 @@
 <script lang="ts">
-  import FpjsProvider from '../src/providers/FpjsProvider.svelte';
-  import { FpjsSvelteOptions } from '../src';
+  import FpjsProvider from '../src/lib/providers/FpjsProvider.svelte';
+  import { FpjsSvelteOptions } from '../src/lib';
   import TestApp from './TestApp.svelte';
 
   const options: FpjsSvelteOptions = {

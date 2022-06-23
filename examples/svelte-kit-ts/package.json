@@ -20,6 +20,6 @@
   },
   "type": "module",
   "dependencies": {
-    "@fingerprintjs/fingerprintjs-pro-svelte": "link:../.."
+    "@fingerprintjs/fingerprintjs-pro-svelte": "link:../../dist"
   }
 }

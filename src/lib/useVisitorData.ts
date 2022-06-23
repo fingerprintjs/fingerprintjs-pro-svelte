@@ -22,9 +22,9 @@ export function useVisitorData<TExtended extends boolean>(
   options: GetOptions<TExtended>,
   { immediate = true }: FpjsSvelteQueryOptions = {}
 ): UseGetVisitorDataResult<TExtended> {
-  const dataValue = writable<VisitorData<TExtended> | undefined>();
+  const dataValue = writable<VisitorData<TExtended> | undefined>(undefined);
   const loadingValue = writable(false);
-  const errorValue = writable<Error | undefined>();
+  const errorValue = writable<Error | undefined>(undefined);
 
   const context = getContext<FpjsSvelteContext>(FPJS_CONTEXT);
 

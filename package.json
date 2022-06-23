@@ -8,59 +8,52 @@
     "type": "git",
     "url": "https://github.com/fingerprintjs/fingerprintjs-pro-svelte.git"
   },
+  "main": "index.js",
   "scripts": {
-    "generate-dts": "npx svelte-types-writer --no-js --override ./src/**/*.svelte && prettier src/providers/*.d.ts --write",
-    "build": "rimraf dist && rollup -c rollup.config.js",
-    "build-all": "yarn build && yarn --cwd examples/svelte-kit-ts build && yarn --cwd examples/svelte-kit build",
-    "lint": "eslint --ext .js,.ts,.svelte --max-warnings 0 .",
-    "lint:fix": "yarn lint --fix",
+    "prepare": "yarn sync-pkg-version && yarn --cwd examples/svelte-kit-ts && yarn --cwd examples/svelte-kit && yarn --cwd examples/spa",
+    "package": "svelte-kit package",
+    "package:watch": "svelte-kit package --watch",
+    "check": "svelte-check --tsconfig tsconfig.json",
+    "check:watch": "svelte-check --tsconfig tsconfig.json --watch",
+    "lint": "prettier --check . && eslint --max-warnings 0 .",
+    "format": "prettier --write .",
     "test": "jest",
     "test:dts": "tsc --noEmit --isolatedModules dist/index.d.ts",
-    "svelte:check": "svelte-check src && yarn --cwd examples/svelte-kit-ts check"
-  },
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "types": "dist/index.d.ts",
-  "sideEffects": false,
-  "svelte": "src/index.ts",
-  "files": [
-    "dist"
-  ],
-  "peerDependencies": {
-    "svelte": "^3.48.0"
+    "sync-pkg-version": "node scripts/syncVersion.js && yarn format",
+    "build-all": "yarn package && yarn --cwd examples/svelte-kit build && yarn --cwd examples/spa build && yarn --cwd examples/svelte-kit-ts",
+    "docs": "yarn package && typedoc dist/index.d.ts --options typedoc.cjs --out docs"
   },
   "devDependencies": {
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^13.3.0",
-    "@rollup/plugin-typescript": "^8.3.3",
+    "@sveltejs/adapter-auto": "next",
+    "@sveltejs/kit": "next",
     "@testing-library/svelte": "^3.1.3",
     "@testing-library/user-event": "^14.2.1",
-    "@tsconfig/svelte": "^3.0.0",
     "@types/jest": "^27.4.0",
-    "@typescript-eslint/eslint-plugin": "^5.28.0",
-    "@typescript-eslint/parser": "^5.28.0",
+    "@typescript-eslint/eslint-plugin": "^5.27.0",
+    "@typescript-eslint/parser": "^5.27.0",
     "dotenv": "^16.0.1",
-    "eslint": "^8.17.0",
+    "eslint": "^8.16.0",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-svelte3": "^4.0.0",
     "jest": "^27.5.1",
-    "prettier": "^2.7.0",
+    "prettier": "^2.6.2",
     "prettier-plugin-svelte": "^2.7.0",
-    "rollup": "^2.75.6",
-    "rollup-plugin-dts": "^4.2.2",
-    "rollup-plugin-license": "^2.8.1",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-svelte": "^7.1.0",
-    "rollup-plugin-typescript2": "^0.32.1",
-    "svelte": "^3.48.0",
+    "svelte": "^3.30.1",
     "svelte-check": "^2.7.1",
-    "svelte-eslint-parser": "^0.16.3",
     "svelte-jester": "^2.3.2",
-    "svelte-preprocess": "^4.10.7",
+    "svelte-preprocess": "^4.10.6",
+    "svelte2tsx": "^0.5.10",
     "ts-jest": "^27.1.3",
-    "typescript": "^4.7.3"
+    "tslib": "^2.3.1",
+    "typedoc": "^0.22.17",
+    "typescript": "^4.7.2"
   },
   "dependencies": {
     "@fingerprintjs/fingerprintjs-pro-spa": "^0.4.0"
-  }
+  },
+  "peerDependencies": {
+    "svelte": "^3.30.1"
+  },
+  "types": "./index.d.ts",
+  "type": "module"
 }

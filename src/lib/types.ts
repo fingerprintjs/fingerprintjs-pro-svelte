@@ -11,8 +11,17 @@ export interface FpjsSvelteContext {
 }
 
 export interface FpjsVisitorQueryData<TExtended extends boolean> {
+  /**
+   * Is true while visitor data is being loaded.
+   * */
   isLoading: boolean;
+  /**
+   * Stores current visitorData
+   * */
   data: VisitorData<TExtended> | undefined;
+  /**
+   * Stores current query error.
+   * */
   error: Error | undefined;
 }
 

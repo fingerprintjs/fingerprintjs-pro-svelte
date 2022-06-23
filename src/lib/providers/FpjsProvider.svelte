@@ -5,7 +5,15 @@
   import { makeClientMethods } from '../client';
   import { setContext } from 'svelte';
   import { FPJS_CONTEXT } from '../symbols';
-
+  /**
+   * Required props for the component.
+   *
+   * @example {
+   *     loadOptions: {
+   *       apiKey: '<YOUR_API_KEY>'
+   *     },
+   *   }
+   * */
   export let options: FpjsSvelteOptions;
 
   if (!options) {
@@ -22,4 +30,29 @@
   }
 </script>
 
+<!--
+@component
+Provides client for usage with FingerprintJS Pro.
+Takes options as props.
+
+@see FpjsSvelteOptions
+
+@example
+  ```sveltehtml
+<script>
+  import { FpjsProvider } from '@fingerprintjs/fingerprintjs-pro-svelte'
+  import VisitorData from './VisitorData.svelte'
+
+  const options = {
+    loadOptions: {
+      apiKey: '<YOUR_API_KEY>'
+    },
+  };
+</script>
+
+<FpjsProvider {options}>
+    <VisitorData />
+</FpjsProvider>
+```
+-->
 <slot />

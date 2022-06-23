@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { render } from '@testing-library/svelte';
 import TestApp from './TestAppWrapper.svelte';
 import { getVisitorData, init } from './setup';
@@ -32,12 +33,7 @@ describe('TestApp', () => {
 
     const data = cmp.container.querySelector('#data');
     expect(data).toBeTruthy();
-    expect(data?.innerHTML).toMatchInlineSnapshot(`
-      "      {
-        \\"visitorId\\": \\"#visitor_id\\"
-      }
-          "
-    `);
+    expect(data?.innerHTML).toContain(testData.visitorId);
   });
 
   it('should show errors', async () => {

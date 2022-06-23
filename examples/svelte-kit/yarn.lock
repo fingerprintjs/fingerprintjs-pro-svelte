@@ -10,7 +10,7 @@
     "@fingerprintjs/fingerprintjs-pro" "^3.6.2"
     tslib "^2.2.0"
 
-"@fingerprintjs/fingerprintjs-pro-svelte@link:../..":
+"@fingerprintjs/fingerprintjs-pro-svelte@link:../../dist":
   version "0.0.0"
   uid ""
 

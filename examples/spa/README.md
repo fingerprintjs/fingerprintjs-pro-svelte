@@ -1,4 +1,4 @@
-# Example svelte-kit application with TypeScript
+# Example SPA application
 
 ## Getting started
 
@@ -14,4 +14,4 @@ VITE_API_KEY=<YOUR_API_KEY>
 
 ## Learn more
 
-This application was generated using `svelte-kit`, to learn more visit official [website](https://kit.svelte.dev/).
+This application was generated using `npm init vite spa -- -- template svelte`, to learn more visit official [website](https://svelte.dev/).
