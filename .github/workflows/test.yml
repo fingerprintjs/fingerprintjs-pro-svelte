@@ -25,7 +25,7 @@ jobs:
         env:
           VITE_API_KEY: ${{ secrets.API_KEY }}
       - name: Lint
-        run: yarn lint
+        run: yarn lint && yarn check
       - name: Tests
         run: yarn test
       - name: Typecheck
