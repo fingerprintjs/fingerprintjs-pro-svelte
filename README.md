@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://fingerprintjs.com">
-    <img src="resources/logo.svg" alt="FingerprintJS" width="312px" />
+    <img src="https://raw.githubusercontent.com/fingerprintjs/fingerprintjs-pro-svelte/main/resources/logo.svg" alt="FingerprintJS" width="312px" />
   </a>
 </p>
 <p align="center">
@@ -118,6 +118,8 @@ or `lastSeenAt`) might change for the same visitor. If you need exact current da
 pass `ignoreCache=true` inside `getData` function.
 
 ## Documentation
+
+You can find API reference [here](https://fingerprintjs.github.io/fingerprintjs-pro-svelte/).
 
 This library uses [FingerprintJS Pro agent](https://fingerprintjs.com/github/) internally. The documentation for the
 FingerprintJS Pro agent is available on https://dev.fingerprintjs.com/docs.
