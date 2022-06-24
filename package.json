@@ -16,6 +16,18 @@
     "registry": "https://registry.npmjs.org/"
   },
   "private": false,
+  "keywords": [
+    "fraud",
+    "fraud detection",
+    "fraud prevention",
+    "browser",
+    "identification",
+    "fingerprint",
+    "fingerprinting",
+    "browser fingerprint",
+    "device fingerprint",
+    "privacy"
+  ],
   "scripts": {
     "prepare": "husky install && yarn sync-pkg-version && yarn --cwd examples/svelte-kit-ts && yarn --cwd examples/svelte-kit && yarn --cwd examples/spa",
     "package": "svelte-kit package",
