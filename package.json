@@ -9,21 +9,47 @@
     "url": "https://github.com/fingerprintjs/fingerprintjs-pro-svelte.git"
   },
   "main": "index.js",
+  "types": "./index.d.ts",
+  "type": "module",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "private": false,
+  "keywords": [
+    "fraud",
+    "fraud detection",
+    "fraud prevention",
+    "browser",
+    "identification",
+    "fingerprint",
+    "fingerprinting",
+    "browser fingerprint",
+    "device fingerprint",
+    "privacy"
+  ],
   "scripts": {
-    "prepare": "yarn sync-pkg-version && yarn --cwd examples/svelte-kit-ts && yarn --cwd examples/svelte-kit && yarn --cwd examples/spa",
+    "prepare": "husky install && yarn sync-pkg-version && yarn --cwd examples/svelte-kit-ts && yarn --cwd examples/svelte-kit && yarn --cwd examples/spa",
     "package": "svelte-kit package",
     "package:watch": "svelte-kit package --watch",
     "check": "svelte-check --tsconfig tsconfig.json",
     "check:watch": "svelte-check --tsconfig tsconfig.json --watch",
     "lint": "prettier --check . && eslint --max-warnings 0 .",
+    "lint:fix": "yarn format && yarn lint -- --fix .",
     "format": "prettier --write .",
     "test": "jest",
     "test:dts": "tsc --noEmit --isolatedModules dist/index.d.ts",
     "sync-pkg-version": "node scripts/syncVersion.js && yarn format",
     "build-all": "yarn package && yarn --cwd examples/svelte-kit build && yarn --cwd examples/spa build && yarn --cwd examples/svelte-kit-ts",
-    "docs": "yarn package && typedoc dist/index.d.ts --options typedoc.cjs --out docs"
+    "docs": "yarn package && typedoc dist/index.d.ts --options typedoc.cjs --out docs",
+    "release": "semantic-release"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.0.2",
+    "@commitlint/config-conventional": "^17.0.2",
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/kit": "next",
     "@testing-library/svelte": "^3.1.3",
@@ -31,13 +57,18 @@
     "@types/jest": "^27.4.0",
     "@typescript-eslint/eslint-plugin": "^5.27.0",
     "@typescript-eslint/parser": "^5.27.0",
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "^3.3.0",
     "dotenv": "^16.0.1",
     "eslint": "^8.16.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-svelte3": "^4.0.0",
+    "husky": "^8.0.1",
     "jest": "^27.5.1",
+    "lint-staged": "^13.0.2",
     "prettier": "^2.6.2",
     "prettier-plugin-svelte": "^2.7.0",
+    "semantic-release": "^19.0.3",
     "svelte": "^3.30.1",
     "svelte-check": "^2.7.1",
     "svelte-jester": "^2.3.2",
@@ -54,6 +85,49 @@
   "peerDependencies": {
     "svelte": "^3.30.1"
   },
-  "types": "./index.d.ts",
-  "type": "module"
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "lint-staged": {
+    "*.ts": "yarn run lint:fix",
+    "*.svelte": "yarn run lint:fix"
+  },
+  "release": {
+    "branches": [
+      "main",
+      {
+        "name": "test",
+        "prerelease": true
+      }
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      [
+        "@semantic-release/npm",
+        {
+          "npmPublish": false
+        }
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "CHANGELOG.md",
+            "package.json"
+          ]
+        }
+      ],
+      "@semantic-release/github",
+      [
+        "@semantic-release/exec",
+        {
+          "publishCmd": "cd dist && yarn publish"
+        }
+      ]
+    ]
+  }
 }
