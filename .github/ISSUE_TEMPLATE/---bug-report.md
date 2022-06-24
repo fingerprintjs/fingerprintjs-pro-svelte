@@ -4,7 +4,6 @@ about: Report a reproducible bug or regression.
 title: ''
 labels: bug
 assignees: ''
-
 ---
 
 ## Current Behavior
@@ -17,9 +16,9 @@ assignees: ''
 
 ## Steps to Reproduce the Problem
 
-  1.
-  1.
-  1.
+1.
+2.
+3.
 
 ## Environment
 

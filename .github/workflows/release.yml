@@ -24,10 +24,5 @@ jobs:
         run: yarn release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_RELEASE_TOKEN }}
-          HUSKY: 0
-
-      - name: Publish package
-        run: cd dist && yarn publish
-        env:
           NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
           HUSKY: 0
