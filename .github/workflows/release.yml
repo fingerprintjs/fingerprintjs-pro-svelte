@@ -1,8 +1,10 @@
 name: Release
 
 on:
-  # TODO After publishing repository change this to trigger on push to main
-  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - test
 
 jobs:
   release:
