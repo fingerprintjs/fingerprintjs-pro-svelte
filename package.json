@@ -125,7 +125,7 @@
       [
         "@semantic-release/exec",
         {
-          "publishCmd": "cd dist && yarn publish"
+          "publishCmd": "cd dist && npm publish"
         }
       ]
     ]
