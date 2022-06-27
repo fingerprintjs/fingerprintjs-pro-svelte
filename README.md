@@ -10,6 +10,12 @@
 <a href="https://github.com/fingerprintjs/fingerprintjs-pro-svelte/actions/workflows/test.yml">
     <img src="https://github.com/fingerprintjs/fingerprintjs-pro-svelte/actions/workflows/test.yml/badge.svg" alt="Tests status">
    </a>
+  <a href="https://www.npmjs.com/package/@fingerprintjs/fingerprintjs-pro-svelte">
+     <img src="https://img.shields.io/npm/v/@fingerprintjs/fingerprintjs-pro-svelte.svg" alt="Current NPM version">
+   </a>
+   <a href="https://www.npmjs.com/package/@fingerprintjs/fingerprintjs-pro-svelte">
+     <img src="https://img.shields.io/npm/dm/@fingerprintjs/fingerprintjs-pro-svelte.svg" alt="Monthly downloads from NPM">
+   </a>
    <a href="https://opensource.org/licenses/MIT">
      <img src="https://img.shields.io/:license-mit-blue.svg" alt="MIT license">
    </a>
