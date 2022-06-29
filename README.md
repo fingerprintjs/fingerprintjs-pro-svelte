@@ -56,7 +56,7 @@ the [official FingerprintJS Pro documentation](https://dev.fingerprintjs.com/doc
    Set a region if you have chosen a non-global region during registration. Please refer to
    the [Regions page](https://dev.fingerprintjs.com/docs/regions).
 
-```sveltehtml
+```svelte
 // App.svelte
 <script>
   import { FpjsProvider } from '@fingerprintjs/fingerprintjs-pro-svelte'
@@ -76,7 +76,7 @@ the [official FingerprintJS Pro documentation](https://dev.fingerprintjs.com/doc
 
 2. Use the `useVisitorData` function in your svelte components to perform visitor identification and get the data.
 
-```sveltehtml
+```svelte
 // VisitorData.svelte
 <script>
   import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-svelte';
