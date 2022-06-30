@@ -10,6 +10,12 @@
 <a href="https://github.com/fingerprintjs/fingerprintjs-pro-svelte/actions/workflows/test.yml">
     <img src="https://github.com/fingerprintjs/fingerprintjs-pro-svelte/actions/workflows/test.yml/badge.svg" alt="Tests status">
    </a>
+  <a href="https://www.npmjs.com/package/@fingerprintjs/fingerprintjs-pro-svelte">
+     <img src="https://img.shields.io/npm/v/@fingerprintjs/fingerprintjs-pro-svelte.svg" alt="Current NPM version">
+   </a>
+   <a href="https://www.npmjs.com/package/@fingerprintjs/fingerprintjs-pro-svelte">
+     <img src="https://img.shields.io/npm/dm/@fingerprintjs/fingerprintjs-pro-svelte.svg" alt="Monthly downloads from NPM">
+   </a>
    <a href="https://opensource.org/licenses/MIT">
      <img src="https://img.shields.io/:license-mit-blue.svg" alt="MIT license">
    </a>
@@ -50,7 +56,7 @@ the [official FingerprintJS Pro documentation](https://dev.fingerprintjs.com/doc
    Set a region if you have chosen a non-global region during registration. Please refer to
    the [Regions page](https://dev.fingerprintjs.com/docs/regions).
 
-```sveltehtml
+```svelte
 // App.svelte
 <script>
   import { FpjsProvider } from '@fingerprintjs/fingerprintjs-pro-svelte'
@@ -70,7 +76,7 @@ the [official FingerprintJS Pro documentation](https://dev.fingerprintjs.com/doc
 
 2. Use the `useVisitorData` function in your svelte components to perform visitor identification and get the data.
 
-```sveltehtml
+```svelte
 // VisitorData.svelte
 <script>
   import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-svelte';

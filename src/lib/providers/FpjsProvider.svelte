@@ -38,7 +38,7 @@ Takes options as props.
 @see FpjsSvelteOptions
 
 @example
-  ```sveltehtml
+  ```svelte
 <script>
   import { FpjsProvider } from '@fingerprintjs/fingerprintjs-pro-svelte'
   import VisitorData from './VisitorData.svelte'
