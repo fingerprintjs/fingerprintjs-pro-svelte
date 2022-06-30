@@ -10,6 +10,12 @@
 <a href="https://github.com/fingerprintjs/fingerprintjs-pro-svelte/actions/workflows/test.yml">
     <img src="https://github.com/fingerprintjs/fingerprintjs-pro-svelte/actions/workflows/test.yml/badge.svg" alt="Tests status">
    </a>
+  <a href="https://www.npmjs.com/package/@fingerprintjs/fingerprintjs-pro-svelte">
+     <img src="https://img.shields.io/npm/v/@fingerprintjs/fingerprintjs-pro-svelte.svg" alt="Current NPM version">
+   </a>
+   <a href="https://www.npmjs.com/package/@fingerprintjs/fingerprintjs-pro-svelte">
+     <img src="https://img.shields.io/npm/dm/@fingerprintjs/fingerprintjs-pro-svelte.svg" alt="Monthly downloads from NPM">
+   </a>
    <a href="https://opensource.org/licenses/MIT">
      <img src="https://img.shields.io/:license-mit-blue.svg" alt="MIT license">
    </a>
@@ -49,55 +55,12 @@ the <a href="https://dev.fingerprintjs.com/docs/quick-start-guide">official Fing
 <li>Wrap your application (or component) in <code>FpjsProvider</code>. You can specify multiple configuration options. <br>Set a region if you have chosen a non-global region during registration. Please refer to
 the <a href="https://dev.fingerprintjs.com/docs/regions">Regions page</a>.</li>
 </ol>
-<pre><code class="language-sveltehtml">// App.svelte
-&lt;script&gt;
-  import { FpjsProvider } from &#39;@fingerprintjs/fingerprintjs-pro-svelte&#39;
-  import VisitorData from &#39;./VisitorData.svelte&#39;
-
-  const options = {
-    loadOptions: {
-      apiKey: &#39;&lt;YOUR_API_KEY&gt;&#39;
-    },
-  };
-&lt;/script&gt;
-
-&lt;FpjsProvider {options}&gt;
-  &lt;VisitorData /&gt;
-&lt;/FpjsProvider&gt;
+<pre><code class="language-svelte"><span class="hl-1">&lt;</span><span class="hl-2">script</span><span class="hl-1">&gt;</span><br/><span class="hl-3">  </span><span class="hl-4">import</span><span class="hl-3"> { </span><span class="hl-5">FpjsProvider</span><span class="hl-3"> } </span><span class="hl-4">from</span><span class="hl-3"> </span><span class="hl-6">&#39;@fingerprintjs/fingerprintjs-pro-svelte&#39;</span><span class="hl-3">;</span><br/><span class="hl-3">  </span><span class="hl-4">import</span><span class="hl-3"> </span><span class="hl-5">VisitorData</span><span class="hl-3"> </span><span class="hl-4">from</span><span class="hl-3"> </span><span class="hl-6">&#39;./VisitorData.svelte&#39;</span><span class="hl-3">;</span><br/><br/><span class="hl-3">  </span><span class="hl-7">const</span><span class="hl-3"> </span><span class="hl-8">options</span><span class="hl-3"> </span><span class="hl-0">=</span><span class="hl-3"> {</span><br/><span class="hl-3">    </span><span class="hl-5">loadOptions:</span><span class="hl-3"> {</span><br/><span class="hl-3">      </span><span class="hl-5">apiKey:</span><span class="hl-3"> </span><span class="hl-6">&#39;&lt;YOUR_API_KEY&gt;&#39;</span><span class="hl-3">,</span><br/><span class="hl-3">    },</span><br/><span class="hl-3">  };</span><br/><span class="hl-1">&lt;/</span><span class="hl-2">script</span><span class="hl-1">&gt;</span><br/><br/><span class="hl-0">// App.svelte</span><br/><span class="hl-1">&lt;</span><span class="hl-10">FpjsProvider</span><span class="hl-0"> </span><span class="hl-11">{</span><span class="hl-5">options</span><span class="hl-11">}</span><span class="hl-1">&gt;</span><br/><span class="hl-0">  </span><span class="hl-1">&lt;</span><span class="hl-10">VisitorData</span><span class="hl-0"> </span><span class="hl-1">/&gt;</span><br/><span class="hl-1">&lt;/</span><span class="hl-10">FpjsProvider</span><span class="hl-1">&gt;</span>
 </code></pre>
 <ol start="2">
 <li>Use the <code>useVisitorData</code> function in your svelte components to perform visitor identification and get the data.</li>
 </ol>
-<pre><code class="language-sveltehtml">// VisitorData.svelte
-&lt;script&gt;
-  import { useVisitorData } from &#39;@fingerprintjs/fingerprintjs-pro-svelte&#39;;
-
-  // Set to true fo fetch data when component is mounted
-  export let immediate = false;
-
-  const { getData, data, isLoading, error } = useVisitorData({ extendedResult: true }, { immediate });
-
-  $: {
-    if ($data) {
-      // Do something with visitorData here
-    }
-  }
-&lt;/script&gt;
-
-&lt;div&gt;
-  &lt;button id=&#39;get_data&#39; on:click={() =&gt; getData()}&gt; Get data&lt;/button&gt;
-  {#if $isLoading}
-    &lt;div id=&#39;loading&#39;&gt;Loading...&lt;/div&gt;
-  {/if}
-  {#if $error}
-    &lt;div id=&#39;error&#39;&gt;Error occurred: {$error.message}&lt;/div&gt;
-  {/if}
-  {#if $data}
-    &lt;div&gt;
-      &lt;!--visitorData is available here!--&gt;
-    &lt;/div&gt;
-  {/if}
-&lt;/div&gt;
+<pre><code class="language-svelte"><span class="hl-1">&lt;</span><span class="hl-2">script</span><span class="hl-1">&gt;</span><br/><span class="hl-3">  </span><span class="hl-4">import</span><span class="hl-3"> { </span><span class="hl-5">useVisitorData</span><span class="hl-3"> } </span><span class="hl-4">from</span><span class="hl-3"> </span><span class="hl-6">&#39;@fingerprintjs/fingerprintjs-pro-svelte&#39;</span><span class="hl-3">;</span><br/><br/><span class="hl-3">  </span><span class="hl-12">// Set to true fo fetch data when component is mounted</span><br/><span class="hl-3">  </span><span class="hl-4">export</span><span class="hl-3"> </span><span class="hl-7">let</span><span class="hl-3"> </span><span class="hl-5">immediate</span><span class="hl-3"> </span><span class="hl-0">=</span><span class="hl-3"> </span><span class="hl-7">false</span><span class="hl-3">;</span><br/><br/><span class="hl-3">  </span><span class="hl-7">const</span><span class="hl-3"> { </span><span class="hl-8">getData</span><span class="hl-3">, </span><span class="hl-8">data</span><span class="hl-3">, </span><span class="hl-8">isLoading</span><span class="hl-3">, </span><span class="hl-8">error</span><span class="hl-3"> } </span><span class="hl-0">=</span><span class="hl-3"> </span><span class="hl-9">useVisitorData</span><span class="hl-3">({ </span><span class="hl-5">extendedResult:</span><span class="hl-3"> </span><span class="hl-7">true</span><span class="hl-3"> }, { </span><span class="hl-5">immediate</span><span class="hl-3"> });</span><br/><br/><span class="hl-3">  </span><span class="hl-13">$</span><span class="hl-3">: {</span><br/><span class="hl-3">    </span><span class="hl-4">if</span><span class="hl-3"> ($</span><span class="hl-5">data</span><span class="hl-3">) {</span><br/><span class="hl-3">      </span><span class="hl-12">// Do something with visitorData here</span><br/><span class="hl-3">    }</span><br/><span class="hl-3">  }</span><br/><span class="hl-1">&lt;/</span><span class="hl-2">script</span><span class="hl-1">&gt;</span><br/><br/><span class="hl-0">// VisitorData.svelte</span><br/><span class="hl-1">&lt;</span><span class="hl-2">div</span><span class="hl-1">&gt;</span><br/><span class="hl-0">  </span><span class="hl-1">&lt;</span><span class="hl-2">button</span><span class="hl-0"> </span><span class="hl-11">id</span><span class="hl-0">=</span><span class="hl-6">&quot;get_data&quot;</span><span class="hl-0"> </span><span class="hl-4">on</span><span class="hl-0">:</span><span class="hl-10">click</span><span class="hl-0">=</span><span class="hl-7">{</span><span class="hl-3">() </span><span class="hl-7">=&gt;</span><span class="hl-3"> </span><span class="hl-9">getData</span><span class="hl-3">()</span><span class="hl-7">}</span><span class="hl-1">&gt;</span><span class="hl-0"> Get data</span><span class="hl-1">&lt;/</span><span class="hl-2">button</span><span class="hl-1">&gt;</span><br/><span class="hl-0">  {#</span><span class="hl-4">if</span><span class="hl-3"> $</span><span class="hl-5">isLoading</span><span class="hl-0">}</span><br/><span class="hl-0">    </span><span class="hl-1">&lt;</span><span class="hl-2">div</span><span class="hl-0"> </span><span class="hl-11">id</span><span class="hl-0">=</span><span class="hl-6">&quot;loading&quot;</span><span class="hl-1">&gt;</span><span class="hl-0">Loading...</span><span class="hl-1">&lt;/</span><span class="hl-2">div</span><span class="hl-1">&gt;</span><br/><span class="hl-0">  {/</span><span class="hl-4">if</span><span class="hl-0">}</span><br/><span class="hl-0">  {#</span><span class="hl-4">if</span><span class="hl-3"> $</span><span class="hl-5">error</span><span class="hl-0">}</span><br/><span class="hl-0">    </span><span class="hl-1">&lt;</span><span class="hl-2">div</span><span class="hl-0"> </span><span class="hl-11">id</span><span class="hl-0">=</span><span class="hl-6">&quot;error&quot;</span><span class="hl-1">&gt;</span><span class="hl-0">Error occurred: </span><span class="hl-7">{</span><span class="hl-3">$</span><span class="hl-5">error</span><span class="hl-3">.</span><span class="hl-5">message</span><span class="hl-7">}</span><span class="hl-1">&lt;/</span><span class="hl-2">div</span><span class="hl-1">&gt;</span><br/><span class="hl-0">  {/</span><span class="hl-4">if</span><span class="hl-0">}</span><br/><span class="hl-0">  {#</span><span class="hl-4">if</span><span class="hl-3"> $</span><span class="hl-5">data</span><span class="hl-0">}</span><br/><span class="hl-0">    </span><span class="hl-1">&lt;</span><span class="hl-2">div</span><span class="hl-1">&gt;</span><br/><span class="hl-0">      </span><span class="hl-12">&lt;!--visitorData is available here!--&gt;</span><br/><span class="hl-0">    </span><span class="hl-1">&lt;/</span><span class="hl-2">div</span><span class="hl-1">&gt;</span><br/><span class="hl-0">  {/</span><span class="hl-4">if</span><span class="hl-0">}</span><br/><span class="hl-1">&lt;/</span><span class="hl-2">div</span><span class="hl-1">&gt;</span>
 </code></pre>
 <p>See the full code in example apps located in <a href="./examples">examples folder</a>.</p>
 
