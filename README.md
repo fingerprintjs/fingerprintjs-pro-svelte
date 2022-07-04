@@ -1,7 +1,12 @@
 <p align="center">
   <a href="https://fingerprint.com">
-    <img src="https://raw.githubusercontent.com/fingerprintjs/fingerprintjs-pro-svelte/main/resources/logo.svg" alt="FingerprintJS" width="312px" />
+    <picture>
+     <source media="(prefers-color-scheme: dark)" srcset="resources/logo_light.svg" />
+     <source media="(prefers-color-scheme: light)" srcset="resources/logo_dark.svg" />
+      <img src="https://raw.githubusercontent.com/fingerprintjs/fingerprintjs-pro-svelte/main/resources/logo_dark.svg" alt="FingerprintJS" width="312px" />
+   </picture>
   </a>
+
 </p>
 <p align="center">
    <a href="https://github.com/fingerprintjs/fingerprintjs-pro-svelte/actions/workflows/release.yml">
