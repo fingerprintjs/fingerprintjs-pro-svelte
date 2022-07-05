@@ -1,7 +1,12 @@
 <!DOCTYPE html><html class="default"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>@fingerprintjs/fingerprintjs-pro-svelte</title><meta name="description" content="Documentation for @fingerprintjs/fingerprintjs-pro-svelte"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.body.classList.add(localStorage.getItem("tsd-theme") || "os")</script><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">@fingerprintjs/fingerprintjs-pro-svelte</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1>@fingerprintjs/fingerprintjs-pro-svelte </h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography"><p align="center">
-  <a href="https://fingerprintjs.com">
-    <img src="https://raw.githubusercontent.com/fingerprintjs/fingerprintjs-pro-svelte/main/resources/logo.svg" alt="FingerprintJS" width="312px" />
+  <a href="https://fingerprint.com">
+    <picture>
+     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/fingerprintjs/fingerprintjs-pro-svelte/main/resources/logo_light.svg" />
+     <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/fingerprintjs/fingerprintjs-pro-svelte/main/resources/logo_dark.svg" />
+      <img src="https://raw.githubusercontent.com/fingerprintjs/fingerprintjs-pro-svelte/main/resources/logo_dark.svg" alt="Fingerprint" width="312px" />
+   </picture>
   </a>
+
 </p>
 <p align="center">
    <a href="https://github.com/fingerprintjs/fingerprintjs-pro-svelte/actions/workflows/release.yml">
@@ -28,12 +33,12 @@
 <a href="#fingerprintjs-pro-svelte" id="fingerprintjs-pro-svelte" style="color: inherit; text-decoration: none;">
   <h1>FingerprintJS Pro Svelte</h1>
 </a>
-<p>FingerprintJS Pro Svelte is an easy-to-use Svelte library for <a href="https://fingerprintjs.com/">FingerprintJS Pro</a> that also
+<p>FingerprintJS Pro Svelte is an easy-to-use Svelte library for <a href="https://fingerprint.com/">FingerprintJS Pro</a> that also
 works with <a href="https://kit.svelte.dev/">svelte-kit</a>.
 Example apps can be found in the <a href="./examples">examples</a> folder.
 This package works with FingerprintJS Pro, it is not compatible with open-source FingerprintJS. You can learn more about
 the difference between FingerprintJS Pro and open-source FingerprintJS in
-the <a href="https://dev.fingerprintjs.com/docs/pro-vs-open-source">official documentation</a>.</p>
+the <a href="https://dev.fingerprint.com/docs/pro-vs-open-source">official documentation</a>.</p>
 
 <a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
   <h2>Installation</h2>
@@ -48,12 +53,12 @@ the <a href="https://dev.fingerprintjs.com/docs/pro-vs-open-source">official doc
   <h2>Getting started</h2>
 </a>
 <p>In order to identify visitors, you&#39;ll need a FingerprintJS Pro account (you
-can <a href="https://dashboard.fingerprintjs.com/signup/">sign up for free</a>).
+can <a href="https://dashboard.fingerprint.com/signup/">sign up for free</a>).
 You can learn more about API keys in
-the <a href="https://dev.fingerprintjs.com/docs/quick-start-guide">official FingerprintJS Pro documentation</a>.</p>
+the <a href="https://dev.fingerprint.com/docs/quick-start-guide">official FingerprintJS Pro documentation</a>.</p>
 <ol>
 <li>Wrap your application (or component) in <code>FpjsProvider</code>. You can specify multiple configuration options. <br>Set a region if you have chosen a non-global region during registration. Please refer to
-the <a href="https://dev.fingerprintjs.com/docs/regions">Regions page</a>.</li>
+the <a href="https://dev.fingerprint.com/docs/regions">Regions page</a>.</li>
 </ol>
 <pre><code class="language-svelte"><span class="hl-1">&lt;</span><span class="hl-2">script</span><span class="hl-1">&gt;</span><br/><span class="hl-3">  </span><span class="hl-4">import</span><span class="hl-3"> { </span><span class="hl-5">FpjsProvider</span><span class="hl-3"> } </span><span class="hl-4">from</span><span class="hl-3"> </span><span class="hl-6">&#39;@fingerprintjs/fingerprintjs-pro-svelte&#39;</span><span class="hl-3">;</span><br/><span class="hl-3">  </span><span class="hl-4">import</span><span class="hl-3"> </span><span class="hl-5">VisitorData</span><span class="hl-3"> </span><span class="hl-4">from</span><span class="hl-3"> </span><span class="hl-6">&#39;./VisitorData.svelte&#39;</span><span class="hl-3">;</span><br/><br/><span class="hl-3">  </span><span class="hl-7">const</span><span class="hl-3"> </span><span class="hl-8">options</span><span class="hl-3"> </span><span class="hl-0">=</span><span class="hl-3"> {</span><br/><span class="hl-3">    </span><span class="hl-5">loadOptions:</span><span class="hl-3"> {</span><br/><span class="hl-3">      </span><span class="hl-5">apiKey:</span><span class="hl-3"> </span><span class="hl-6">&#39;&lt;YOUR_API_KEY&gt;&#39;</span><span class="hl-3">,</span><br/><span class="hl-3">    },</span><br/><span class="hl-3">  };</span><br/><span class="hl-1">&lt;/</span><span class="hl-2">script</span><span class="hl-1">&gt;</span><br/><br/><span class="hl-0">// App.svelte</span><br/><span class="hl-1">&lt;</span><span class="hl-10">FpjsProvider</span><span class="hl-0"> </span><span class="hl-11">{</span><span class="hl-5">options</span><span class="hl-11">}</span><span class="hl-1">&gt;</span><br/><span class="hl-0">  </span><span class="hl-1">&lt;</span><span class="hl-10">VisitorData</span><span class="hl-0"> </span><span class="hl-1">/&gt;</span><br/><span class="hl-1">&lt;/</span><span class="hl-10">FpjsProvider</span><span class="hl-1">&gt;</span>
 </code></pre>
@@ -69,9 +74,9 @@ the <a href="https://dev.fingerprintjs.com/docs/regions">Regions page</a>.</li>
 </a>
 <p>:warning: <strong>WARNING</strong> If you use data from <code>extendedResult</code>, please pay additional attention to caching strategy.</p>
 <p>FingerprintJS Pro uses API calls as the basis for billing.
-Our <a href="https://dev.fingerprintjs.com/docs/caching-visitor-information">best practices</a> strongly recommend using cache to
+Our <a href="https://dev.fingerprint.com/docs/caching-visitor-information">best practices</a> strongly recommend using cache to
 optimise API calls rate. The Library uses the SessionStorage cache strategy by default.</p>
-<p>Some fields from the <a href="https://dev.fingerprintjs.com/docs/js-agent#extendedresult">extendedResult</a> (e.g <code>ip</code>
+<p>Some fields from the <a href="https://dev.fingerprint.com/docs/js-agent#extendedresult">extendedResult</a> (e.g <code>ip</code>
 or <code>lastSeenAt</code>) might change for the same visitor. If you need exact current data, it is recommended to
 pass <code>ignoreCache=true</code> inside <code>getData</code> function.</p>
 
@@ -79,6 +84,6 @@ pass <code>ignoreCache=true</code> inside <code>getData</code> function.</p>
   <h2>Documentation</h2>
 </a>
 <p>You can find API reference <a href="https://fingerprintjs.github.io/fingerprintjs-pro-svelte/">here</a>.</p>
-<p>This library uses <a href="https://fingerprintjs.com/github/">FingerprintJS Pro agent</a> internally. The documentation for the
-FingerprintJS Pro agent is available on <a href="https://dev.fingerprintjs.com/docs">https://dev.fingerprintjs.com/docs</a>.</p>
+<p>This library uses <a href="https://fingerprint.com/github/">FingerprintJS Pro agent</a> internally. The documentation for the
+FingerprintJS Pro agent is available on <a href="https://dev.fingerprint.com/docs">https://dev.fingerprint.com/docs</a>.</p>
 </div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-reference"><a href="modules.html#default" class="tsd-kind-icon">default</a></li><li class="tsd-kind-enum tsd-is-external"><a href="enums/CacheLocation.html" class="tsd-kind-icon">Cache<wbr/>Location</a></li><li class="tsd-kind-class"><a href="classes/FpjsProvider.html" class="tsd-kind-icon">Fpjs<wbr/>Provider</a></li><li class="tsd-kind-class tsd-is-external"><a href="classes/InMemoryCache.html" class="tsd-kind-icon">In<wbr/>Memory<wbr/>Cache</a></li><li class="tsd-kind-class tsd-is-external"><a href="classes/LocalStorageCache.html" class="tsd-kind-icon">Local<wbr/>Storage<wbr/>Cache</a></li><li class="tsd-kind-class tsd-is-external"><a href="classes/SessionStorageCache.html" class="tsd-kind-icon">Session<wbr/>Storage<wbr/>Cache</a></li><li class="tsd-kind-interface"><a href="interfaces/FpjsSvelteContext.html" class="tsd-kind-icon">Fpjs<wbr/>Svelte<wbr/>Context</a></li><li class="tsd-kind-interface"><a href="interfaces/FpjsSvelteQueryOptions.html" class="tsd-kind-icon">Fpjs<wbr/>Svelte<wbr/>Query<wbr/>Options</a></li><li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/FpjsVisitorQueryData.html" class="tsd-kind-icon">Fpjs<wbr/>Visitor<wbr/>Query<wbr/>Data</a></li><li class="tsd-kind-interface"><a href="interfaces/GetDataOptions.html" class="tsd-kind-icon">Get<wbr/>Data<wbr/>Options</a></li><li class="tsd-kind-interface tsd-has-type-parameter tsd-is-external"><a href="interfaces/GetOptions.html" class="tsd-kind-icon">Get<wbr/>Options</a></li><li class="tsd-kind-interface tsd-is-external"><a href="interfaces/ICache.html" class="tsd-kind-icon">ICache</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter tsd-is-external"><a href="modules.html#Cacheable" class="tsd-kind-icon">Cacheable</a></li><li class="tsd-kind-type-alias"><a href="modules.html#ClearCache" class="tsd-kind-icon">Clear<wbr/>Cache</a></li><li class="tsd-kind-type-alias tsd-is-external"><a href="modules.html#ExtendedGetResult" class="tsd-kind-icon">Extended<wbr/>Get<wbr/>Result</a></li><li class="tsd-kind-type-alias"><a href="modules.html#FpjsSvelteOptions" class="tsd-kind-icon">Fpjs<wbr/>Svelte<wbr/>Options</a></li><li class="tsd-kind-type-alias tsd-is-external"><a href="modules.html#GetResult" class="tsd-kind-icon">Get<wbr/>Result</a></li><li class="tsd-kind-type-alias"><a href="modules.html#GetVisitorData" class="tsd-kind-icon">Get<wbr/>Visitor<wbr/>Data</a></li><li class="tsd-kind-type-alias tsd-is-external"><a href="modules.html#LoadOptions" class="tsd-kind-icon">Load<wbr/>Options</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#UseGetVisitorDataResult" class="tsd-kind-icon">Use<wbr/>Get<wbr/>Visitor<wbr/>Data<wbr/>Result</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter tsd-is-external"><a href="modules.html#VisitorData" class="tsd-kind-icon">Visitor<wbr/>Data</a></li><li class="tsd-kind-variable"><a href="modules.html#FPJS_CONTEXT" class="tsd-kind-icon">FPJS_<wbr/>CONTEXT</a></li><li class="tsd-kind-function tsd-has-type-parameter"><a href="modules.html#useVisitorData" class="tsd-kind-icon">use<wbr/>Visitor<wbr/>Data</a></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="assets/main.js"></script></body></html>
