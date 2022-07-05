@@ -3,7 +3,7 @@
     <picture>
      <source media="(prefers-color-scheme: dark)" srcset="resources/logo_light.svg" />
      <source media="(prefers-color-scheme: light)" srcset="resources/logo_dark.svg" />
-      <img src="https://raw.githubusercontent.com/fingerprintjs/fingerprintjs-pro-svelte/main/resources/logo_dark.svg" alt="FingerprintJS" width="312px" />
+      <img src="https://raw.githubusercontent.com/fingerprintjs/fingerprintjs-pro-svelte/main/resources/logo_dark.svg" alt="Fingerprint" width="312px" />
    </picture>
   </a>
 
