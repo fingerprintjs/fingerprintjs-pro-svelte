@@ -1,9 +1,9 @@
-import type { GetOptions, VisitorData } from '@fingerprintjs/fingerprintjs-pro-spa';
+import type { VisitorData } from '@fingerprintjs/fingerprintjs-pro-spa';
 import type { FpjsSvelteContext, FpjsSvelteQueryOptions } from './types';
 import { writable } from 'svelte/store';
 import { getContext, onMount } from 'svelte';
 import { FPJS_CONTEXT } from './symbols';
-import type { UseGetVisitorDataResult } from './useVisitorData.types';
+import type { UseGetVisitorDataResult, UseVisitorDataOptions } from './useVisitorData.types';
 
 /**
  * API for fetching visitorData.
@@ -15,11 +15,14 @@ import type { UseGetVisitorDataResult } from './useVisitorData.types';
  *       const { data, getData, isLoading, error } = useVisitorData(
  *          { extendedResult: true }
  *       );
+ *
+ *       // Fetch data on mount and ignore cache
+ *       // const { data, getData, isLoading, error } = useVisitorData({ extendedResult: true, ignoreCache: true }, { immediate: true })
  *       </script>
  * ```
  * */
 export function useVisitorData<TExtended extends boolean>(
-  options: GetOptions<TExtended>,
+  { ignoreCache: defaultIgnoreCache, ...options }: UseVisitorDataOptions<TExtended>,
   { immediate = true }: FpjsSvelteQueryOptions = {}
 ): UseGetVisitorDataResult<TExtended> {
   const dataValue = writable<VisitorData<TExtended> | undefined>(undefined);
@@ -31,8 +34,11 @@ export function useVisitorData<TExtended extends boolean>(
   const getData: UseGetVisitorDataResult<TExtended>['getData'] = async (getDataOptions) => {
     loadingValue.set(true);
 
+    const ignoreCache =
+      typeof getDataOptions?.ignoreCache === 'boolean' ? getDataOptions.ignoreCache : defaultIgnoreCache;
+
     try {
-      const result = await context.getVisitorData(options, getDataOptions?.ignoreCache);
+      const result = await context.getVisitorData(options, ignoreCache);
 
       dataValue.set(result);
       errorValue.set(undefined);

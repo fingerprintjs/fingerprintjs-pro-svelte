@@ -1,13 +1,15 @@
 <script lang="ts">
-  import { useVisitorData } from '../src/lib';
+  import { useVisitorData, GetDataOptions } from '../src/lib';
 
   export let immediate = false;
+  export let ignoreCache = false;
+  export let getDataOptions: GetDataOptions = {};
 
-  const { getData, data, isLoading, error } = useVisitorData({ extendedResult: true }, { immediate });
+  const { getData, data, isLoading, error } = useVisitorData({ extendedResult: true, ignoreCache }, { immediate });
 </script>
 
 <div>
-  <button id="get_data" on:click={() => getData()}> Get data </button>
+  <button id="get_data" on:click={() => getData(getDataOptions)}> Get data </button>
   {#if $isLoading}
     <div id="loading">Loading...</div>
   {/if}
