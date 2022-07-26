@@ -59,6 +59,7 @@
     "@typescript-eslint/eslint-plugin": "^5.27.0",
     "@typescript-eslint/parser": "^5.27.0",
     "commitizen": "^4.2.4",
+    "conventional-changelog-conventionalcommits": "^5.0.0",
     "cz-conventional-changelog": "^3.3.0",
     "dotenv": "^16.0.1",
     "eslint": "^8.16.0",
@@ -94,41 +95,5 @@
   "lint-staged": {
     "*.ts": "yarn run lint:fix",
     "*.svelte": "yarn run lint:fix"
-  },
-  "release": {
-    "branches": [
-      "main",
-      {
-        "name": "test",
-        "prerelease": true
-      }
-    ],
-    "plugins": [
-      "@semantic-release/commit-analyzer",
-      "@semantic-release/release-notes-generator",
-      "@semantic-release/changelog",
-      [
-        "@semantic-release/npm",
-        {
-          "npmPublish": false
-        }
-      ],
-      [
-        "@semantic-release/npm",
-        {
-          "pkgRoot": "dist"
-        }
-      ],
-      [
-        "@semantic-release/git",
-        {
-          "assets": [
-            "CHANGELOG.md",
-            "package.json"
-          ]
-        }
-      ],
-      "@semantic-release/github"
-    ]
   }
 }
