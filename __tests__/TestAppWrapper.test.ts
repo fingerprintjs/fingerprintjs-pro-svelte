@@ -11,6 +11,11 @@ const testData = {
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 describe('TestApp', () => {
+  beforeEach(() => {
+    getVisitorData.mockClear();
+    init.mockClear();
+  });
+
   it('should show visitor data', async () => {
     const delay = 150;
 
@@ -47,5 +52,45 @@ describe('TestApp', () => {
     const errorElement = cmp.container.querySelector('#error');
     expect(errorElement).toBeTruthy();
     expect(errorElement?.textContent).toEqual('Error: Error!');
+  });
+
+  describe('Cache', () => {
+    it('should ignore cache if it was set to true in useVisitorData', async () => {
+      getVisitorData.mockResolvedValue(testData);
+
+      const cmp = render(TestApp, {
+        ignoreCache: true,
+      });
+
+      const btn = cmp.container.querySelector('#get_data')!;
+      await userEvent.click(btn);
+
+      const data = cmp.container.querySelector('#data');
+      expect(data).toBeTruthy();
+
+      expect(getVisitorData).toHaveBeenCalledTimes(1);
+      expect(getVisitorData).toHaveBeenCalledWith({ extendedResult: true }, true);
+    });
+
+    it('should not ignore cache if it is set to ignore in useVisitorData and overwritten in getData call', async () => {
+      getVisitorData.mockResolvedValue(testData);
+
+      const cmp = render(TestApp, {
+        ignoreCache: true,
+        immediate: false,
+        getDataOptions: {
+          ignoreCache: false,
+        },
+      });
+
+      const btn = cmp.container.querySelector('#get_data')!;
+      await userEvent.click(btn);
+
+      const data = cmp.container.querySelector('#data');
+      expect(data).toBeTruthy();
+
+      expect(getVisitorData).toHaveBeenCalledTimes(1);
+      expect(getVisitorData).toHaveBeenCalledWith({ extendedResult: true }, false);
+    });
   });
 });
