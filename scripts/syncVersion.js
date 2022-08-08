@@ -14,7 +14,7 @@ const optionFiles = {
 
 const tokens = Object.entries({
   __PACKAGE_VERSION__: pkg.version,
-  __PACKAGE_NAME__: pkg.name,
+  __PACKAGE_NAME__: pkg.name.split('/')[1],
 });
 const contents = fs.readFileSync(optionFiles.dist, 'utf8').toString();
 
