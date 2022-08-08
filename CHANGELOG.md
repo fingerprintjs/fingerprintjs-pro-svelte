@@ -1,9 +1,20 @@
-# [1.1.0](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/compare/v1.0.0...v1.1.0) (2022-07-26)
+## [1.1.1](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/compare/v1.1.0...v1.1.1) (2022-08-08)
 
+
+### Bug Fixes
+
+* remove company prefix from integrationInfo ([5ee25a2](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/5ee25a2da3e98423cf0db74ace3941fd3ab7a1c4))
+
+
+### Documentation
+
+* **README:** update logo ([bfb43a7](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/bfb43a7072b31f2f726906e83c1a94cb903842ab))
+
+# [1.1.0](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/compare/v1.0.0...v1.1.0) (2022-07-26)
 
 ### Features
 
-* support passing "ignoreCache" to "useVisitorData" as well ([5cf0ce7](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/5cf0ce74c1a05a367a3cec98adf97ca14cbbe182))
+- support passing "ignoreCache" to "useVisitorData" as well ([5cf0ce7](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/5cf0ce74c1a05a367a3cec98adf97ca14cbbe182))
 
 # 1.0.0 (2022-06-30)
 
