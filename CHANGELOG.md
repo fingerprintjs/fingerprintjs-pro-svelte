@@ -1,14 +1,19 @@
-## [1.1.1](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/compare/v1.1.0...v1.1.1) (2022-08-08)
+## [1.1.2](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/compare/v1.1.1...v1.1.2) (2022-09-19)
 
+
+### Build System
+
+* **deps:** update FingerprintJS Pro SPA to 0.5.0 ([fff1052](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/fff1052852f5c53cb50474f9afc6a753b7162212))
+
+## [1.1.1](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/compare/v1.1.0...v1.1.1) (2022-08-08)
 
 ### Bug Fixes
 
-* remove company prefix from integrationInfo ([5ee25a2](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/5ee25a2da3e98423cf0db74ace3941fd3ab7a1c4))
-
+- remove company prefix from integrationInfo ([5ee25a2](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/5ee25a2da3e98423cf0db74ace3941fd3ab7a1c4))
 
 ### Documentation
 
-* **README:** update logo ([bfb43a7](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/bfb43a7072b31f2f726906e83c1a94cb903842ab))
+- **README:** update logo ([bfb43a7](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/bfb43a7072b31f2f726906e83c1a94cb903842ab))
 
 # [1.1.0](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/compare/v1.0.0...v1.1.0) (2022-07-26)
 
