@@ -1,9 +1,20 @@
-## [1.1.2](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/compare/v1.1.1...v1.1.2) (2022-09-19)
+## [1.1.3](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/compare/v1.1.2...v1.1.3) (2022-11-17)
 
+
+### Bug Fixes
+
+* update SPA library to 0.7.0 ([26a9acc](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/26a9acc5b64723f81d60a5ed7faee6cec2ac1313))
+
+
+### Documentation
+
+* **README:** add documentation badge ([a2f0227](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/a2f0227a7547f97e410c3b82019273a6bdcf3d8c))
+
+## [1.1.2](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/compare/v1.1.1...v1.1.2) (2022-09-19)
 
 ### Build System
 
-* **deps:** update FingerprintJS Pro SPA to 0.5.0 ([fff1052](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/fff1052852f5c53cb50474f9afc6a753b7162212))
+- **deps:** update FingerprintJS Pro SPA to 0.5.0 ([fff1052](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/fff1052852f5c53cb50474f9afc6a753b7162212))
 
 ## [1.1.1](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/compare/v1.1.0...v1.1.1) (2022-08-08)
 
