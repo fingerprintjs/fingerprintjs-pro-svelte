@@ -2,22 +2,22 @@
 # yarn lockfile v1
 
 
-"@fingerprintjs/fingerprintjs-pro-spa@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@fingerprintjs/fingerprintjs-pro-spa/-/fingerprintjs-pro-spa-0.4.0.tgz#04ff237e3d35e0522339cc8452e872fc28d63a05"
-  integrity sha512-YK5r0W45fgpk/Yihsc4jzMoyytvOjBu8JG6p4B3mAM891d0y6izg1VRy4tqylIYiLQr2GaeFC371/AoeuDMPOQ==
+"@fingerprintjs/fingerprintjs-pro-spa@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@fingerprintjs/fingerprintjs-pro-spa/-/fingerprintjs-pro-spa-0.5.0.tgz#7ba74a3dab7db3c8ba06334caf9499b0cbf79263"
+  integrity sha512-AUy8pJoDMivmwqv6VdBxw7p9md3MmBwSlA3GccUybu3jQWGMDa4UB/XaPfRePIO7riD1bNp9bhZXNqo+b6O7ag==
   dependencies:
-    "@fingerprintjs/fingerprintjs-pro" "^3.6.2"
+    "@fingerprintjs/fingerprintjs-pro" "^3.7.1"
     tslib "^2.2.0"
 
 "@fingerprintjs/fingerprintjs-pro-svelte@link:../../dist":
   version "0.0.0"
   uid ""
 
-"@fingerprintjs/fingerprintjs-pro@^3.6.2":
-  version "3.6.3"
-  resolved "https://registry.yarnpkg.com/@fingerprintjs/fingerprintjs-pro/-/fingerprintjs-pro-3.6.3.tgz#38c74da6222ff789756290dec8246452984340ad"
-  integrity sha512-mfWIG+dKjcNu2/ahOKUwV0KekDkmvcZ5MWwQOiic3QmTzAIqLacYtJfI6B8qKkj3AOsDxM3zNIHMsZXjMhb1XQ==
+"@fingerprintjs/fingerprintjs-pro@^3.7.1":
+  version "3.8.1"
+  resolved "https://registry.yarnpkg.com/@fingerprintjs/fingerprintjs-pro/-/fingerprintjs-pro-3.8.1.tgz#b972659f1d341b7054106a3f27c5ba028f8f2ea2"
+  integrity sha512-hIpShbh75po8j7AQQ2a/avI/X4KCe/wXR9B8+yeK9UQpnADBcNBuSCaaBIQDmDoHCxCsS/2hma91dgwt/u+6cA==
   dependencies:
     tslib "^2.0.1"
 
