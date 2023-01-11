@@ -1,9 +1,20 @@
-## [1.1.4](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/compare/v1.1.3...v1.1.4) (2022-11-25)
+## [1.2.0](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/compare/v1.1.4...v1.2.0) (2023-01-11)
 
+
+### Features
+
+* log agent errors into console ([c529ce6](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/c529ce602f35265ef8c591ea1e958f94362c9644))
+
+
+### Documentation
+
+* **README:** improve caching strategies documentation ([2a6ebc5](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/2a6ebc53b345198fa0a6536f324ed0a692c27dca))
+
+## [1.1.4](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/compare/v1.1.3...v1.1.4) (2022-11-25)
 
 ### Bug Fixes
 
-* fix invalid package directory being published to NPM ([d9918a8](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/d9918a8f87c2c6bb7e2c8ec37f76a6ebed6591d8))
+- fix invalid package directory being published to NPM ([d9918a8](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/d9918a8f87c2c6bb7e2c8ec37f76a6ebed6591d8))
 
 ## [1.1.3](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/compare/v1.1.2...v1.1.3) (2022-11-17)
 
