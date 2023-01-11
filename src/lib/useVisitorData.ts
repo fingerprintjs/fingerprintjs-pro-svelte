@@ -45,6 +45,8 @@ export function useVisitorData<TExtended extends boolean>(
 
       return result;
     } catch (error) {
+      console.error(error);
+
       dataValue.set(undefined);
 
       if (error instanceof Error) {
