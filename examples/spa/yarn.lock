@@ -2,24 +2,9 @@
 # yarn lockfile v1
 
 
-"@fingerprintjs/fingerprintjs-pro-spa@^0.5.0":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@fingerprintjs/fingerprintjs-pro-spa/-/fingerprintjs-pro-spa-0.5.0.tgz#7ba74a3dab7db3c8ba06334caf9499b0cbf79263"
-  integrity sha512-AUy8pJoDMivmwqv6VdBxw7p9md3MmBwSlA3GccUybu3jQWGMDa4UB/XaPfRePIO7riD1bNp9bhZXNqo+b6O7ag==
-  dependencies:
-    "@fingerprintjs/fingerprintjs-pro" "^3.7.1"
-    tslib "^2.2.0"
-
 "@fingerprintjs/fingerprintjs-pro-svelte@link:../../dist":
   version "0.0.0"
   uid ""
-
-"@fingerprintjs/fingerprintjs-pro@^3.7.1":
-  version "3.8.1"
-  resolved "https://registry.yarnpkg.com/@fingerprintjs/fingerprintjs-pro/-/fingerprintjs-pro-3.8.1.tgz#b972659f1d341b7054106a3f27c5ba028f8f2ea2"
-  integrity sha512-hIpShbh75po8j7AQQ2a/avI/X4KCe/wXR9B8+yeK9UQpnADBcNBuSCaaBIQDmDoHCxCsS/2hma91dgwt/u+6cA==
-  dependencies:
-    tslib "^2.0.1"
 
 "@rollup/pluginutils@^4.2.1":
   version "4.2.1"
@@ -293,11 +278,6 @@ svelte-hmr@^0.14.12:
 "svelte@link:../../node_modules/svelte":
   version "0.0.0"
   uid ""
-
-tslib@^2.0.1, tslib@^2.2.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.4.0.tgz#7cecaa7f073ce680a05847aa77be941098f36dc3"
-  integrity sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==
 
 vite@^2.9.9:
   version "2.9.12"
