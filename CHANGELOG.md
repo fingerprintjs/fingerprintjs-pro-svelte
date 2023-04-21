@@ -1,3 +1,18 @@
+## [1.2.1](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/compare/v1.2.0...v1.2.1) (2023-04-21)
+
+
+### Bug Fixes
+
+* bump `@fingerprintjs/fingerprintjs-pro-spa` to v1.0.2 ([4b29429](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/4b294294d92e4c2929a3fdf687aa2430e68196fd))
+
+
+### Build System
+
+* **deps:** bump http-cache-semantics from 4.1.0 to 4.1.1 ([90cc913](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/90cc913bc2e63c72a4c6d3f655bc20afc096ea0b))
+* **deps:** bump json5 from 2.2.1 to 2.2.3 ([5534409](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/55344099ab7b43081ed41c0b756711a5bdd907e5))
+* **deps:** bump vite from 2.9.12 to 2.9.15 ([41a11ab](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/41a11ab5f3707e718f3479a951459c7445e832a3))
+* **deps:** bump vite from 2.9.12 to 2.9.15 in /examples/svelte-kit ([4e79af1](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/4e79af1e5a81836d7287d68cc23362d233154865))
+
 ## [1.2.0](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/compare/v1.1.4...v1.2.0) (2023-01-11)
 
 
