@@ -11,7 +11,7 @@
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^1.0.0-next.30",
     "svelte": "link:../../node_modules/svelte",
-    "vite": "^2.9.13"
+    "vite": "^2.9.16"
   },
   "dependencies": {
     "@fingerprintjs/fingerprintjs-pro-svelte": "link:../../dist"
