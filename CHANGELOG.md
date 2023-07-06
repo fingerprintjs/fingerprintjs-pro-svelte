@@ -1,3 +1,15 @@
+## [1.3.0](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/compare/v1.2.1...v1.3.0) (2023-07-06)
+
+
+### Features
+
+* add reexports for `defaultEndpoint`, `defaultTlsEndpoint`, `defaultScriptUrlPattern` ([ba8e237](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/ba8e237c28c9c2d7784d954d35aa75e6e33d325a))
+
+
+### Bug Fixes
+
+* update JS Agent with fixed `subdivisions` type ([3a74f3a](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/3a74f3aa7e67811f5c162fa32e55229d379ae4a7))
+
 ## [1.2.1](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/compare/v1.2.0...v1.2.1) (2023-04-21)
 
 
