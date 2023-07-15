@@ -34,12 +34,9 @@
 
 # FingerprintJS Pro Svelte
 
-FingerprintJS Pro Svelte is an easy-to-use Svelte library for [FingerprintJS Pro](https://fingerprint.com/) that also
-works with [svelte-kit](https://kit.svelte.dev/).
-Example apps can be found in the [examples](./examples) folder.
-This package works with FingerprintJS Pro, it is not compatible with open-source FingerprintJS. You can learn more about
-the difference between FingerprintJS Pro and open-source FingerprintJS in
-the [official documentation](https://dev.fingerprint.com/docs/pro-vs-open-source).
+FingerprintJS Pro Svelte SDK is an easy way to integrate [Fingerprint Pro](https://fingerprint.com/) into your Svelte or [Svelte-kit](https://kit.svelte.dev/) application. See example apps in the [examples](./examples) folder.
+
+This package works with Fingerprint Pro, it is not compatible with open-source FingerprintJS. See our documentation to learn more about the [difference between Fingerprint Pro and the open-source FingerprintJS](https://dev.fingerprint.com/docs/pro-vs-open-source).
 
 ## Installation
 
@@ -55,24 +52,23 @@ npm install @fingerprintjs/fingerprintjs-pro-svelte
 
 ## Getting started
 
-In order to identify visitors, you'll need a FingerprintJS Pro account (you
-can [sign up for free](https://dashboard.fingerprint.com/signup/)).
-You can learn more about API keys in
-the [official FingerprintJS Pro documentation](https://dev.fingerprint.com/docs/quick-start-guide).
+In order to identify visitors, you'll need a Fingerprint Pro account (you can [sign up for free](https://dashboard.fingerprint.com/signup/)).
+To get your API key and get started, see the [Quick start guide in our documentation](https://dev.fingerprint.com/docs/quick-start-guide).
 
-1. Wrap your application (or component) in `FpjsProvider`. You can specify multiple configuration options. \
-   Set a region if you have chosen a non-global region during registration. Please refer to
-   the [Regions page](https://dev.fingerprint.com/docs/regions).
+1. Wrap your application (or component) in `FpjsProvider`. You can specify multiple configuration options. Set a [region](https://dev.fingerprint.com/docs/regions) if you have chosen a non-global region during registration. Set `endpoint` and `scriptUrlPattern` if you are using [one of our proxy integrations to increase accuracy](https://dev.fingerprint.com/docs/protecting-the-javascript-agent-from-adblockers) and effectiveness of visitor identification.
 
 ```svelte
 // App.svelte
 <script>
-  import { FpjsProvider } from '@fingerprintjs/fingerprintjs-pro-svelte'
+  import { FpjsProvider, /* defaultEndpoint, defaultScriptUrlPattern */  } from '@fingerprintjs/fingerprintjs-pro-svelte'
   import VisitorData from './VisitorData.svelte'
 
   const options = {
     loadOptions: {
-      apiKey: '<YOUR_API_KEY>'
+      apiKey: '<YOUR_API_KEY>',
+      // region: 'eu',
+      // endpoint: ['metrics.yourwebsite.com', defaultEndpoint],
+      // scriptUrlPattern: ['metrics.yourwebsite.com/agent-path', defaultScriptUrlPattern],
     },
   };
 </script>
@@ -82,7 +78,7 @@ the [official FingerprintJS Pro documentation](https://dev.fingerprint.com/docs/
 </FpjsProvider>
 ```
 
-2. Use the `useVisitorData` function in your svelte components to perform visitor identification and get the data.
+2. Use the `useVisitorData` function in your svelte components to indentify visitors and get the results.
 
 ```svelte
 // VisitorData.svelte
@@ -117,19 +113,29 @@ the [official FingerprintJS Pro documentation](https://dev.fingerprint.com/docs/
 </div>
 ```
 
-See the full code in example apps located in [examples folder](./examples).
+See the full code in the provided [example applications](./examples).
 
 ## Caching strategy
 
-When you use FingerprintJS Pro, you pay for each API call. Our [best practices](https://dev.fingerprint.com/docs/caching-visitor-information) recommend using cache to reduce the API call rate. The Library uses the SessionStorage cache strategy by default.
+Fingerprint Pro usage is billed per API call. To reduce API calls, it is a good practice to [cache identification results](https://dev.fingerprint.com/docs/caching-visitor-information). The SDK uses SessionStorage to cache results by default.
 
-:warning: **WARNING** If you use data from `extendedResult`, please pay additional attention to caching strategy.
-
-Some fields from the [extendedResult](https://dev.fingerprint.com/docs/js-agent#extendedresult) (e.g `ip` or `lastSeenAt`) might change for the same visitor. If you need to get the current data, it is recommended to pass `ignoreCache=true` inside `getData` function.
+> :warning: **WARNING** If you use data from `extendedResult`, pay additional attention to the caching strategy. 
+>
+> Some fields from the [extendedResult](https://dev.fingerprint.com/docs/js-agent#extendedresult) (e.g., `ip` or `lastSeenAt`) might change over time for the same visitor. If you need to get the latest results, pass `{ignoreCache: true}` to the `getData()` function.
 
 ## Documentation
 
-You can find API reference [here](https://fingerprintjs.github.io/fingerprintjs-pro-svelte/).
+See the [generated SDK API reference here](https://fingerprintjs.github.io/fingerprintjs-pro-react/).
 
-This library uses [FingerprintJS Pro agent](https://fingerprint.com/github/) internally. The documentation for the
-FingerprintJS Pro agent is available on https://dev.fingerprint.com/docs.
+This library uses Fingerprint Pro JavaScript agent under the hood. See our documentation for the full [JavaScript Agent API reference](https://dev.fingerprint.com/docs/js-agent).
+
+## Error handling
+
+The `getData` function throws errors directly from the JS Agent without changing them. See [JS Agent error handling](https://dev.fingerprint.com/docs/js-agent#error-handling) for more details.
+
+
+## License
+
+This project is licensed under the MIT license. See the [LICENSE](https://github.com/fingerprintjs/fingerprintjs-pro-react/blob/main/LICENSE) file for more info.
+
+
