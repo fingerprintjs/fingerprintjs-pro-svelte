@@ -39,6 +39,7 @@
     "lint:fix": "yarn format && yarn lint -- --fix .",
     "format": "prettier --write .",
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "test:dts": "tsc --noEmit --isolatedModules dist/index.d.ts",
     "sync-pkg-version": "node scripts/syncVersion.js && yarn format",
     "build-all": "yarn package && yarn --cwd examples/svelte-kit build && yarn --cwd examples/spa build && yarn --cwd examples/svelte-kit-ts",
