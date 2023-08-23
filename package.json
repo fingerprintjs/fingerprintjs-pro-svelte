@@ -30,6 +30,7 @@
   ],
   "scripts": {
     "prepare": "husky install && yarn sync-pkg-version && yarn --cwd examples/svelte-kit-ts && yarn --cwd examples/svelte-kit && yarn --cwd examples/spa",
+    "build": "yarn package",
     "package": "svelte-kit package",
     "package:watch": "svelte-kit package --watch",
     "check": "svelte-check --tsconfig tsconfig.json",

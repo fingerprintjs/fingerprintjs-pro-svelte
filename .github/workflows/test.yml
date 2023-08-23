@@ -1,32 +1,12 @@
-# Reference on this file: https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions
-name: Lint, build and test
+name: ci
 on:
-  pull_request:
+  push:
+    branches-ignore:
+      - main
+    paths-ignore:
+      - '**.md'
+
 jobs:
-  build:
-    name: Lint, build and test
-    runs-on: ubuntu-latest
-    timeout-minutes: 3
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Cache
-        uses: actions/cache@v2
-        with:
-          path: |
-            **/node_modules
-            !**/dist/node_modules
-          key: nodemodules-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: nodemodules-
-      - name: Install Node packages
-        run: yarn install
-      - name: Build
-        run: yarn build-all
-        env:
-          VITE_API_KEY: ${{ secrets.API_KEY }}
-      - name: Lint
-        run: yarn lint && yarn check
-      - name: Tests
-        run: yarn test
-      - name: Typecheck
-        run: yarn test:dts
+  build-and-check:
+    name: Build project and run CI checks
+    uses: fingerprintjs/dx-team-toolkit/.github/workflows/build-typescript-project.yml@v1
