@@ -21,6 +21,9 @@
    <a href="https://www.npmjs.com/package/@fingerprintjs/fingerprintjs-pro-svelte">
      <img src="https://img.shields.io/npm/dm/@fingerprintjs/fingerprintjs-pro-svelte.svg" alt="Monthly downloads from NPM">
    </a>
+   <a href="https://fingerprintjs.github.io/fingerprintjs-pro-svelte/coverage/">
+    <img src="https://fingerprintjs.github.io/fingerprintjs-pro-svelte/coverage/badges.svg" alt="coverage">
+   </a>
    <a href="https://opensource.org/licenses/MIT">
      <img src="https://img.shields.io/:license-mit-blue.svg" alt="MIT license">
    </a>
@@ -125,7 +128,7 @@ Fingerprint Pro usage is billed per API call. To reduce API calls, it is a good 
 
 ## Documentation
 
-See the [generated SDK API reference here](https://fingerprintjs.github.io/fingerprintjs-pro-react/).
+See the [generated SDK API reference here](https://fingerprintjs.github.io/fingerprintjs-pro-svelte/).
 
 This library uses Fingerprint Pro JavaScript agent under the hood. See our documentation for the full [JavaScript Agent API reference](https://dev.fingerprint.com/docs/js-agent).
 
@@ -136,6 +139,6 @@ The `getData` function throws errors directly from the JS Agent without changing
 
 ## License
 
-This project is licensed under the MIT license. See the [LICENSE](https://github.com/fingerprintjs/fingerprintjs-pro-react/blob/main/LICENSE) file for more info.
+This project is licensed under the MIT license. See the [LICENSE](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/blob/main/LICENSE) file for more info.
 
 
