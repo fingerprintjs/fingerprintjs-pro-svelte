@@ -13,4 +13,6 @@ export default {
   },
   moduleFileExtensions: ['svelte', 'js', 'ts'],
   setupFilesAfterEnv: ['<rootDir>/__tests__/setup.ts'],
+  collectCoverageFrom: ['./src/**/**.{ts,tsx}'],
+  coverageReporters: ['lcov', 'json-summary', ['text', { file: 'coverage.txt', path: './' }]],
 };
