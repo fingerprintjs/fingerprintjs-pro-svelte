@@ -84,7 +84,7 @@
     "typescript": "^4.7.2"
   },
   "dependencies": {
-    "@fingerprintjs/fingerprintjs-pro-spa": "^1.1.0",
+    "@fingerprintjs/fingerprintjs-pro-spa": "^1.1.2",
     "@semantic-release/exec": "^6.0.3"
   },
   "peerDependencies": {

@@ -15,12 +15,6 @@
     "module": "esnext",
     "target": "esnext"
   },
-  "include": [
-    "src/**/*.js",
-    "src/**/*.ts",
-    "src/**/*.svelte"
-  ],
-  "exclude": [
-    "node_modules/**",
-  ]
+  "include": ["src/**/*.js", "src/**/*.ts", "src/**/*.svelte"],
+  "exclude": ["node_modules/**"]
 }
