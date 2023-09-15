@@ -1,3 +1,25 @@
+## [1.3.1](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/compare/v1.3.0...v1.3.1) (2023-09-15)
+
+
+### Bug Fixes
+
+* bump spa package version to 1.1.2 ([c045025](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/c04502556730152bc175f586784492e7b72366e3))
+
+
+### Build System
+
+* **deps:** bump semver from 5.7.1 to 5.7.2 ([4819172](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/481917289790babb5a6e81448acc30c274d5a2f4))
+* **deps:** bump semver from 5.7.1 to 5.7.2 in /examples/svelte-kit ([574cec2](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/574cec2ad8448298252401673c8bbc29ea9caa0c))
+* **deps:** bump tough-cookie from 4.0.0 to 4.1.3 ([fb0f467](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/fb0f4675193afaae8c1dfe94f2a31c8c2dad4d98))
+* **deps:** bump vite from 2.9.15 to 2.9.16 ([074c770](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/074c77071056e56ae93a29f685602bf99d6fb531))
+* **deps:** bump vite from 2.9.15 to 2.9.16 in /examples/svelte-kit ([a27264f](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/a27264fae5020e26af04b666176a6176d13e703c))
+* **deps:** bump word-wrap from 1.2.3 to 1.2.4 ([b77d1ef](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/b77d1efb14b5fb47be8731b4c30aa0cd21bd5428))
+
+
+### Documentation
+
+* **README:** add coverage ([75f611f](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/75f611f16ea8ac3940415423afab2924b9f3e6eb))
+
 ## [1.3.0](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/compare/v1.2.1...v1.3.0) (2023-07-06)
 
 
