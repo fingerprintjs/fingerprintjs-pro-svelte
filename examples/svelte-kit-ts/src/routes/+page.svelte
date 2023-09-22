@@ -1,8 +1,4 @@
-<script context="module">
-  export const prerender = false;
-</script>
-
-<script>
+<script lang="ts">
   import { FpjsProvider } from '@fingerprintjs/fingerprintjs-pro-svelte';
   import VisitorData from '../lib/VisitorData.svelte';
 

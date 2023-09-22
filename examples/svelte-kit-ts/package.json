@@ -2,21 +2,17 @@
   "name": "svelte-kit-ts-example",
   "version": "0.0.1",
   "scripts": {
-    "dev": "svelte-kit dev",
-    "build": "svelte-kit build",
-    "preview": "svelte-kit preview",
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
     "prepare": "svelte-kit sync",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "devDependencies": {
-    "@sveltejs/adapter-auto": "next",
-    "@sveltejs/kit": "next",
-    "svelte": "link:../../node_modules/svelte",
-    "svelte-check": "link:../../node_modules/svelte-check",
-    "svelte-preprocess": "link:../../node_modules/svelte-preprocess",
-    "tslib": "^2.3.1",
-    "typescript": "^4.7.2"
+    "@sveltejs/adapter-auto": "^2.1.0",
+    "@sveltejs/kit": "1.0.0",
+    "vite": "link:../../node_modules/vite"
   },
   "type": "module",
   "dependencies": {
