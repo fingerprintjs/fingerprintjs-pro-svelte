@@ -41,6 +41,13 @@ FingerprintJS Pro Svelte SDK is an easy way to integrate [Fingerprint Pro](https
 
 This package works with Fingerprint Pro, it is not compatible with open-source FingerprintJS. See our documentation to learn more about the [difference between Fingerprint Pro and the open-source FingerprintJS](https://dev.fingerprint.com/docs/pro-vs-open-source).
 
+## Requirements
+
+- Svelte 3.53.1 or higher
+- For TypeScript users: use Typescript 4.5 or higher
+- For SvelteKit users: SvelteKit 1.0.0 or higher
+
+
 ## Installation
 
 ```shell
