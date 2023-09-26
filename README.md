@@ -37,9 +37,9 @@
 
 # FingerprintJS Pro Svelte
 
-[Fingerprint](https://fingerprint.com/) is a device intelligence platform offering 99.5% accurate visitor identification
+[Fingerprint](https://fingerprint.com/) is a device intelligence platform offering 99.5% accurate visitor identification.
 
-FingerprintJS Pro Svelte SDK is an easy way to integrate [Fingerprint Pro](https://fingerprint.com/) into your Svelte or [Svelte-kit](https://kit.svelte.dev/) application. See example apps in the [examples](./examples) folder.
+FingerprintJS Pro Svelte SDK is an easy way to integrate Fingerprint into your Svelte or [Svelte-kit](https://kit.svelte.dev/) application. See example apps in the [examples](./examples) folder.
 
 ## Requirements
 
@@ -56,12 +56,12 @@ Yarn:
 yarn add @fingerprintjs/fingerprintjs-pro-svelte
 ```
 
-Npm:
+npm:
 ```shell
 npm install @fingerprintjs/fingerprintjs-pro-svelte
 ```
 
-Pnpm:
+pnpm:
 ```shell
 pnpm add @fingerprintjs/fingerprintjs-pro-svelte
 ```
