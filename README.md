@@ -147,6 +147,6 @@ The `getData` function throws errors directly from the JS Agent without changing
 
 ## License
 
-This project is licensed under the MIT license. See the [LICENSE](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/blob/main/LICENSE) file for more info.
+This project is licensed under the [MIT license](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/blob/main/LICENSE).
 
 
