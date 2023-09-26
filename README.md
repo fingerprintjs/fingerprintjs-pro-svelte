@@ -51,14 +51,19 @@ This package works with Fingerprint Pro, it is not compatible with open-source F
 
 ## Installation
 
+Yarn:
 ```shell
 yarn add @fingerprintjs/fingerprintjs-pro-svelte
 ```
 
-Or:
-
+Npm:
 ```shell
 npm install @fingerprintjs/fingerprintjs-pro-svelte
+```
+
+Pnpm:
+```shell
+pnpm add @fingerprintjs/fingerprintjs-pro-svelte
 ```
 
 ## Getting started
