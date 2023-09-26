@@ -16,6 +16,6 @@
   },
   "type": "module",
   "dependencies": {
-    "@fingerprintjs/fingerprintjs-pro-svelte": "link:../../dist"
+    "@fingerprintjs/fingerprintjs-pro-svelte": "link:../.."
   }
 }

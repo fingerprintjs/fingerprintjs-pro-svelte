@@ -75,7 +75,7 @@
     "prettier": "^2.6.2",
     "prettier-plugin-svelte": "^2.7.0",
     "semantic-release": "19.0.3",
-    "svelte": "^3.53.1",
+    "svelte": "^3.30.1",
     "svelte-check": "^2.7.1",
     "svelte-jester": "^2.3.2",
     "svelte-preprocess": "^4.10.6",
@@ -105,72 +105,72 @@
   "exports": {
     "./package.json": "./package.json",
     "./client": {
-      "types": "./package/client.d.ts",
-      "default": "./package/client.js"
+      "types": "./dist/client.d.ts",
+      "default": "./dist/client.js"
     },
     ".": {
-      "types": "./package/index.d.ts",
-      "svelte": "./package/index.js",
-      "default": "./package/index.js"
+      "types": "./dist/index.d.ts",
+      "svelte": "./dist/index.js",
+      "default": "./dist/index.js"
     },
     "./options": {
-      "types": "./package/options.d.ts",
-      "default": "./package/options.js"
+      "types": "./dist/options.d.ts",
+      "default": "./dist/options.js"
     },
     "./providers/FpjsProvider.svelte": {
-      "types": "./package/providers/FpjsProvider.svelte.d.ts",
-      "svelte": "./package/providers/FpjsProvider.svelte",
-      "default": "./package/providers/FpjsProvider.svelte"
+      "types": "./dist/providers/FpjsProvider.svelte.d.ts",
+      "svelte": "./dist/providers/FpjsProvider.svelte",
+      "default": "./dist/providers/FpjsProvider.svelte"
     },
     "./symbols": {
-      "types": "./package/symbols.d.ts",
-      "default": "./package/symbols.js"
+      "types": "./dist/symbols.d.ts",
+      "default": "./dist/symbols.js"
     },
     "./types": {
-      "types": "./package/types.d.ts",
-      "default": "./package/types.js"
+      "types": "./dist/types.d.ts",
+      "default": "./dist/types.js"
     },
     "./useVisitorData": {
-      "types": "./package/useVisitorData.d.ts",
-      "default": "./package/useVisitorData.js"
+      "types": "./dist/useVisitorData.d.ts",
+      "default": "./dist/useVisitorData.js"
     },
     "./useVisitorData.types": {
-      "types": "./package/useVisitorData.types.d.ts",
-      "default": "./package/useVisitorData.types.js"
+      "types": "./dist/useVisitorData.types.d.ts",
+      "default": "./dist/useVisitorData.types.js"
     }
   },
   "files": [
     "package"
   ],
-  "svelte": "./package/index.js",
+  "svelte": "./dist/index.js",
   "typesVersions": {
     ">4.0": {
       "client": [
-        "./package/client.d.ts"
+        "./dist/client.d.ts"
       ],
       "index.d.ts": [
-        "./package/index.d.ts"
+        "./dist/index.d.ts"
       ],
       "options.dist": [
-        "./package/options.dist.d.ts"
+        "./dist/options.dist.d.ts"
       ],
       "options": [
-        "./package/options.d.ts"
+        "./dist/options.d.ts"
       ],
       "providers/FpjsProvider.svelte": [
-        "./package/providers/FpjsProvider.svelte.d.ts"
+        "./dist/providers/FpjsProvider.svelte.d.ts"
       ],
       "symbols": [
-        "./package/symbols.d.ts"
+        "./dist/symbols.d.ts"
       ],
       "types": [
-        "./package/types.d.ts"
+        "./dist/types.d.ts"
       ],
       "useVisitorData": [
-        "./package/useVisitorData.d.ts"
+        "./dist/useVisitorData.d.ts"
       ],
       "useVisitorData.types": [
-        "./package/useVisitorData.types.d.ts"
+        "./dist/useVisitorData.types.d.ts"
       ]
     }
   }

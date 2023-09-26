@@ -8,7 +8,7 @@
     "prepare": "svelte-kit sync"
   },
   "dependencies": {
-    "@fingerprintjs/fingerprintjs-pro-svelte": "link:../../dist"
+    "@fingerprintjs/fingerprintjs-pro-svelte": "link:../.."
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "^2.1.0",

@@ -14,6 +14,6 @@
     "vite": "link:../../node_modules/vite"
   },
   "dependencies": {
-    "@fingerprintjs/fingerprintjs-pro-svelte": "link:../../dist"
+    "@fingerprintjs/fingerprintjs-pro-svelte": "link:../.."
   }
 }
