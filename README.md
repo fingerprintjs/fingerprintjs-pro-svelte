@@ -43,7 +43,7 @@ This package works with Fingerprint Pro, it is not compatible with open-source F
 
 ## Requirements
 
-- Svelte 3.53.1 or higher
+- Svelte 3.30.1 or higher
 - For TypeScript users: use Typescript 4.8 or higher
 - For SvelteKit users: SvelteKit 1.0.0 or higher
 
