@@ -37,6 +37,8 @@
 
 # FingerprintJS Pro Svelte
 
+[Fingerprint](https://fingerprint.com/) is a device intelligence platform offering 99.5% accurate visitor identification
+
 FingerprintJS Pro Svelte SDK is an easy way to integrate [Fingerprint Pro](https://fingerprint.com/) into your Svelte or [Svelte-kit](https://kit.svelte.dev/) application. See example apps in the [examples](./examples) folder.
 
 This package works with Fingerprint Pro, it is not compatible with open-source FingerprintJS. See our documentation to learn more about the [difference between Fingerprint Pro and the open-source FingerprintJS](https://dev.fingerprint.com/docs/pro-vs-open-source).
