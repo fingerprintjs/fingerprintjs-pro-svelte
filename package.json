@@ -29,7 +29,7 @@
     "privacy"
   ],
   "scripts": {
-    "prepare": "husky install && yarn sync-pkg-version && yarn --cwd examples/svelte-kit-ts && yarn --cwd examples/svelte-kit && yarn --cwd examples/spa",
+    "prepare": "husky install && yarn sync-pkg-version",
     "build": "yarn package",
     "package": "svelte-package",
     "package:watch": "svelte-package --watch",
