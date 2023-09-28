@@ -1,9 +1,10 @@
 <script lang="ts">
-  import { useVisitorData, GetDataOptions } from '../src/lib';
+  /* eslint-disable @typescript-eslint/no-explicit-any */
 
+  import { useVisitorData } from '../src/lib';
   export let immediate = false;
   export let ignoreCache = false;
-  export let getDataOptions: GetDataOptions = {};
+  export let getDataOptions: any = {};
 
   const { getData, data, isLoading, error } = useVisitorData({ extendedResult: true, ignoreCache }, { immediate });
 </script>

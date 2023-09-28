@@ -1,13 +1,14 @@
 <script lang="ts">
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+
   import FpjsProvider from '../src/lib/providers/FpjsProvider.svelte';
-  import { FpjsSvelteOptions, GetDataOptions } from '../src/lib';
   import TestApp from './TestApp.svelte';
 
   export let ignoreCache = false;
   export let immediate = false;
-  export let getDataOptions: GetDataOptions = {};
+  export let getDataOptions: any = {};
 
-  const options: FpjsSvelteOptions = {
+  const options = {
     loadOptions: {
       apiKey: process.env.API_KEY as string,
     },

@@ -37,20 +37,33 @@
 
 # FingerprintJS Pro Svelte
 
-FingerprintJS Pro Svelte SDK is an easy way to integrate [Fingerprint Pro](https://fingerprint.com/) into your Svelte or [Svelte-kit](https://kit.svelte.dev/) application. See example apps in the [examples](./examples) folder.
+[Fingerprint](https://fingerprint.com/) is a device intelligence platform offering 99.5% accurate visitor identification.
+
+FingerprintJS Pro Svelte SDK is an easy way to integrate Fingerprint into your Svelte or [Svelte-kit](https://kit.svelte.dev/) application. See example apps in the [examples](./examples) folder.
+
+## Requirements
+
+- Svelte 4.0.0 or higher
+- For TypeScript users: use Typescript 4.8 or higher
+- For SvelteKit users: SvelteKit 1.0.0 or higher
 
 This package works with Fingerprint Pro, it is not compatible with open-source FingerprintJS. See our documentation to learn more about the [difference between Fingerprint Pro and the open-source FingerprintJS](https://dev.fingerprint.com/docs/pro-vs-open-source).
 
 ## Installation
 
+Yarn:
 ```shell
 yarn add @fingerprintjs/fingerprintjs-pro-svelte
 ```
 
-Or:
-
+npm:
 ```shell
 npm install @fingerprintjs/fingerprintjs-pro-svelte
+```
+
+pnpm:
+```shell
+pnpm add @fingerprintjs/fingerprintjs-pro-svelte
 ```
 
 ## Getting started
@@ -136,9 +149,12 @@ This library uses Fingerprint Pro JavaScript agent under the hood. See our docum
 
 The `getData` function throws errors directly from the JS Agent without changing them. See [JS Agent error handling](https://dev.fingerprint.com/docs/js-agent#error-handling) for more details.
 
+## Support and feedback
+
+To report problems, ask questions or provide feedback, please use [Issues](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/issues). If you need private support, you can email us at [oss-support@fingerprint.com](mailto:oss-support@fingerprint.com).
 
 ## License
 
-This project is licensed under the MIT license. See the [LICENSE](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/blob/main/LICENSE) file for more info.
+This project is licensed under the [MIT license](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/blob/main/LICENSE).
 
 
