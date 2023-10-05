@@ -8,8 +8,8 @@
     "type": "git",
     "url": "https://github.com/fingerprintjs/fingerprintjs-pro-svelte.git"
   },
-  "main": "index.js",
-  "types": "./index.d.ts",
+  "main": "./dist/index.js",
+  "types": "/dist/index.d.ts",
   "type": "module",
   "publishConfig": {
     "access": "public",
@@ -141,7 +141,7 @@
     }
   },
   "files": [
-    "package"
+    "dist"
   ],
   "svelte": "./dist/index.js",
   "typesVersions": {
