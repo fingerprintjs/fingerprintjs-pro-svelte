@@ -1,3 +1,27 @@
+## [2.0.0](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/compare/v1.3.1...v2.0.0) (2023-10-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* minimal supported svelte version is now 4.0.0
+
+### Features
+
+* set minimal supported version to Svelte 4.0.0 ([c32da25](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/c32da2500689450299268fac4f66cdf48f0d7b17))
+
+
+### Bug Fixes
+
+* add "dist" to package files ([d4b511f](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/d4b511f1ce0a88309299d136018fcb54ca2d05d2))
+
+
+### Documentation
+
+* **README:** add introducing sentence ([14e9aaf](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/14e9aafe856d2d074c3f0bf1bbabb1774a4da5ff))
+* **README:** add pnpm snippet ([a700463](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/a700463d0bd2d2380f5e5a4eb9a3a767b82d2d3d))
+* **README:** add requirements section ([d35926d](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/d35926d9c4c15dae1df08b95b88e2f4aa4593792))
+* **README:** add support and feedback section ([edd0722](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/edd07222aad2c1d8c74f1f3553f5bb697e8d3a11))
+
 ## [2.0.0-test.1](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/compare/v1.3.1...v2.0.0-test.1) (2023-09-28)
 
 
