@@ -1,3 +1,10 @@
+## [2.0.0-test.2](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/compare/v2.0.0-test.1...v2.0.0-test.2) (2023-10-05)
+
+
+### Bug Fixes
+
+* add "dist" to package files ([d4b511f](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/d4b511f1ce0a88309299d136018fcb54ca2d05d2))
+
 ## [2.0.0-test.1](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/compare/v1.3.1...v2.0.0-test.1) (2023-09-28)
 
 
