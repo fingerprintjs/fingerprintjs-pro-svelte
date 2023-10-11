@@ -1,3 +1,15 @@
+## [2.1.0](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/compare/v2.0.0...v2.1.0) (2023-10-11)
+
+
+### Features
+
+* update @fingerprintjs/fingerprintjs-pro-spa to 1.2.0, add FingerprintJSPro export ([0e383eb](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/0e383eb47c918a7b73a3ad86fbb20cf68390b0c6))
+
+
+### Build System
+
+* **deps:** bump postcss from 8.4.30 to 8.4.31 ([0abcdaa](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/0abcdaa9ec013d05962fddf638f31cd0bcc8a63c))
+
 ## [2.0.0](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/compare/v1.3.1...v2.0.0) (2023-10-05)
 
 
