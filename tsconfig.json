@@ -1,4 +1,5 @@
 {
+  "extends": "@fingerprintjs/tsconfig-dx-team/tsconfig.json",
   "compilerOptions": {
     "importsNotUsedAsValues": "error",
     "isolatedModules": true,
@@ -13,8 +14,8 @@
     "strict": true,
     "moduleResolution": "node",
     "module": "esnext",
-    "target": "esnext"
+    "target": "esnext",
   },
   "include": ["src/**/*.js", "src/**/*.ts", "src/**/*.svelte"],
-  "exclude": ["node_modules/**"]
+  "exclude": ["node_modules/**"],
 }
