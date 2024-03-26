@@ -1,9 +1,7 @@
 {
   "extends": "@fingerprintjs/tsconfig-dx-team/tsconfig.json",
   "compilerOptions": {
-    "importsNotUsedAsValues": "error",
     "isolatedModules": true,
-    "preserveValueImports": true,
     "allowJs": true,
     "checkJs": false,
     "esModuleInterop": true,
