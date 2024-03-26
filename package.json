@@ -29,21 +29,21 @@
     "privacy"
   ],
   "scripts": {
-    "prepare": "husky install && yarn sync-pkg-version",
-    "build": "yarn package",
+    "prepare": "husky install && pnpm sync-pkg-version",
+    "build": "pnpm package",
     "package": "svelte-package",
     "package:watch": "svelte-package --watch",
     "check": "svelte-check --tsconfig tsconfig.json",
     "check:watch": "svelte-check --tsconfig tsconfig.json --watch",
     "lint": "prettier --check . && eslint --max-warnings 0 .",
-    "lint:fix": "yarn format && yarn lint -- --fix .",
+    "lint:fix": "pnpm format && pnpm lint -- --fix .",
     "format": "prettier --write .",
     "test": "node --experimental-vm-modules ./node_modules/.bin/jest",
     "test:coverage": "node --experimental-vm-modules ./node_modules/.bin/jest --coverage",
     "test:dts": "tsc --noEmit --isolatedModules dist/index.d.ts",
-    "sync-pkg-version": "node scripts/syncVersion.js && yarn format",
-    "build-all": "yarn package && yarn --cwd examples/svelte-kit build && yarn --cwd examples/spa build && yarn --cwd examples/svelte-kit-ts",
-    "docs": "yarn package && typedoc dist/index.d.ts --options typedoc.cjs --out docs",
+    "sync-pkg-version": "node scripts/syncVersion.js && pnpm format",
+    "build-all": "pnpm package && pnpm -r build",
+    "docs": "pnpm package && typedoc dist/index.d.ts --options typedoc.cjs --out docs",
     "release": "semantic-release"
   },
   "devDependencies": {
@@ -100,8 +100,8 @@
     }
   },
   "lint-staged": {
-    "*.ts": "yarn run lint:fix",
-    "*.svelte": "yarn run lint:fix"
+    "*.ts": "pnpm run lint:fix",
+    "*.svelte": "pnpm run lint:fix"
   },
   "exports": {
     "./package.json": "./package.json",
