@@ -4,7 +4,7 @@
 // for information about these interfaces
 declare namespace App {
   interface Locals {
-    userid: string;
+    userid: string
   }
 
   // interface Platform {}
