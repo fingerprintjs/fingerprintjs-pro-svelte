@@ -9,3 +9,4 @@
 .idea
 src/lib/options.ts
 docs
+coverage

@@ -5,4 +5,4 @@ module.exports = {
   out: {
     sort: ['source-order', 'static-first'],
   },
-};
+}

@@ -2,7 +2,7 @@
 
 ## Working with code
 
-We prefer using [yarn](https://yarnpkg.com/) for installing dependencies and running scripts.
+We prefer using [pnpm](https://pnpmpkg.com/) for installing dependencies and running scripts.
 
 The main branch is locked for the push action. For proposing changes, use the standard [pull request approach](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request). It's recommended to discuss fixes or new functionality in the Issues, first.
 
@@ -11,13 +11,13 @@ The main branch is locked for the push action. For proposing changes, use the st
 This project was generated with [svelte-kit](https://kit.svelte.dev/).
 Library code can be found in the [src/lib](./src/lib) directory.
 
-Run `yarn package:watch` to rebuild the library on each update.
+Run `pnpm package:watch` to rebuild the library on each update.
 
-In the [examples](./examples) directory you can find example apps, to run them, navigate to the given directory and execute `yarn dev`. The app will run on [localhost:3000](http://localhost:3000) and reload automatically on changes.
+In the [examples](./examples) directory you can find example apps, to run them, navigate to the given directory and execute `pnpm dev`. The app will run on [localhost:3000](http://localhost:3000) and reload automatically on changes.
 
 ### Running unit tests
 
-Run `yarn test` to execute the unit tests via [Jest](https://jestjs.io/).
+Run `pnpm test` to execute the unit tests via [Jest](https://jestjs.io/).
 
 ### Committing changes
 
@@ -32,7 +32,7 @@ The library is automatically released and published to NPM on every push to the 
 We use [typedoc](https://typedoc.org/) to generate docs. To generate docs run:
 
 ```shell
-yarn docs
+pnpm docs
 ```
 
 The docs will be generated into [./docs](./docs) directory.

@@ -1,12 +1,12 @@
 <script>
-  import { FpjsProvider } from '@fingerprintjs/fingerprintjs-pro-svelte';
-  import VisitorData from '../lib/VisitorData.svelte';
+  import { FpjsProvider } from '@fingerprintjs/fingerprintjs-pro-svelte'
+  import VisitorData from '../lib/VisitorData.svelte'
 
   const options = {
     loadOptions: {
       apiKey: import.meta.env.VITE_API_KEY,
     },
-  };
+  }
 </script>
 
 <svelte:head>
