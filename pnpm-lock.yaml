@@ -33,6 +33,9 @@ importers:
       '@fingerprintjs/tsconfig-dx-team':
         specifier: ^0.0.2
         version: 0.0.2
+      '@jest/globals':
+        specifier: ^29.7.0
+        version: 29.7.0
       '@sveltejs/adapter-auto':
         specifier: ^3.1.1
         version: 3.1.1(@sveltejs/kit@2.5.4)

@@ -54,6 +54,7 @@
     "@fingerprintjs/eslint-config-dx-team": "^0.1.0",
     "@fingerprintjs/prettier-config-dx-team": "^0.1.0",
     "@fingerprintjs/tsconfig-dx-team": "^0.0.2",
+    "@jest/globals": "^29.7.0",
     "@sveltejs/adapter-auto": "^3.1.1",
     "@sveltejs/kit": "2.5.4",
     "@sveltejs/package": "^2.0.0",
