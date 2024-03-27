@@ -140,12 +140,6 @@ importers:
         specifier: workspace:*
         version: link:../..
 
-  examples/svelte-kit-ts:
-    dependencies:
-      '@fingerprintjs/fingerprintjs-pro-svelte':
-        specifier: workspace:*
-        version: link:../..
-
 packages:
 
   /@aashutoshrathi/word-wrap@1.2.6:
