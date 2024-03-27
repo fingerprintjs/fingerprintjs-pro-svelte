@@ -1,3 +1,15 @@
+## [2.2.0-test.1](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/compare/v2.1.0...v2.2.0-test.1) (2024-03-27)
+
+
+### Features
+
+* update @fingerprintjs/fingerprintjs-pro-spa to 1.3.1 ([ba2f92b](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/ba2f92bfe91a09a74f7d7c05d80b75dbce7db558))
+
+
+### Documentation
+
+* **README:** format badges ([80b368f](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/80b368f17ea163ff3cd2c645ebb317eed3f089b3))
+
 ## [2.1.0](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/compare/v2.0.0...v2.1.0) (2023-10-11)
 
 
