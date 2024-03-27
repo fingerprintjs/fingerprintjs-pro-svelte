@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import * as dotenv from 'dotenv';
-import { jest } from '@jest/globals';
+import * as dotenv from 'dotenv'
+import { jest } from '@jest/globals'
 
-dotenv.config();
+dotenv.config()
 
-export const init = jest.fn<any>();
-export const getVisitorData = jest.fn<any>();
-export const clearCache = jest.fn<any>();
+export const init = jest.fn<any>()
+export const getVisitorData = jest.fn<any>()
+export const clearCache = jest.fn<any>()
 
 jest.mock('@fingerprintjs/fingerprintjs-pro-spa', () => {
   return {
@@ -17,7 +17,7 @@ jest.mock('@fingerprintjs/fingerprintjs-pro-spa', () => {
         init,
         getVisitorData,
         clearCache,
-      };
+      }
     }),
-  };
-});
+  }
+})

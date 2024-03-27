@@ -1,4 +1,6 @@
-/** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
+/**
+ * @type {import('ts-jest/dist/types').InitialOptionsTsJest}
+ * */
 export default {
   testEnvironment: 'jsdom',
   testRegex: '/__tests__/.+test.tsx?$',
@@ -16,9 +18,10 @@ export default {
       },
     ],
   },
+  coveragePathIgnorePatterns: ['<rootDir>/src/lib/options.dist.ts'],
   moduleFileExtensions: ['js', 'ts', 'svelte'],
   extensionsToTreatAsEsm: ['.svelte', '.ts'],
   setupFilesAfterEnv: ['<rootDir>/__tests__/setup.ts'],
   collectCoverageFrom: ['./src/**/**.{ts,tsx}'],
   coverageReporters: ['lcov', 'json-summary', ['text', { file: 'coverage.txt', path: './' }]],
-};
+}

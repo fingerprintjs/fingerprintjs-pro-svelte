@@ -1,9 +1,9 @@
-import type { VisitorData } from '@fingerprintjs/fingerprintjs-pro-spa';
-import type { FpjsSvelteContext, FpjsSvelteQueryOptions } from './types';
-import { writable } from 'svelte/store';
-import { getContext, onMount } from 'svelte';
-import { FPJS_CONTEXT } from './symbols';
-import type { UseGetVisitorDataResult, UseVisitorDataOptions } from './useVisitorData.types';
+import type { VisitorData } from '@fingerprintjs/fingerprintjs-pro-spa'
+import type { FpjsSvelteContext, FpjsSvelteQueryOptions } from './types'
+import { writable } from 'svelte/store'
+import { getContext, onMount } from 'svelte'
+import { FPJS_CONTEXT } from './symbols'
+import type { UseGetVisitorDataResult, UseVisitorDataOptions } from './useVisitorData.types'
 
 /**
  * API for fetching visitorData.
@@ -25,53 +25,53 @@ export function useVisitorData<TExtended extends boolean>(
   { ignoreCache: defaultIgnoreCache, ...options }: UseVisitorDataOptions<TExtended>,
   { immediate = true }: FpjsSvelteQueryOptions = {}
 ): UseGetVisitorDataResult<TExtended> {
-  const dataValue = writable<VisitorData<TExtended> | undefined>(undefined);
-  const loadingValue = writable(false);
-  const errorValue = writable<Error | undefined>(undefined);
+  const dataValue = writable<VisitorData<TExtended> | undefined>(undefined)
+  const loadingValue = writable(false)
+  const errorValue = writable<Error | undefined>(undefined)
 
-  const context = getContext<FpjsSvelteContext>(FPJS_CONTEXT);
+  const context = getContext<FpjsSvelteContext>(FPJS_CONTEXT)
 
   const getData: UseGetVisitorDataResult<TExtended>['getData'] = async (getDataOptions) => {
-    loadingValue.set(true);
+    loadingValue.set(true)
 
     const ignoreCache =
-      typeof getDataOptions?.ignoreCache === 'boolean' ? getDataOptions.ignoreCache : defaultIgnoreCache;
+      typeof getDataOptions?.ignoreCache === 'boolean' ? getDataOptions.ignoreCache : defaultIgnoreCache
 
     try {
-      const result = await context.getVisitorData(options, ignoreCache);
+      const result = await context.getVisitorData(options, ignoreCache)
 
-      dataValue.set(result);
-      errorValue.set(undefined);
+      dataValue.set(result)
+      errorValue.set(undefined)
 
-      return result;
+      return result
     } catch (error) {
-      console.error(error);
+      console.error(error)
 
-      dataValue.set(undefined);
+      dataValue.set(undefined)
 
       if (error instanceof Error) {
-        error.message = `${error.name}: ${error.message}`;
-        error.name = 'FPJSAgentError';
+        error.message = `${error.name}: ${error.message}`
+        error.name = 'FPJSAgentError'
 
-        errorValue.set(error);
+        errorValue.set(error)
       }
 
-      return undefined;
+      return undefined
     } finally {
-      loadingValue.set(false);
+      loadingValue.set(false)
     }
-  };
+  }
 
   onMount(async () => {
     if (immediate) {
-      await getData();
+      await getData()
     }
-  });
+  })
 
   return {
     data: dataValue,
     error: errorValue,
     isLoading: loadingValue,
     getData,
-  };
+  }
 }

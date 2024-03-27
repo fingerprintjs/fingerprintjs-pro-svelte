@@ -1,12 +1,12 @@
 <script lang="ts">
   /* eslint-disable @typescript-eslint/no-explicit-any */
 
-  import { useVisitorData } from '../src/lib';
-  export let immediate = false;
-  export let ignoreCache = false;
-  export let getDataOptions: any = {};
+  import { useVisitorData } from '../src/lib'
+  export let immediate = false
+  export let ignoreCache = false
+  export let getDataOptions: any = {}
 
-  const { getData, data, isLoading, error } = useVisitorData({ extendedResult: true, ignoreCache }, { immediate });
+  const { getData, data, isLoading, error } = useVisitorData({ extendedResult: true, ignoreCache }, { immediate })
 </script>
 
 <div>

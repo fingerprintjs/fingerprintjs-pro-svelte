@@ -9,11 +9,9 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^2.4.6",
-    "svelte": "link:../../node_modules/svelte",
-    "vite": "link:../../node_modules/vite"
+    "@sveltejs/vite-plugin-svelte": "^2.4.6"
   },
   "dependencies": {
-    "@fingerprintjs/fingerprintjs-pro-svelte": "link:../.."
+    "@fingerprintjs/fingerprintjs-pro-svelte": "workspace:*"
   }
 }

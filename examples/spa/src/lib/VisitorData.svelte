@@ -1,9 +1,9 @@
 <script>
-  import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-svelte';
+  import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-svelte'
 
-  export let immediate = false;
+  export let immediate = false
 
-  const { getData, data, isLoading, error } = useVisitorData({ extendedResult: true }, { immediate });
+  const { getData, data, isLoading, error } = useVisitorData({ extendedResult: true }, { immediate })
 </script>
 
 <div>

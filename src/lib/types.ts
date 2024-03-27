@@ -1,28 +1,28 @@
-import type { FpjsClient, FpjsClientOptions, VisitorData } from '@fingerprintjs/fingerprintjs-pro-spa';
+import type { FpjsClient, FpjsClientOptions, VisitorData } from '@fingerprintjs/fingerprintjs-pro-spa'
 
-export type FpjsSvelteOptions = FpjsClientOptions;
+export type FpjsSvelteOptions = FpjsClientOptions
 
-export type GetVisitorData = FpjsClient['getVisitorData'];
-export type ClearCache = FpjsClient['clearCache'];
+export type GetVisitorData = FpjsClient['getVisitorData']
+export type ClearCache = FpjsClient['clearCache']
 
 export interface FpjsSvelteContext {
-  getVisitorData: GetVisitorData;
-  clearCache: ClearCache;
+  getVisitorData: GetVisitorData
+  clearCache: ClearCache
 }
 
 export interface FpjsVisitorQueryData<TExtended extends boolean> {
   /**
    * Is true while visitor data is being loaded.
    * */
-  isLoading: boolean;
+  isLoading: boolean
   /**
    * Stores current visitorData
    * */
-  data: VisitorData<TExtended> | undefined;
+  data: VisitorData<TExtended> | undefined
   /**
    * Stores current query error.
    * */
-  error: Error | undefined;
+  error: Error | undefined
 }
 
 export interface FpjsSvelteQueryOptions {
@@ -31,7 +31,7 @@ export interface FpjsSvelteQueryOptions {
    *
    * @default true
    */
-  immediate?: boolean;
+  immediate?: boolean
 }
 
 export interface GetDataOptions {
@@ -40,5 +40,5 @@ export interface GetDataOptions {
    *
    * @default false
    * */
-  ignoreCache?: boolean;
+  ignoreCache?: boolean
 }
