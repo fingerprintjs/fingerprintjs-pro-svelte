@@ -43,8 +43,7 @@
     "test:dts": "tsc --noEmit --isolatedModules dist/index.d.ts",
     "sync-pkg-version": "node scripts/syncVersion.js && pnpm format",
     "build-all": "pnpm package && pnpm -r build",
-    "docs": "pnpm package && typedoc dist/index.d.ts --options typedoc.cjs --out docs",
-    "release": "semantic-release"
+    "docs": "pnpm package && typedoc dist/index.d.ts --options typedoc.cjs --out docs"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.2",
