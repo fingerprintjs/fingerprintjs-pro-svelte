@@ -60,15 +60,21 @@ To get your API key and get started, see the [Quick start guide in our documenta
 ```svelte
 // App.svelte
 <script>
-  import { FpjsProvider, /* defaultEndpoint, defaultScriptUrlPattern */  } from '@fingerprintjs/fingerprintjs-pro-svelte'
+  import { FpjsProvider, FingerprintJSPro } from '@fingerprintjs/fingerprintjs-pro-svelte'
   import VisitorData from './VisitorData.svelte'
 
   const options = {
     loadOptions: {
       apiKey: '<YOUR_API_KEY>',
-      // region: 'eu',
-      // endpoint: ['metrics.yourwebsite.com', defaultEndpoint],
-      // scriptUrlPattern: ['metrics.yourwebsite.com/agent-path', defaultScriptUrlPattern],
+      endpoint: [
+        // "https://metrics.yourwebsite.com", 
+        FingerprintJSPro.defaultEndpoint
+      ],
+      scriptUrlPattern: [
+        // "https://metrics.yourwebsite.com/web/v<version>/<apiKey>/loader_v<loaderVersion>.js",
+        FingerprintJSPro.defaultScriptUrlPattern
+      ],
+      // region: 'eu',  
     },
   };
 </script>
