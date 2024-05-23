@@ -121,6 +121,25 @@ To get your API key and get started, see the [Quick start guide in our documenta
 
 See the full code in the provided [example applications](./examples).
 
+## Linking and tagging information
+
+The `visitorId` provided by Fingerprint Identification is especially useful when combined with information you already know about your users, for example, account IDs, order IDs, etc. To learn more about various applications of the `linkedId` and `tag`, see [Linking and tagging information](https://dev.fingerprint.com/docs/tagging-information).
+
+Associate the visitor ID with your data using the `linkedId` or `tag` parameter of the options object passed into the `useVisitorData()` hook:
+
+```html
+<script>
+  import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-svelte';
+  const { getData, data, isLoading, error } = useVisitorData({
+    linkedId: 'user_1234',
+    tag: {
+      userAction: 'login',
+      analyticsId: 'UA-5555-1111-1',
+    },
+  });
+</script>
+```
+
 ## Caching strategy
 
 Fingerprint Pro usage is billed per API call. To avoid unnecessary API calls, it is a good practice to [cache identification results](https://dev.fingerprint.com/docs/caching-visitor-information). By default, the SDK uses `sessionStorage` to cache results. 
