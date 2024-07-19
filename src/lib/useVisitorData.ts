@@ -22,7 +22,7 @@ import type { UseGetVisitorDataResult, UseVisitorDataOptions } from './useVisito
  * ```
  * */
 export function useVisitorData<TExtended extends boolean>(
-  { ignoreCache: defaultIgnoreCache, ...options }: UseVisitorDataOptions<TExtended>,
+  topLevelOptions: UseVisitorDataOptions<TExtended>,
   { immediate = true }: FpjsSvelteQueryOptions = {}
 ): UseGetVisitorDataResult<TExtended> {
   const dataValue = writable<VisitorData<TExtended> | undefined>(undefined)
@@ -34,11 +34,13 @@ export function useVisitorData<TExtended extends boolean>(
   const getData: UseGetVisitorDataResult<TExtended>['getData'] = async (getDataOptions) => {
     loadingValue.set(true)
 
-    const ignoreCache =
-      typeof getDataOptions?.ignoreCache === 'boolean' ? getDataOptions.ignoreCache : defaultIgnoreCache
+    const options: UseVisitorDataOptions<TExtended> = {
+      ...(topLevelOptions ?? {}),
+      ...(getDataOptions ?? {}),
+    }
 
     try {
-      const result = await context.getVisitorData(options, ignoreCache)
+      const result = await context.getVisitorData(options, options.ignoreCache)
 
       dataValue.set(result)
       errorValue.set(undefined)
