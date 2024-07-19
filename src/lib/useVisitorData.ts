@@ -34,13 +34,13 @@ export function useVisitorData<TExtended extends boolean>(
   const getData: UseGetVisitorDataResult<TExtended>['getData'] = async (getDataOptions) => {
     loadingValue.set(true)
 
-    const options: UseVisitorDataOptions<TExtended> = {
+    const { ignoreCache, ...options }: UseVisitorDataOptions<TExtended> = {
       ...(topLevelOptions ?? {}),
       ...(getDataOptions ?? {}),
     }
 
     try {
-      const result = await context.getVisitorData(options, options.ignoreCache)
+      const result = await context.getVisitorData(options, ignoreCache)
 
       dataValue.set(result)
       errorValue.set(undefined)
