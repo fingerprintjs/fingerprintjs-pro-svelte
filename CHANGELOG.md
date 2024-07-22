@@ -1,3 +1,16 @@
+## [2.2.1](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/compare/v2.2.0...v2.2.1) (2024-07-22)
+
+
+### Bug Fixes
+
+* support passing all `UseVisitorDataOptions` to `getData` function ([0506079](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/05060795e49cb2a28d2810e64ba9993d268e834f))
+
+
+### Documentation
+
+* **README:** add tag and linkedId section  ([9fa0e9b](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/9fa0e9b7c126e9232e2f31738850cb9455aeade9))
+* **README:** replace deprecated imports in code examples ([4dfdd48](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/commit/4dfdd48920d2a9dd96a3d4187b15ab84cead81d1))
+
 ## [2.2.0](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/compare/v2.1.0...v2.2.0) (2024-03-27)
 
 
