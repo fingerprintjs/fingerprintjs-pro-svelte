@@ -55,7 +55,7 @@
     "@fingerprintjs/tsconfig-dx-team": "^0.0.2",
     "@jest/globals": "^29.7.0",
     "@sveltejs/adapter-auto": "^3.1.1",
-    "@sveltejs/kit": "2.5.4",
+    "@sveltejs/kit": "2.20.6",
     "@sveltejs/package": "^2.0.0",
     "@sveltejs/vite-plugin-svelte": "^2.4.6",
     "@testing-library/svelte": "^4.0.3",
