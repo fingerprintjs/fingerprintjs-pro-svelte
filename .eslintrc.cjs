@@ -1,10 +1,14 @@
 module.exports = {
   root: true,
-  extends: ['@fingerprintjs/eslint-config-dx-team'],
-  plugins: ['svelte3'],
+  extends: ['@fingerprintjs/eslint-config-dx-team', 'plugin:svelte/recommended'],
   ignorePatterns: ['*.cjs'],
-  overrides: [{ files: ['*.svelte'], processor: 'svelte3/svelte3' }],
-  settings: {
-    'svelte3/typescript': () => require('typescript'),
-  },
+  overrides: [
+    {
+      files: ['*.svelte'],
+      parser: 'svelte-eslint-parser',
+      parserOptions: {
+        parser: '@typescript-eslint/parser',
+      },
+    },
+  ],
 }

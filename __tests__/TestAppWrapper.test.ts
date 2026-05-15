@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
+import { describe, it, expect, beforeEach } from 'vitest'
 import { render } from '@testing-library/svelte'
 import TestApp from './TestAppWrapper.svelte'
 import { getVisitorData, init } from './setup'
