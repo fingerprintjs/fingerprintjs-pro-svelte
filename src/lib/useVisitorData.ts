@@ -50,6 +50,8 @@ export function useVisitorData({
       try {
         await getData()
       } catch (error) {
+        // getData() rethrows so manual callers can handle errors themselves.
+        // Swallow here to avoid an unhandled rejection during onMount — the error is already stored in the error store.
         console.error('Failed to fetch visitor data on mount:', error)
       }
     }
