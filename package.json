@@ -9,7 +9,7 @@
     "url": "https://github.com/fingerprintjs/fingerprintjs-pro-svelte.git"
   },
   "main": "./dist/index.js",
-  "types": "/dist/index.d.ts",
+  "types": "./dist/index.d.ts",
   "type": "module",
   "publishConfig": {
     "access": "public",
@@ -42,6 +42,11 @@
     "test:coverage": "vitest run --coverage",
     "test:coverage:diff": "vitest run --coverage --reporter json --outputFile.json=report.json",
     "test:dts": "tsc --noEmit --isolatedModules dist/index.d.ts",
+    "generate-version": "node scripts/syncVersion.js",
+    "prebuild": "pnpm generate-version",
+    "pretest": "pnpm generate-version",
+    "precheck": "pnpm generate-version",
+    "predocs": "pnpm generate-version",
     "sync-pkg-version": "node scripts/syncVersion.js && pnpm format",
     "build-all": "pnpm package && pnpm -r build",
     "docs": "pnpm package && typedoc dist/index.d.ts --options typedoc.cjs --out docs",
@@ -83,9 +88,6 @@
     "vite": "^5.4.21",
     "vitest": "^3.2.4"
   },
-  "dependencies": {
-    "@fingerprintjs/fingerprintjs-pro-spa": "^1.3.2"
-  },
   "peerDependencies": {
     "svelte": "^4.0.0"
   },
@@ -94,41 +96,12 @@
     "*.svelte": "pnpm run lint:fix"
   },
   "exports": {
-    "./package.json": "./package.json",
-    "./client": {
-      "types": "./dist/client.d.ts",
-      "default": "./dist/client.js"
-    },
     ".": {
       "types": "./dist/index.d.ts",
       "svelte": "./dist/index.js",
       "default": "./dist/index.js"
     },
-    "./options": {
-      "types": "./dist/options.d.ts",
-      "default": "./dist/options.js"
-    },
-    "./providers/FpjsProvider.svelte": {
-      "types": "./dist/providers/FpjsProvider.svelte.d.ts",
-      "svelte": "./dist/providers/FpjsProvider.svelte",
-      "default": "./dist/providers/FpjsProvider.svelte"
-    },
-    "./symbols": {
-      "types": "./dist/symbols.d.ts",
-      "default": "./dist/symbols.js"
-    },
-    "./types": {
-      "types": "./dist/types.d.ts",
-      "default": "./dist/types.js"
-    },
-    "./useVisitorData": {
-      "types": "./dist/useVisitorData.d.ts",
-      "default": "./dist/useVisitorData.js"
-    },
-    "./useVisitorData.types": {
-      "types": "./dist/useVisitorData.types.d.ts",
-      "default": "./dist/useVisitorData.types.js"
-    }
+    "./package.json": "./package.json"
   },
   "files": [
     "dist"
@@ -136,33 +109,12 @@
   "svelte": "./dist/index.js",
   "typesVersions": {
     ">4.0": {
-      "client": [
-        "./dist/client.d.ts"
-      ],
       "index.d.ts": [
         "./dist/index.d.ts"
-      ],
-      "options.dist": [
-        "./dist/options.dist.d.ts"
-      ],
-      "options": [
-        "./dist/options.d.ts"
-      ],
-      "providers/FpjsProvider.svelte": [
-        "./dist/providers/FpjsProvider.svelte.d.ts"
-      ],
-      "symbols": [
-        "./dist/symbols.d.ts"
-      ],
-      "types": [
-        "./dist/types.d.ts"
-      ],
-      "useVisitorData": [
-        "./dist/useVisitorData.d.ts"
-      ],
-      "useVisitorData.types": [
-        "./dist/useVisitorData.types.d.ts"
       ]
     }
+  },
+  "dependencies": {
+    "@fingerprint/agent": "^4.0.0"
   }
 }

@@ -1,1 +1,1 @@
-export const FPJS_CONTEXT = Symbol('FPJS_CLIENT')
+export const FINGERPRINT_CONTEXT = Symbol('FINGERPRINT_CLIENT')

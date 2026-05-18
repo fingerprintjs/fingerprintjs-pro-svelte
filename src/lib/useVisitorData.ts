@@ -1,64 +1,45 @@
-import type { VisitorData } from '@fingerprintjs/fingerprintjs-pro-spa'
-import type { FpjsSvelteContext, FpjsSvelteQueryOptions } from './types'
+import type { GetOptions, GetResult } from '@fingerprint/agent'
+import type { FingerprintSvelteContext } from './types'
 import { writable } from 'svelte/store'
 import { getContext, onMount } from 'svelte'
-import { FPJS_CONTEXT } from './symbols'
+import { FINGERPRINT_CONTEXT } from './symbols'
 import type { UseGetVisitorDataResult, UseVisitorDataOptions } from './useVisitorData.types'
 
-/**
- * API for fetching visitorData.
- *
- * @example ```svelte
- *     <script>
- *       import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-svelte';
- *
- *       const { data, getData, isLoading, error } = useVisitorData(
- *          { extendedResult: true }
- *       );
- *
- *       // Fetch data on mount and ignore cache
- *       // const { data, getData, isLoading, error } = useVisitorData({ extendedResult: true, ignoreCache: true }, { immediate: true })
- *       </script>
- * ```
- * */
-export function useVisitorData<TExtended extends boolean>(
-  topLevelOptions: UseVisitorDataOptions<TExtended>,
-  { immediate = true }: FpjsSvelteQueryOptions = {}
-): UseGetVisitorDataResult<TExtended> {
-  const dataValue = writable<VisitorData<TExtended> | undefined>(undefined)
+/** Reactive hook for fetching Fingerprint visitor data. Must be called inside a component wrapped with {@link FingerprintProvider}. */
+export function useVisitorData({
+  immediate = true,
+  ...getOptionsDefaults
+}: UseVisitorDataOptions = {}): UseGetVisitorDataResult {
+  const dataValue = writable<GetResult | undefined>(undefined)
   const loadingValue = writable(false)
+  const isFetchedValue = writable(false)
   const errorValue = writable<Error | undefined>(undefined)
 
-  const context = getContext<FpjsSvelteContext>(FPJS_CONTEXT)
+  const context = getContext<FingerprintSvelteContext>(FINGERPRINT_CONTEXT)
 
-  const getData: UseGetVisitorDataResult<TExtended>['getData'] = async (getDataOptions) => {
+  if (!context) {
+    throw new Error('Fingerprint context is missing. Did you forget to wrap your component with <FingerprintProvider>?')
+  }
+
+  const getData = async (options?: GetOptions): Promise<GetResult> => {
     loadingValue.set(true)
-
-    const { ignoreCache, ...options }: UseVisitorDataOptions<TExtended> = {
-      ...(topLevelOptions ?? {}),
-      ...(getDataOptions ?? {}),
-    }
+    isFetchedValue.set(false)
+    dataValue.set(undefined)
+    errorValue.set(undefined)
 
     try {
-      const result = await context.getVisitorData(options, ignoreCache)
+      const mergedOptions: GetOptions = { ...getOptionsDefaults, ...options }
+      const result = await context.getVisitorData(mergedOptions)
 
       dataValue.set(result)
-      errorValue.set(undefined)
+      isFetchedValue.set(true)
 
       return result
     } catch (error) {
-      console.error(error)
+      const normalizedError = error instanceof Error ? error : new Error(String(error))
+      errorValue.set(normalizedError)
 
-      dataValue.set(undefined)
-
-      if (error instanceof Error) {
-        error.message = `${error.name}: ${error.message}`
-        error.name = 'FPJSAgentError'
-
-        errorValue.set(error)
-      }
-
-      return undefined
+      throw normalizedError
     } finally {
       loadingValue.set(false)
     }
@@ -66,7 +47,11 @@ export function useVisitorData<TExtended extends boolean>(
 
   onMount(async () => {
     if (immediate) {
-      await getData()
+      try {
+        await getData()
+      } catch (error) {
+        console.error('Failed to fetch visitor data on mount:', error)
+      }
     }
   })
 
@@ -74,6 +59,7 @@ export function useVisitorData<TExtended extends boolean>(
     data: dataValue,
     error: errorValue,
     isLoading: loadingValue,
+    isFetched: isFetchedValue,
     getData,
   }
 }

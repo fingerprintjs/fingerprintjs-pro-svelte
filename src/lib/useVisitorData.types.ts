@@ -1,15 +1,18 @@
-import type { FingerprintJSPro, VisitorData } from '@fingerprintjs/fingerprintjs-pro-spa'
-import type { FpjsVisitorQueryData, GetDataOptions } from './types'
+import type { GetOptions, GetResult } from '@fingerprint/agent'
+import type { FingerprintVisitorQueryData } from './types'
 import type { Writable } from 'svelte/store'
 
-export type UseGetVisitorDataResult<TExtended extends boolean> = {
-  [Key in keyof FpjsVisitorQueryData<TExtended>]: Writable<FpjsVisitorQueryData<TExtended>[Key]>
+export type UseGetVisitorDataResult = {
+  [Key in keyof FingerprintVisitorQueryData]: Writable<FingerprintVisitorQueryData[Key]>
 } & {
-  /**
-   * Fetches visitor data.
-   * */
-  getData: (options?: UseVisitorDataOptions<TExtended>) => Promise<VisitorData<TExtended> | undefined>
+  /** Fetches visitor data. Throws on failure. */
+  getData: (options?: GetOptions) => Promise<GetResult>
 }
 
-export type UseVisitorDataOptions<TExtended extends boolean> = FingerprintJSPro.GetOptions<TExtended> &
-  Partial<GetDataOptions>
+export type UseVisitorDataOptions = GetOptions & {
+  /**
+   * Determines whether getData() will be called immediately on mount.
+   * @default true
+   */
+  immediate?: boolean
+}

@@ -1,22 +1,17 @@
 <script lang="ts">
-  /* eslint-disable @typescript-eslint/no-explicit-any */
-
-  import FpjsProvider from '../src/lib/providers/FpjsProvider.svelte'
+  import FingerprintProvider from '../src/lib/providers/FingerprintProvider.svelte'
   import TestApp from './TestApp.svelte'
 
-  export let ignoreCache = false
-  export let immediate = false
-  export let getDataOptions: any = {}
+  export let immediate = true
+  export let getDataOptions = {}
 
   const options = {
-    loadOptions: {
-      apiKey: process.env.API_KEY as string,
-    },
+    apiKey: 'test-api-key',
   }
 </script>
 
 <div>
-  <FpjsProvider {options}>
-    <TestApp {ignoreCache} {immediate} {getDataOptions} />
-  </FpjsProvider>
+  <FingerprintProvider {options}>
+    <TestApp {immediate} {getDataOptions} />
+  </FingerprintProvider>
 </div>

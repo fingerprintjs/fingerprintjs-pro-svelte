@@ -6,7 +6,7 @@ export default defineConfig({
   test: {
     coverage: {
       include: ['src/**/*.{ts,tsx}'],
-      exclude: ['src/lib/options.dist.ts'],
+      exclude: ['src/lib/version.ts'],
       provider: 'istanbul',
       reporter: [['text', { file: 'coverage.txt' }], ['json'], ['json-summary'], ['lcov']],
       reportsDirectory: './coverage',

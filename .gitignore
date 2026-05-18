@@ -7,7 +7,7 @@
 .env.*
 !.env.dist
 .idea
-src/lib/options.ts
-docs
+docs/*
+!docs/migration-v2-to-v3.md
 coverage
 .local

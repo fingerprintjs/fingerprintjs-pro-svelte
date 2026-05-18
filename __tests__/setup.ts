@@ -1,25 +1,18 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
+import { type MockInstance, vi } from 'vitest'
 import '@testing-library/svelte/vitest'
 import * as dotenv from 'dotenv'
-import { vi } from 'vitest'
 
 dotenv.config()
 
-export const init = vi.fn<any>()
-export const getVisitorData = vi.fn<any>()
-export const clearCache = vi.fn<any>()
+export const mockGet: MockInstance = vi.fn()
+export const mockStart: MockInstance = vi.fn(() => ({
+  get: mockGet,
+}))
 
-vi.mock('@fingerprintjs/fingerprintjs-pro-spa', async () => {
-  const actual = await vi.importActual<any>('@fingerprintjs/fingerprintjs-pro-spa')
+vi.mock('@fingerprint/agent', async () => {
+  const actual = await vi.importActual('@fingerprint/agent')
   return {
     ...actual,
-    FpjsClient: vi.fn(() => {
-      return {
-        init,
-        getVisitorData,
-        clearCache,
-      }
-    }),
+    start: mockStart,
   }
 })
