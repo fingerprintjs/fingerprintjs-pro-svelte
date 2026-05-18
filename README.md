@@ -31,7 +31,7 @@ Fingerprint Svelte SDK is an easy way to integrate Fingerprint into your Svelte 
 - For TypeScript users: TypeScript 4.8 or higher
 - For SvelteKit users: SvelteKit 1.0.0 or higher
 
-This package works with the commercial [Fingerprint platform](https://fingerprint.com/). It is not compatible with the source-available [FingerprintJS library](https://github.com/fingerprintjs/fingerprintjs). Learn more about the [differences between Fingerprint and FingerprintJS](https://fingerprint.com/github/).
+This package works with the commercial [Fingerprint platform](https://fingerprint.com/). It is not compatible with the open-source [FingerprintJS library](https://github.com/fingerprintjs/fingerprintjs). Learn more about the [differences between Fingerprint and FingerprintJS](https://fingerprint.com/github/).
 
 ## Installation
 
@@ -53,9 +53,9 @@ pnpm add @fingerprintjs/fingerprintjs-pro-svelte
 ## Getting started
 
 In order to identify visitors, you'll need a Fingerprint Pro account (you can [sign up for free](https://dashboard.fingerprint.com/signup/)).
-To get your API key and get started, see the [Quick start guide in our documentation](https://dev.fingerprint.com/docs/quick-start-guide).
+To get your API key and get started, see the [Quick start guide in our documentation](https://docs.fingerprint.com/docs/quick-start-guide).
 
-1. Wrap your application (or component) in `FingerprintProvider`. You can specify multiple configuration options. Set a [region](https://dev.fingerprint.com/docs/regions) if you have chosen a non-global region during registration. Set `endpoints` if you are using [one of our proxy integrations to increase accuracy](https://dev.fingerprint.com/docs/protecting-the-javascript-agent-from-adblockers) and effectiveness of visitor identification.
+1. Wrap your application (or component) in `FingerprintProvider`. You can specify multiple configuration options. Set a [region](https://docs.fingerprint.com/docs/regions) if you have chosen a non-global region during registration. Set `endpoints` if you are using [one of our proxy integrations to increase accuracy](https://docs.fingerprint.com/docs/protecting-the-javascript-agent-from-adblockers) and effectiveness of visitor identification.
 
 ```svelte
 // App.svelte
@@ -111,7 +111,7 @@ See the full code in the provided [example applications](./examples).
 
 ## Linking and tagging information
 
-The `visitor_id` provided by Fingerprint Identification is especially useful when combined with information you already know about your users, for example, account IDs, order IDs, etc. To learn more about various applications of the `linkedId` and `tag`, see [Linking and tagging information](https://dev.fingerprint.com/docs/tagging-information).
+The `visitor_id` provided by Fingerprint Identification is especially useful when combined with information you already know about your users, for example, account IDs, order IDs, etc. To learn more about various applications of the `linkedId` and `tag`, see [Linking and tagging information](https://docs.fingerprint.com/docs/tagging-information).
 
 Associate the visitor ID with your data using the `linkedId` or `tag` parameter of the options object passed into the `useVisitorData()` hook:
 
@@ -131,7 +131,7 @@ Associate the visitor ID with your data using the `linkedId` or `tag` parameter 
 
 ## Caching strategy
 
-Fingerprint Pro usage is billed per API call. To avoid unnecessary API calls, it is a good practice to [cache identification results](https://dev.fingerprint.com/docs/caching-visitor-information).
+Fingerprint Pro usage is billed per API call. To avoid unnecessary API calls, it is a good practice to [cache identification results](https://docs.fingerprint.com/docs/caching-visitor-information).
 
 Starting with JS Agent v4, there is **no caching by default**. To enable caching, pass a `cache` option to `FingerprintProvider`:
 
@@ -160,11 +160,11 @@ See the [JS Agent caching documentation](https://docs.fingerprint.com/reference/
 
 See the [generated SDK API reference here](https://fingerprintjs.github.io/fingerprintjs-pro-svelte/).
 
-This library uses Fingerprint Pro JavaScript agent under the hood. See our documentation for the full [JavaScript Agent API reference](https://dev.fingerprint.com/reference/javascript-agent).
+This library uses Fingerprint Pro JavaScript agent under the hood. See our documentation for the full [JavaScript Agent API reference](https://docs.fingerprint.com/reference/js-agent-v4).
 
 ## Error handling
 
-`getData()` rethrows errors from the JS Agent after storing them in the `error` store. Non-Error values are normalized into `Error` instances. See [JS Agent error handling](https://dev.fingerprint.com/reference/error-handling) for more details.
+`getData()` rethrows errors from the JS Agent after storing them in the `error` store. Non-Error values are normalized into `Error` instances. See [JS Agent error handling](https://docs.fingerprint.com/docs/error-handling) for more details.
 
 ## Support and feedback
 
