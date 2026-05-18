@@ -65,8 +65,8 @@ To get your API key and get started, see the [Quick start guide in our documenta
 
   const options = {
     apiKey: '<YOUR_API_KEY>',
-    // endpoints: ['https://metrics.yourwebsite.com'],
-    // region: 'eu',
+    endpoints: ['https://metrics.yourwebsite.com'],
+    region: 'eu',
   }
 </script>
 
@@ -143,14 +143,13 @@ Starting with JS Agent v4, there is **no caching by default**. To enable caching
     apiKey: '<YOUR_API_KEY>',
     cache: {
       storage: 'sessionStorage',
-      cachePrefix: 'fp_',
       duration: 3600, // 1 hour in seconds (max 43200)
     },
   }
 </script>
 
 <FingerprintProvider {options}>
-  <slot />
+  <VisitorData />
 </FingerprintProvider>
 ```
 
@@ -164,7 +163,7 @@ This library uses Fingerprint Pro JavaScript agent under the hood. See our docum
 
 ## Error handling
 
-`getData()` rethrows errors from the JS Agent after storing them in the `error` store. Non-Error values are normalized into `Error` instances. See [JS Agent error handling](https://docs.fingerprint.com/docs/error-handling) for more details.
+`getData()` rethrows errors from the JS Agent after storing them in the `error` store. Non-Error values are normalized into `Error` instances. See [JS Agent error handling](https://docs.fingerprint.com/reference/js-agent-v4-error-handling) for more details.
 
 ## Support and feedback
 
