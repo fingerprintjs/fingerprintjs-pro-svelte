@@ -155,6 +155,10 @@ Starting with JS Agent v4, there is **no caching by default**. To enable caching
 
 See the [JS Agent caching documentation](https://docs.fingerprint.com/reference/js-agent-v4-start-function#cache) for more details.
 
+## Migration from v2.x
+
+Version 3.0 upgrades the underlying Fingerprint agent from v3 to v4 and introduces several breaking changes. See the [migration guide](docs/migration-v2-to-v3.md) for detailed instructions and the [JavaScript agent v3 to v4 migration guide](https://docs.fingerprint.com/docs/migrating-from-v3-to-v4) for underlying agent changes.
+
 ## Documentation
 
 See the [generated SDK API reference here](https://fingerprintjs.github.io/fingerprintjs-pro-svelte/).
