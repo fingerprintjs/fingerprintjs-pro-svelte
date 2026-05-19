@@ -3,6 +3,7 @@
 /build
 /.svelte-kit
 /dist
+/generated-docs
 .env
 .env.*
 !.env.dist

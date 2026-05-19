@@ -49,7 +49,7 @@
     "predocs": "pnpm generate-version",
     "sync-pkg-version": "node scripts/syncVersion.js && pnpm format",
     "build-all": "pnpm package && pnpm -r build",
-    "docs": "pnpm package && typedoc dist/index.d.ts --options typedoc.cjs --out docs",
+    "docs": "pnpm package && typedoc dist/index.d.ts --options typedoc.cjs --out generated-docs",
     "changeset:version": "changeset version && pnpm sync-pkg-version",
     "changeset:publish": "HUSKY=0 changeset publish"
   },
