@@ -43,7 +43,7 @@ describe('FingerprintProvider browser guard', () => {
 
 describe('FingerprintProvider validation', () => {
   it('throws when useVisitorData is called without FingerprintProvider', () => {
-    expect(() => render(TestApp, { immediate: false })).toThrow(/Fingerprint context is missing/)
+    expect(() => render(TestApp, { props: { immediate: false } })).toThrow(/Fingerprint context is missing/)
   })
 
   it('rejects the old loadOptions format', () => {

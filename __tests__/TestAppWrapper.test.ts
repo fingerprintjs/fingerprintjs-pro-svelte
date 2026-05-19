@@ -31,7 +31,7 @@ describe('FingerprintProvider + useVisitorData', () => {
 
     mockGet.mockReturnValue(visitorData.promise)
 
-    const { getByRole, getByText, queryByText } = render(TestApp, { immediate: false })
+    const { getByRole, getByText, queryByText } = render(TestApp, { props: { immediate: false } })
 
     await userEvent.click(getByRole('button', { name: /get data/i }))
 
@@ -46,7 +46,7 @@ describe('FingerprintProvider + useVisitorData', () => {
   it('shows errors from a failed manual fetch', async () => {
     mockGet.mockRejectedValue(new Error('Error!'))
 
-    const { findByText, getByRole } = render(TestApp, { immediate: false })
+    const { findByText, getByRole } = render(TestApp, { props: { immediate: false } })
 
     await userEvent.click(getByRole('button', { name: /get data/i }))
 
@@ -56,7 +56,7 @@ describe('FingerprintProvider + useVisitorData', () => {
   it('sets isFetched after a successful manual fetch', async () => {
     mockGet.mockResolvedValue(testData)
 
-    const { getByRole, getByText, queryByText } = render(TestApp, { immediate: false })
+    const { getByRole, getByText, queryByText } = render(TestApp, { props: { immediate: false } })
 
     expect(queryByText('Fetched')).toBeNull()
 
@@ -69,12 +69,14 @@ describe('FingerprintProvider + useVisitorData', () => {
     mockGet.mockResolvedValue(testData)
 
     const { getByRole } = render(TestApp, {
-      immediate: false,
-      providerOptions: {
-        apiKey: 'test-api-key',
-        region: 'eu',
-        endpoints: ['https://metrics.example.com'],
-        integrationInfo: ['custom/1.0'],
+      props: {
+        immediate: false,
+        providerOptions: {
+          apiKey: 'test-api-key',
+          region: 'eu',
+          endpoints: ['https://metrics.example.com'],
+          integrationInfo: ['custom/1.0'],
+        },
       },
     })
 
@@ -96,7 +98,7 @@ describe('FingerprintProvider + useVisitorData', () => {
   it('reuses the started agent on subsequent manual fetches', async () => {
     mockGet.mockResolvedValue(testData)
 
-    const { getByRole } = render(TestApp, { immediate: false })
+    const { getByRole } = render(TestApp, { props: { immediate: false } })
 
     const button = getByRole('button', { name: /get data/i })
     await userEvent.click(button)
