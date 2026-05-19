@@ -153,7 +153,7 @@ Starting with JS Agent v4, there is **no caching by default**. To enable caching
 </FingerprintProvider>
 ```
 
-See the [JS Agent caching documentation](https://docs.fingerprint.com/reference/js-agent-v4#cache) for more details.
+See the [JS Agent caching documentation](https://docs.fingerprint.com/reference/js-agent-v4-start-function#cache) for more details.
 
 ## Documentation
 

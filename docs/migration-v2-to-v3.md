@@ -10,46 +10,32 @@ The underlying Fingerprint JS Agent has been upgraded from v3 (`@fingerprintjs/f
 
 The `FpjsProvider` component has been renamed to `FingerprintProvider` with a simplified options format.
 
-**Before (v2):**
+```diff
+ <script>
+-  import { FpjsProvider, FingerprintJSPro } from '@fingerprintjs/fingerprintjs-pro-svelte'
++  import { FingerprintProvider } from '@fingerprintjs/fingerprintjs-pro-svelte'
 
-```svelte
-<script>
-  import { FpjsProvider, FingerprintJSPro } from '@fingerprintjs/fingerprintjs-pro-svelte'
+   const options = {
+-    loadOptions: {
+-      apiKey: '<YOUR_API_KEY>',
+-      endpoint: ['https://metrics.yourwebsite.com', FingerprintJSPro.defaultEndpoint],
+-      scriptUrlPattern: [
+-        'https://metrics.yourwebsite.com/web/v<version>/<apiKey>/loader_v<loaderVersion>.js',
+-        FingerprintJSPro.defaultScriptUrlPattern,
+-      ],
+-      region: 'eu',
+-    },
++    apiKey: '<YOUR_API_KEY>',
++    endpoints: ['https://metrics.yourwebsite.com'],
++    region: 'eu',
+   }
+ </script>
 
-  const options = {
-    loadOptions: {
-      apiKey: '<YOUR_API_KEY>',
-      endpoint: ['https://metrics.yourwebsite.com', FingerprintJSPro.defaultEndpoint],
-      scriptUrlPattern: [
-        'https://metrics.yourwebsite.com/web/v<version>/<apiKey>/loader_v<loaderVersion>.js',
-        FingerprintJSPro.defaultScriptUrlPattern,
-      ],
-      region: 'eu',
-    },
-  }
-</script>
-
-<FpjsProvider {options}>
-  <slot />
-</FpjsProvider>
-```
-
-**After (v3):**
-
-```svelte
-<script>
-  import { FingerprintProvider } from '@fingerprintjs/fingerprintjs-pro-svelte'
-
-  const options = {
-    apiKey: '<YOUR_API_KEY>',
-    endpoints: ['https://metrics.yourwebsite.com'],
-    region: 'eu',
-  }
-</script>
-
-<FingerprintProvider {options}>
-  <slot />
-</FingerprintProvider>
+-<FpjsProvider {options}>
++<FingerprintProvider {options}>
+   <slot />
+-</FpjsProvider>
++</FingerprintProvider>
 ```
 
 Key changes:
@@ -64,26 +50,15 @@ Key changes:
 
 The hook now takes a single options object instead of two arguments.
 
-**Before (v2):**
+```diff
+ <script>
+   import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-svelte'
 
-```svelte
-<script>
-  import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-svelte'
-
-  const { getData, data, isLoading, error } = useVisitorData({ extendedResult: true }, { immediate: true })
-</script>
-```
-
-**After (v3):**
-
-```svelte
-<script>
-  import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-svelte'
-
-  const { getData, data, isLoading, isFetched, error } = useVisitorData({
-    immediate: true,
-  })
-</script>
+-  const { getData, data, isLoading, error } = useVisitorData({ extendedResult: true }, { immediate: true })
++  const { getData, data, isLoading, isFetched, error } = useVisitorData({
++    immediate: true,
++  })
+ </script>
 ```
 
 Key changes:
@@ -100,11 +75,11 @@ Key changes:
 | v2 (JS Agent v3)                                                       | v3 (JS Agent v4)                                                          |
 | ---------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | Cached by default (in-memory)                                          | **No caching by default** — must opt in explicitly                        |
-| `cacheLocation: 'memory' \| 'localstorage' \| 'sessionstorage'`        | `cache: { storage: 'sessionStorage', cachePrefix: '...', duration: ... }` |
+| `cacheLocation: 'memory' \| 'localstorage' \| 'sessionstorage'`        | `cache: { storage: 'sessionStorage', duration: 3600 }` |
 | `ignoreCache: true` in `useVisitorData` options                        | Removed — no cache to ignore unless explicitly configured                 |
 | `LocalStorageCache`, `SessionStorageCache`, `InMemoryCache` re-exports | Removed — configure via `@fingerprint/agent` directly                     |
 
-See the [JS Agent v4 caching documentation](https://docs.fingerprint.com/reference/js-agent-v4#cache) for configuration details.
+See the [JS Agent v4 caching documentation](https://docs.fingerprint.com/reference/js-agent-v4-start-function#cache) for configuration details.
 
 ## Removed exports
 
@@ -121,19 +96,53 @@ The following re-exports from `@fingerprintjs/fingerprintjs-pro-spa` have been r
 
 `getData()` now rethrows errors after storing them in the `error` store (previously it returned `undefined` on failure). If you call `getData()` in a click handler, wrap it in a try/catch.
 
-The `FPJSAgentError` error name rewriting from v2 has been removed — errors now pass through from the JS Agent with their original `name` and `message`. If your code checks `error.name === 'FPJSAgentError'`, update it to use the agent's native error types instead.
+The `FPJSAgentError` error name rewriting from v2 has been removed — errors now pass through from the JS Agent as `FingerprintError` instances with a `code` property identifying the specific error. If your code checks `error.name === 'FPJSAgentError'`, update it to use `Fingerprint.isFingerprintError()` and check `error.code` instead.
+
+**Before (v2):**
 
 ```svelte
 <script>
-  import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-svelte'
+  async function handleClick() {
+    const result = await getData()
+    if (!result) {
+      // getData() returned undefined on failure
+    }
+  }
+</script>
+
+{#if $error}
+  {#if $error.name === 'FPJSAgentError'}
+    <p>Agent error: {$error.message}</p>
+  {/if}
+{/if}
+```
+
+**After (v3):**
+
+```svelte
+<script>
+  import { useVisitorData, Fingerprint } from '@fingerprintjs/fingerprintjs-pro-svelte'
 
   const { getData, data, error } = useVisitorData({ immediate: false })
 
   async function handleClick() {
     try {
       await getData()
-    } catch {
-      // Error is available in $error store
+    } catch (err) {
+      if (Fingerprint.isFingerprintError(err)) {
+        switch (err.code) {
+          case 'api_key_invalid':
+          case 'api_key_missing':
+            console.error('Configuration error:', err.message)
+            break
+          case 'client_timeout':
+          case 'network_connection':
+            console.error('Network error:', err.message)
+            break
+          default:
+            console.error('Fingerprint error:', err.code, err.message)
+        }
+      }
     }
   }
 </script>
@@ -143,3 +152,5 @@ The `FPJSAgentError` error name rewriting from v2 has been removed — errors no
   <p>{$error.message}</p>
 {/if}
 ```
+
+See the [JS Agent v4 error handling documentation](https://docs.fingerprint.com/reference/js-agent-v4-error-handling) for the full list of error codes.
