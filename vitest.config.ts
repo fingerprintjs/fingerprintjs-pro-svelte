@@ -3,6 +3,10 @@ import { svelte } from '@sveltejs/vite-plugin-svelte'
 
 export default defineConfig({
   plugins: [svelte({ hot: false })],
+  // Resolve plain `svelte` imports to the browser runtime under jsdom so lifecycle hooks like onMount run in tests.
+  resolve: {
+    conditions: ['browser'],
+  },
   test: {
     coverage: {
       include: ['src/**/*.{ts,tsx}'],

@@ -84,6 +84,8 @@ describe('useVisitorData', () => {
 
     expect(get(api.isFetched)).toBe(true)
     expect(get(api.data)).toEqual(testData)
+    expect(get(api.error)).toBeUndefined()
+    expect(get(api.isLoading)).toBe(false)
   })
 
   it('merges default options with per-call options', async () => {
@@ -122,7 +124,38 @@ describe('useVisitorData', () => {
     expect(get(api.isFetched)).toBe(true)
   })
 
-  // Note: immediate=true (onMount) tests are not feasible with @testing-library/svelte v4 + jsdom.
-  // The onMount lifecycle does not flush async operations in this environment.
-  // The immediate path is a thin wrapper around getData() which is thoroughly tested above.
+  it('fetches visitor data immediately on mount by default', async () => {
+    mockGet.mockResolvedValue(testData)
+
+    const { api } = mountUseVisitorData()
+
+    await vi.waitFor(() => expect(mockGet).toHaveBeenCalledTimes(1))
+    await vi.waitFor(() => expect(get(api.data)).toEqual(testData))
+
+    expect(mockGet).toHaveBeenCalledWith({})
+    expect(get(api.error)).toBeUndefined()
+    expect(get(api.isFetched)).toBe(true)
+    expect(get(api.isLoading)).toBe(false)
+  })
+
+  it('uses default options for the immediate mount fetch', async () => {
+    mockGet.mockResolvedValue(testData)
+
+    mountUseVisitorData({ tag: 'default-tag', linkedId: 'default-link' })
+
+    await vi.waitFor(() => expect(mockGet).toHaveBeenCalledWith({ tag: 'default-tag', linkedId: 'default-link' }))
+  })
+
+  it('stores immediate mount fetch errors without rejecting from onMount', async () => {
+    const testError = new Error('mount failed')
+    mockGet.mockRejectedValue(testError)
+
+    const { api } = mountUseVisitorData()
+
+    await vi.waitFor(() => expect(get(api.error)).toBe(testError))
+
+    expect(console.error).toHaveBeenCalledWith('Failed to fetch visitor data on mount:', testError)
+    expect(get(api.isFetched)).toBe(false)
+    expect(get(api.isLoading)).toBe(false)
+  })
 })
