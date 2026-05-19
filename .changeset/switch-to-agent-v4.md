@@ -11,4 +11,4 @@ Switch to JS Agent v4 (`@fingerprint/agent`). This is a breaking change.
 - **Caching is now disabled by default** — you must explicitly configure it via the `cache` option in `FingerprintProvider` to enable caching
 - Removed cache-related exports (`LocalStorageCache`, `SessionStorageCache`, `InMemoryCache`, `CacheLocation`, `ignoreCache`)
 - Removed granular subpath exports — import everything from the package root
-- Removed `FingerprintJSPro` namespace re-export (use `Fingerprint` from `@fingerprint/agent`)
+- Removed `FingerprintJSPro` namespace re-export (use `Fingerprint` from `@fingerprintjs/fingerprintjs-pro-svelte` or import `@fingerprint/agent` directly)
