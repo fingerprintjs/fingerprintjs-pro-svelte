@@ -1,17 +1,17 @@
 <script lang="ts">
-  import FingerprintProvider from '../src/lib/providers/FingerprintProvider.svelte'
+  import type { StartOptions } from '@fingerprint/agent'
+  import { FingerprintProvider } from '../src/lib'
   import TestApp from './TestApp.svelte'
 
   export let immediate = true
   export let getDataOptions = {}
-
-  const options = {
+  export let providerOptions: StartOptions = {
     apiKey: 'test-api-key',
   }
 </script>
 
 <div>
-  <FingerprintProvider {options}>
+  <FingerprintProvider options={providerOptions}>
     <TestApp {immediate} {getDataOptions} />
   </FingerprintProvider>
 </div>

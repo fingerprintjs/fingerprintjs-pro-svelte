@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest'
-import { render } from '@testing-library/svelte'
+import { render, waitFor } from '@testing-library/svelte'
 import TestApp from './TestAppWrapper.svelte'
 import { mockGet, mockStart } from './setup'
 import userEvent from '@testing-library/user-event'
@@ -11,7 +11,14 @@ const testData = {
   sealed_result: null,
 }
 
-const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+function deferred<T>() {
+  let resolve!: (value: T) => void
+  const promise = new Promise<T>((promiseResolve) => {
+    resolve = promiseResolve
+  })
+
+  return { promise, resolve }
+}
 
 describe('FingerprintProvider + useVisitorData', () => {
   beforeEach(() => {
@@ -19,83 +26,81 @@ describe('FingerprintProvider + useVisitorData', () => {
     mockStart.mockClear()
   })
 
-  it('should show visitor data', async () => {
-    const delay = 150
+  it('shows visitor data while exposing loading state during a manual fetch', async () => {
+    const visitorData = deferred<typeof testData>()
 
-    mockGet.mockImplementation(async () => {
-      await wait(delay)
-      return testData
-    })
+    mockGet.mockReturnValue(visitorData.promise)
 
-    const cmp = render(TestApp, { immediate: false })
+    const { getByRole, getByText, queryByText } = render(TestApp, { immediate: false })
 
-    const btn = cmp.container.querySelector('#get_data')!
-    await userEvent.click(btn)
+    await userEvent.click(getByRole('button', { name: /get data/i }))
 
-    expect(cmp.container.querySelector('#loading')).toBeTruthy()
-    await wait(delay + 50)
-    expect(cmp.container.querySelector('#loading')).toBeFalsy()
+    expect(getByText('Loading...')).toBeTruthy()
 
-    const data = cmp.container.querySelector('#data')
-    expect(data).toBeTruthy()
-    expect(data?.innerHTML).toContain(testData.visitor_id)
+    visitorData.resolve(testData)
+
+    await waitFor(() => expect(queryByText('Loading...')).toBeNull())
+    expect(getByText((content) => content.includes(testData.visitor_id))).toBeTruthy()
   })
 
-  it('should show errors', async () => {
+  it('shows errors from a failed manual fetch', async () => {
     mockGet.mockRejectedValue(new Error('Error!'))
 
-    const cmp = render(TestApp, { immediate: false })
+    const { findByText, getByRole } = render(TestApp, { immediate: false })
 
-    const btn = cmp.container.querySelector('#get_data')!
-    await userEvent.click(btn)
+    await userEvent.click(getByRole('button', { name: /get data/i }))
 
-    await wait(50)
-
-    const errorElement = cmp.container.querySelector('#error')
-    expect(errorElement).toBeTruthy()
-    expect(errorElement?.textContent).toEqual('Error!')
+    expect(await findByText('Error!')).toBeTruthy()
   })
 
-  it('should set isFetched after successful fetch', async () => {
+  it('sets isFetched after a successful manual fetch', async () => {
     mockGet.mockResolvedValue(testData)
 
-    const cmp = render(TestApp, { immediate: false })
+    const { getByRole, getByText, queryByText } = render(TestApp, { immediate: false })
 
-    expect(cmp.container.querySelector('#fetched')).toBeFalsy()
+    expect(queryByText('Fetched')).toBeNull()
 
-    const btn = cmp.container.querySelector('#get_data')!
-    await userEvent.click(btn)
+    await userEvent.click(getByRole('button', { name: /get data/i }))
 
-    expect(cmp.container.querySelector('#fetched')).toBeTruthy()
+    expect(getByText('Fetched')).toBeTruthy()
   })
 
-  it('should append integrationInfo when the agent starts', async () => {
+  it('forwards provider options and appends SDK integrationInfo when the agent starts', async () => {
     mockGet.mockResolvedValue(testData)
 
-    const cmp = render(TestApp, { immediate: false })
+    const { getByRole } = render(TestApp, {
+      immediate: false,
+      providerOptions: {
+        apiKey: 'test-api-key',
+        region: 'eu',
+        endpoints: ['https://metrics.example.com'],
+        integrationInfo: ['custom/1.0'],
+      },
+    })
 
     expect(mockStart).not.toHaveBeenCalled()
 
-    const btn = cmp.container.querySelector('#get_data')!
-    await userEvent.click(btn)
+    await userEvent.click(getByRole('button', { name: /get data/i }))
 
     expect(mockStart).toHaveBeenCalledTimes(1)
     expect(mockStart).toHaveBeenCalledWith(
       expect.objectContaining({
         apiKey: 'test-api-key',
-        integrationInfo: expect.arrayContaining([`${PACKAGE_NAME}/${VERSION}`]),
+        region: 'eu',
+        endpoints: ['https://metrics.example.com'],
+        integrationInfo: expect.arrayContaining(['custom/1.0', `${PACKAGE_NAME}/${VERSION}`]),
       })
     )
   })
 
-  it('should reuse agent on subsequent calls', async () => {
+  it('reuses the started agent on subsequent manual fetches', async () => {
     mockGet.mockResolvedValue(testData)
 
-    const cmp = render(TestApp, { immediate: false })
+    const { getByRole } = render(TestApp, { immediate: false })
 
-    const btn = cmp.container.querySelector('#get_data')!
-    await userEvent.click(btn)
-    await userEvent.click(btn)
+    const button = getByRole('button', { name: /get data/i })
+    await userEvent.click(button)
+    await userEvent.click(button)
 
     expect(mockStart).toHaveBeenCalledTimes(1)
   })

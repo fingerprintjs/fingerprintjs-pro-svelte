@@ -1,13 +1,27 @@
 import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest'
 import { render } from '@testing-library/svelte'
 import { mockGet, mockStart } from './setup'
-import { makeGetVisitorData } from '../src/lib/client'
-import { getOptions } from '../src/lib/config'
-import { VERSION, PACKAGE_NAME } from '../src/lib/version'
-import FingerprintProvider from '../src/lib/providers/FingerprintProvider.svelte'
+import { FingerprintProvider } from '../src/lib'
 import TestApp from './TestApp.svelte'
+import UseVisitorDataWrapper from './UseVisitorDataWrapper.svelte'
+import type { UseGetVisitorDataResult } from '../src/lib'
 
-describe('makeGetVisitorData', () => {
+function mountUseVisitorData(hookOptions = { immediate: false }) {
+  let api!: UseGetVisitorDataResult
+
+  render(UseVisitorDataWrapper, {
+    props: {
+      hookOptions,
+      onApi: (result: UseGetVisitorDataResult) => {
+        api = result
+      },
+    },
+  })
+
+  return { api }
+}
+
+describe('FingerprintProvider browser guard', () => {
   beforeEach(() => {
     mockGet.mockReset()
     mockStart.mockClear()
@@ -17,44 +31,13 @@ describe('makeGetVisitorData', () => {
     vi.unstubAllGlobals()
   })
 
-  it('rejects getVisitorData outside the browser before starting the agent', async () => {
-    const startOptions = getOptions({ apiKey: 'test-key' }, PACKAGE_NAME, VERSION)
-    const getVisitorData = makeGetVisitorData(startOptions)
+  it('rejects getData outside the browser before starting the agent', async () => {
+    const { api } = mountUseVisitorData()
 
     vi.stubGlobal('window', undefined)
 
-    await expect(getVisitorData()).rejects.toThrow(/only be called in the browser/)
+    await expect(api.getData()).rejects.toThrow(/only be called in the browser/)
     expect(mockStart).not.toHaveBeenCalled()
-  })
-
-  it('lazily starts the agent on first call and reuses it', async () => {
-    const testData = { visitor_id: 'test', event_id: 'e1', sealed_result: null }
-    mockGet.mockResolvedValue(testData)
-
-    const startOptions = getOptions({ apiKey: 'test-key' }, PACKAGE_NAME, VERSION)
-    const getVisitorData = makeGetVisitorData(startOptions)
-
-    expect(mockStart).not.toHaveBeenCalled()
-
-    await getVisitorData()
-    await getVisitorData()
-
-    expect(mockStart).toHaveBeenCalledTimes(1)
-  })
-
-  it('preserves existing integrationInfo entries', async () => {
-    mockGet.mockResolvedValue({ visitor_id: 'test', event_id: 'e1', sealed_result: null })
-
-    const startOptions = getOptions({ apiKey: 'test-key', integrationInfo: ['custom/1.0'] }, PACKAGE_NAME, VERSION)
-    const getVisitorData = makeGetVisitorData(startOptions)
-
-    await getVisitorData()
-
-    expect(mockStart).toHaveBeenCalledWith(
-      expect.objectContaining({
-        integrationInfo: expect.arrayContaining(['custom/1.0', `${PACKAGE_NAME}/${VERSION}`]),
-      })
-    )
   })
 })
 

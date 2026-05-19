@@ -1,9 +1,10 @@
 import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest'
 import { render } from '@testing-library/svelte'
 import { get } from 'svelte/store'
+import { tick } from 'svelte'
 import { mockGet, mockStart } from './setup'
 import UseVisitorDataWrapper from './UseVisitorDataWrapper.svelte'
-import type { UseGetVisitorDataResult } from '../src/lib/useVisitorData.types'
+import type { UseGetVisitorDataResult, UseVisitorDataOptions } from '../src/lib'
 
 const testData = {
   visitor_id: '#visitor_id',
@@ -11,7 +12,16 @@ const testData = {
   sealed_result: null,
 }
 
-function mountUseVisitorData(hookOptions = {}) {
+function deferred<T>() {
+  let resolve!: (value: T) => void
+  const promise = new Promise<T>((promiseResolve) => {
+    resolve = promiseResolve
+  })
+
+  return { promise, resolve }
+}
+
+function mountUseVisitorData(hookOptions?: UseVisitorDataOptions) {
   let api!: UseGetVisitorDataResult
 
   render(UseVisitorDataWrapper, {
@@ -71,8 +81,8 @@ describe('useVisitorData', () => {
     expect(get(api.isFetched)).toBe(true)
     expect(get(api.data)).toEqual(testData)
 
-    const delayed = new Promise((resolve) => setTimeout(() => resolve(testData), 100))
-    mockGet.mockReturnValueOnce(delayed)
+    const visitorData = deferred<typeof testData>()
+    mockGet.mockReturnValueOnce(visitorData.promise)
 
     const pending = api.getData()
 
@@ -80,6 +90,7 @@ describe('useVisitorData', () => {
     expect(get(api.data)).toBeUndefined()
     expect(get(api.isLoading)).toBe(true)
 
+    visitorData.resolve(testData)
     await pending
 
     expect(get(api.isFetched)).toBe(true)
@@ -135,6 +146,21 @@ describe('useVisitorData', () => {
     expect(mockGet).toHaveBeenCalledWith({})
     expect(get(api.error)).toBeUndefined()
     expect(get(api.isFetched)).toBe(true)
+    expect(get(api.isLoading)).toBe(false)
+  })
+
+  it('does not fetch on mount when immediate is false', async () => {
+    mockGet.mockResolvedValue(testData)
+
+    const { api } = mountUseVisitorData({ immediate: false })
+
+    await tick()
+
+    expect(mockStart).not.toHaveBeenCalled()
+    expect(mockGet).not.toHaveBeenCalled()
+    expect(get(api.data)).toBeUndefined()
+    expect(get(api.error)).toBeUndefined()
+    expect(get(api.isFetched)).toBe(false)
     expect(get(api.isLoading)).toBe(false)
   })
 

@@ -1,10 +1,9 @@
 <script lang="ts">
-  import FingerprintProvider from '../src/lib/providers/FingerprintProvider.svelte'
+  import { FingerprintProvider } from '../src/lib'
   import UseVisitorDataHarness from './UseVisitorDataHarness.svelte'
-  import type { UseVisitorDataOptions } from '../src/lib/useVisitorData.types'
-  import type { UseGetVisitorDataResult } from '../src/lib/useVisitorData.types'
+  import type { UseGetVisitorDataResult, UseVisitorDataOptions } from '../src/lib'
 
-  export let hookOptions: UseVisitorDataOptions = {}
+  export let hookOptions: UseVisitorDataOptions | undefined = undefined
   export let onApi: (api: UseGetVisitorDataResult) => void = () => {}
 
   const providerOptions = {
