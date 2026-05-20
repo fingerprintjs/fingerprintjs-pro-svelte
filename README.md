@@ -33,7 +33,7 @@ Fingerprint Svelte SDK is an easy way to integrate Fingerprint into your Svelte 
 
 ### Svelte 5 compatibility
 
-This SDK uses the Svelte 4 component API (stores, `export let` props, `<slot />`). It works in Svelte 5 projects without any changes because the Svelte 5 compiler supports Svelte 4 syntax out of the box via its [legacy mode](https://svelte.dev/docs/svelte/legacy-overview). The SDK exposes [Svelte stores](https://svelte.dev/docs/svelte/svelte-store), so you use the `$store` reactive syntax to read values like `$data`, `$isLoading`, and `$error` in both Svelte 4 and Svelte 5.
+The SDK uses the Svelte 4 API ([stores](https://svelte.dev/docs/svelte/svelte-store), `$store` syntax) and works in Svelte 5 unchanged thanks to the compiler's built-in [legacy mode](https://svelte.dev/docs/svelte/legacy-overview).
 
 This package works with the commercial [Fingerprint platform](https://fingerprint.com/). It is not compatible with the open-source [FingerprintJS library](https://github.com/fingerprintjs/fingerprintjs). Learn more about the [differences between Fingerprint and FingerprintJS](https://fingerprint.com/github/).
 
