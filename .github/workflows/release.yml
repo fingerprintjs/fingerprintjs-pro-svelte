@@ -6,9 +6,6 @@ on:
     branches:
       - main
 
-permissions:
-  id-token: write
-  contents: read
 
 jobs:
   build-and-release:
@@ -22,7 +19,7 @@ jobs:
       language: node
       language-version: 24
       prepare-command: pnpm build
-      useTrustedPublishing: true
     secrets:
       APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
       RUNNER_APP_PRIVATE_KEY: ${{ secrets.RUNNER_APP_PRIVATE_KEY }}
+      NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
