@@ -157,7 +157,7 @@ See the [JS Agent caching documentation](https://docs.fingerprint.com/reference/
 
 ## Migration from v2.x
 
-Version 3.0 upgrades the underlying Fingerprint agent from v3 to v4 and introduces several breaking changes. See the [migration guide](docs/migration-v2-to-v3.md) for detailed instructions and the [JavaScript agent v3 to v4 migration guide](https://docs.fingerprint.com/docs/migrating-from-v3-to-v4) for underlying agent changes.
+Version 3.0 upgrades the underlying Fingerprint agent from v3 to v4 and introduces several breaking changes. See the [migration guide](docs/migration-v2-to-v3.md) for detailed instructions and the [JavaScript agent v3 to v4 migration guide](https://docs.fingerprint.com/reference/migrating-from-v3-to-v4) for underlying agent changes.
 
 ## Documentation
 
@@ -176,5 +176,4 @@ To report problems, ask questions or provide feedback, please use [Issues](https
 ## License
 
 This project is licensed under the [MIT license](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/blob/main/LICENSE).
-
 
