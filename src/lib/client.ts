@@ -1,31 +1,19 @@
-import type { FpjsClient, GetOptions } from '@fingerprintjs/fingerprintjs-pro-spa'
-import type { ClearCache, GetVisitorData } from './types'
+import { start } from '@fingerprint/agent'
+import type { Agent, GetOptions, GetResult, StartOptions } from '@fingerprint/agent'
+import type { GetVisitorData } from './types'
 
-interface ClientMethods {
-  clearCache: ClearCache
-  getVisitorData: GetVisitorData
-}
+export function makeGetVisitorData(startOptions: StartOptions): GetVisitorData {
+  let agent: Agent | undefined
 
-export function makeClientMethods(client: FpjsClient): ClientMethods {
-  const initPromise = client.init()
-
-  const getVisitorData: GetVisitorData = async <TExtended extends boolean>(
-    agentOptions: GetOptions<TExtended>,
-    ignoreCache?: boolean
-  ) => {
+  return async (options?: GetOptions): Promise<GetResult> => {
     if (typeof window === 'undefined') {
       throw new Error('getVisitorData() can only be called in the browser.')
     }
 
-    await initPromise
+    if (!agent) {
+      agent = start(startOptions)
+    }
 
-    return client.getVisitorData(agentOptions, ignoreCache)
-  }
-
-  const clearCache: ClearCache = client.clearCache.bind(client)
-
-  return {
-    clearCache,
-    getVisitorData,
+    return agent.get(options)
   }
 }

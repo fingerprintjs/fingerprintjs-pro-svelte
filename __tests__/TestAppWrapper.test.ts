@@ -1,97 +1,109 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { describe, it, expect, beforeEach } from 'vitest'
-import { render } from '@testing-library/svelte'
+import { render, waitFor } from '@testing-library/svelte'
 import TestApp from './TestAppWrapper.svelte'
-import { getVisitorData, init } from './setup'
+import { mockGet, mockStart } from './setup'
 import userEvent from '@testing-library/user-event'
+import { VERSION, PACKAGE_NAME } from '../src/lib/version'
 
 const testData = {
-  visitorId: '#visitor_id',
+  visitor_id: '#visitor_id',
+  event_id: 'test-event-id',
+  sealed_result: null,
 }
 
-const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+function deferred<T>() {
+  let resolve!: (value: T) => void
+  const promise = new Promise<T>((promiseResolve) => {
+    resolve = promiseResolve
+  })
 
-describe('TestApp', () => {
+  return { promise, resolve }
+}
+
+describe('FingerprintProvider + useVisitorData', () => {
   beforeEach(() => {
-    getVisitorData.mockClear()
-    init.mockClear()
+    mockGet.mockReset()
+    mockStart.mockClear()
   })
 
-  it('should show visitor data', async () => {
-    const delay = 150
+  it('shows visitor data while exposing loading state during a manual fetch', async () => {
+    const visitorData = deferred<typeof testData>()
 
-    getVisitorData.mockImplementation(async () => {
-      await wait(delay)
+    mockGet.mockReturnValue(visitorData.promise)
 
-      return testData
-    })
+    const { getByRole, getByText, queryByText } = render(TestApp, { props: { immediate: false } })
 
-    const cmp = render(TestApp)
+    await userEvent.click(getByRole('button', { name: /get data/i }))
 
-    expect(init).toHaveBeenCalledTimes(1)
+    expect(getByText('Loading...')).toBeTruthy()
 
-    const btn = cmp.container.querySelector('#get_data')!
-    await userEvent.click(btn)
+    visitorData.resolve(testData)
 
-    expect(cmp.container.querySelector('#loading')).toBeTruthy()
-    await wait(delay + 50)
-    expect(cmp.container.querySelector('#loading')).toBeFalsy()
-
-    const data = cmp.container.querySelector('#data')
-    expect(data).toBeTruthy()
-    expect(data?.innerHTML).toContain(testData.visitorId)
+    await waitFor(() => expect(queryByText('Loading...')).toBeNull())
+    expect(getByText((content) => content.includes(testData.visitor_id))).toBeTruthy()
   })
 
-  it('should show errors', async () => {
-    getVisitorData.mockRejectedValue(new Error('Error!'))
+  it('shows errors from a failed manual fetch', async () => {
+    mockGet.mockRejectedValue(new Error('Error!'))
 
-    const cmp = render(TestApp)
+    const { findByText, getByRole } = render(TestApp, { props: { immediate: false } })
 
-    const btn = cmp.container.querySelector('#get_data')!
-    await userEvent.click(btn)
+    await userEvent.click(getByRole('button', { name: /get data/i }))
 
-    const errorElement = cmp.container.querySelector('#error')
-    expect(errorElement).toBeTruthy()
-    expect(errorElement?.textContent).toEqual('Error: Error!')
+    expect(await findByText('Error!')).toBeTruthy()
   })
 
-  describe('Cache', () => {
-    it('should ignore cache if it was set to true in useVisitorData', async () => {
-      getVisitorData.mockResolvedValue(testData)
+  it('sets isFetched after a successful manual fetch', async () => {
+    mockGet.mockResolvedValue(testData)
 
-      const cmp = render(TestApp, {
-        ignoreCache: true,
-      })
+    const { getByRole, getByText, queryByText } = render(TestApp, { props: { immediate: false } })
 
-      const btn = cmp.container.querySelector('#get_data')!
-      await userEvent.click(btn)
+    expect(queryByText('Fetched')).toBeNull()
 
-      const data = cmp.container.querySelector('#data')
-      expect(data).toBeTruthy()
+    await userEvent.click(getByRole('button', { name: /get data/i }))
 
-      expect(getVisitorData).toHaveBeenCalledTimes(1)
-      expect(getVisitorData).toHaveBeenCalledWith({ extendedResult: true }, true)
-    })
+    expect(getByText('Fetched')).toBeTruthy()
+  })
 
-    it('should not ignore cache if it is set to ignore in useVisitorData and overwritten in getData call', async () => {
-      getVisitorData.mockResolvedValue(testData)
+  it('forwards provider options and appends SDK integrationInfo when the agent starts', async () => {
+    mockGet.mockResolvedValue(testData)
 
-      const cmp = render(TestApp, {
-        ignoreCache: true,
+    const { getByRole } = render(TestApp, {
+      props: {
         immediate: false,
-        getDataOptions: {
-          ignoreCache: false,
+        providerOptions: {
+          apiKey: 'test-api-key',
+          region: 'eu',
+          endpoints: ['https://metrics.example.com'],
+          integrationInfo: ['custom/1.0'],
         },
-      })
-
-      const btn = cmp.container.querySelector('#get_data')!
-      await userEvent.click(btn)
-
-      const data = cmp.container.querySelector('#data')
-      expect(data).toBeTruthy()
-
-      expect(getVisitorData).toHaveBeenCalledTimes(1)
-      expect(getVisitorData).toHaveBeenCalledWith({ extendedResult: true }, false)
+      },
     })
+
+    expect(mockStart).not.toHaveBeenCalled()
+
+    await userEvent.click(getByRole('button', { name: /get data/i }))
+
+    expect(mockStart).toHaveBeenCalledTimes(1)
+    expect(mockStart).toHaveBeenCalledWith(
+      expect.objectContaining({
+        apiKey: 'test-api-key',
+        region: 'eu',
+        endpoints: ['https://metrics.example.com'],
+        integrationInfo: expect.arrayContaining(['custom/1.0', `${PACKAGE_NAME}/${VERSION}`]),
+      })
+    )
+  })
+
+  it('reuses the started agent on subsequent manual fetches', async () => {
+    mockGet.mockResolvedValue(testData)
+
+    const { getByRole } = render(TestApp, { props: { immediate: false } })
+
+    const button = getByRole('button', { name: /get data/i })
+    await userEvent.click(button)
+    await userEvent.click(button)
+
+    expect(mockStart).toHaveBeenCalledTimes(1)
   })
 })

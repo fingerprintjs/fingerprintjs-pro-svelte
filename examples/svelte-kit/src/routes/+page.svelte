@@ -1,11 +1,13 @@
-<script>
-  import { FpjsProvider } from '@fingerprintjs/fingerprintjs-pro-svelte'
-  import VisitorData from '../lib/VisitorData.svelte'
+<script lang="ts">
+  import { FingerprintProvider } from '@fingerprintjs/fingerprintjs-pro-svelte'
+  import VisitorData from '$lib/VisitorData.svelte'
 
   const options = {
-    loadOptions: {
-      apiKey: import.meta.env.VITE_API_KEY,
-    },
+    apiKey: import.meta.env.VITE_API_KEY,
+    // cache: {
+    //   storage: 'sessionStorage' as const,
+    //   duration: 3600,
+    // },
   }
 </script>
 
@@ -15,7 +17,7 @@
 </svelte:head>
 
 <section>
-  <FpjsProvider {options}>
+  <FingerprintProvider {options}>
     <VisitorData />
-  </FpjsProvider>
+  </FingerprintProvider>
 </section>

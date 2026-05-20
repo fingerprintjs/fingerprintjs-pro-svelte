@@ -3,6 +3,7 @@
 build
 dist
 docs
+generated-docs
 **/.svelte-kit
 /package
 .env
