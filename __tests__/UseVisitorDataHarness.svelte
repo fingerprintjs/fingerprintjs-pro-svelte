@@ -9,4 +9,4 @@
   onApi(api)
 </script>
 
-<div />
+<div></div>

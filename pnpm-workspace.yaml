@@ -1,3 +1,4 @@
 packages:
   - './'
   - './examples/*'
+  - './__tests__/svelte5'

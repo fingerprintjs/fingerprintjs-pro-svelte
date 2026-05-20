@@ -27,7 +27,7 @@ Fingerprint Svelte SDK is an easy way to integrate Fingerprint into your Svelte 
 
 ## Requirements
 
-- Svelte 4.0.0 or higher
+- Svelte 4.0.0 or higher (Svelte 5 is also supported)
 - For TypeScript users: TypeScript 4.8 or higher
 - For SvelteKit users: SvelteKit 1.0.0 or higher
 

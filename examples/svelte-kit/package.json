@@ -8,6 +8,9 @@
     "preview": "vite preview",
     "prepare": "svelte-kit sync"
   },
+  "devDependencies": {
+    "svelte": "^4.0.0"
+  },
   "dependencies": {
     "@fingerprintjs/fingerprintjs-pro-svelte": "workspace:*"
   },

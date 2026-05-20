@@ -1,0 +1,13 @@
+{
+  "name": "smoke-svelte4",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "dependencies": {
+    "@fingerprintjs/fingerprintjs-pro-svelte": "file:./fingerprintjs-pro-svelte.tgz",
+    "svelte": "^4.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.3"
+  }
+}

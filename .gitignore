@@ -10,3 +10,11 @@
 .idea
 coverage
 .local
+
+# Test workspace artifacts
+__tests__/svelte5/node_modules
+
+# Smoke test artifacts
+__tests__/smoke/*/node_modules
+__tests__/smoke/*/pnpm-lock.yaml
+__tests__/smoke/*/*.tgz
