@@ -1,6 +1,7 @@
 {
   "name": "@fingerprintjs/fingerprintjs-pro-svelte",
   "version": "2.2.1",
+  "packageManager": "pnpm@9.12.2",
   "description": "FingerprintJS Pro integration for Svelte",
   "author": "Fingerprint, Inc (https://fingerprint.com)",
   "license": "MIT",

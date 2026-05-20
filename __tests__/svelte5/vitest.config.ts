@@ -11,12 +11,31 @@
  */
 import { defineConfig } from 'vitest/config'
 import { svelte } from '@sveltejs/vite-plugin-svelte'
+import type { Plugin } from 'vite'
 import path from 'path'
 
+function resolveFromSvelte5Package(): Plugin {
+  const anchor = path.join(__dirname, 'package.json')
+
+  return {
+    name: 'resolve-svelte5-test-deps',
+    enforce: 'pre',
+    async resolveId(source, _importer, options) {
+      if (
+        source === 'svelte' ||
+        source.startsWith('svelte/') ||
+        source === '@testing-library/svelte' ||
+        source.startsWith('@testing-library/svelte/')
+      ) {
+        return this.resolve(source, anchor, { ...options, skipSelf: true })
+      }
+    },
+  }
+}
+
 export default defineConfig({
-  plugins: [svelte({ hot: false })],
+  plugins: [resolveFromSvelte5Package(), svelte({ hot: false })],
   resolve: {
-    // Resolve plain `svelte` imports to the browser runtime under jsdom
     conditions: ['browser'],
   },
   test: {
