@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-svelte'
 
   export let immediate = false
