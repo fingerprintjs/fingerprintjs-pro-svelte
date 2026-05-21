@@ -15,7 +15,7 @@
 </script>
 
 <div>
-  <button id="get_data" onclick={handleClick}> Get visitor data </button>
+  <button id="get_data" on:click={handleClick}> Get visitor data </button>
   {#if $isLoading}
     <div id="loading">Loading...</div>
   {/if}
