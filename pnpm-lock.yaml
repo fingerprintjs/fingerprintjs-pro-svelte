@@ -195,6 +195,9 @@ importers:
       svelte:
         specifier: ^5.0.0
         version: 5.55.9
+      svelte-check:
+        specifier: ^4.0.0
+        version: 4.4.8(picomatch@4.0.4)(svelte@5.55.9)(typescript@5.4.3)
       vite:
         specifier: ^5.4.21
         version: 5.4.21(@types/node@20.11.30)
@@ -217,6 +220,9 @@ importers:
       svelte:
         specifier: ^5.0.0
         version: 5.55.9
+      svelte-check:
+        specifier: ^4.0.0
+        version: 4.4.8(picomatch@4.0.4)(svelte@5.55.9)(typescript@5.4.3)
       vite:
         specifier: ^5.4.21
         version: 5.4.21(@types/node@20.11.30)
@@ -6442,6 +6448,18 @@ snapshots:
       picocolors: 1.1.1
       sade: 1.8.1
       svelte: 4.2.20
+      typescript: 5.4.3
+    transitivePeerDependencies:
+      - picomatch
+
+  svelte-check@4.4.8(picomatch@4.0.4)(svelte@5.55.9)(typescript@5.4.3):
+    dependencies:
+      '@jridgewell/trace-mapping': 0.3.31
+      chokidar: 4.0.3
+      fdir: 6.5.0(picomatch@4.0.4)
+      picocolors: 1.1.1
+      sade: 1.8.1
+      svelte: 5.55.9
       typescript: 5.4.3
     transitivePeerDependencies:
       - picomatch
