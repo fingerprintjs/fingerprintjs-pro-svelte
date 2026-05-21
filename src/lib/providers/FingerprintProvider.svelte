@@ -4,7 +4,7 @@
   import { makeGetVisitorData } from '../client'
   import { setContext } from 'svelte'
   import { FINGERPRINT_CONTEXT } from '../symbols'
-  import { VERSION, PACKAGE_NAME } from '../version'
+  import { VERSION, INTEGRATION_INFO_PACKAGE_NAME } from '../version'
 
   export let options: FingerprintSvelteOptions
 
@@ -18,7 +18,7 @@
     throw new Error('FingerprintProvider requires an apiKey. Pass { apiKey: "..." } in the options prop.')
   }
 
-  const startOptions = getOptions(options, PACKAGE_NAME, VERSION)
+  const startOptions = getOptions(options, INTEGRATION_INFO_PACKAGE_NAME, VERSION)
   const getVisitorData = makeGetVisitorData(startOptions)
 
   setContext<FingerprintSvelteContext>(FINGERPRINT_CONTEXT, { getVisitorData })

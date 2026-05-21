@@ -3,4 +3,4 @@
 // so a runtime import of ../../package.json escapes the package boundary.
 // See https://svelte.dev/docs/kit/packaging
 export const VERSION = '2.2.1'
-export const PACKAGE_NAME = 'fingerprintjs-pro-svelte'
+export const INTEGRATION_INFO_PACKAGE_NAME = 'fingerprintjs-pro-svelte'
