@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "comment": "Re-runs the parent __tests__/*.test.ts files under Svelte 5 instead of the root workspace's Svelte 4.",
   "scripts": {
     "test": "vitest run"
   },

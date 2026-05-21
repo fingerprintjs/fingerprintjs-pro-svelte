@@ -1,3 +1,5 @@
+// Shared setup for both Svelte 4 and Svelte 5 test runs.
+// Mocks @fingerprint/agent so tests never make real network calls.
 import { type MockInstance, vi } from 'vitest'
 import '@testing-library/svelte/vitest'
 import * as dotenv from 'dotenv'

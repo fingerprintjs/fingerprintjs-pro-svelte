@@ -43,6 +43,7 @@
     "test:coverage": "vitest run --coverage",
     "test:coverage:diff": "vitest run --coverage --reporter json --outputFile.json=report.json",
     "test:dts": "tsc --noEmit --isolatedModules dist/index.d.ts",
+    "test:svelte5__comment": "Uses `pnpm --filter` instead of `vitest` directly because the svelte5-tests workspace package has its own node_modules with Svelte 5 installed. Running from root would resolve to Svelte 4.",
     "test:svelte5": "pnpm --filter svelte5-tests test",
     "test:smoke": "bash __tests__/smoke/smoke-test.sh",
     "generate-version": "node scripts/syncVersion.js",

@@ -14,6 +14,8 @@ import { svelte } from '@sveltejs/vite-plugin-svelte'
 import type { Plugin } from 'vite'
 import path from 'path'
 
+// Force svelte and @testing-library/svelte to resolve from this package (Svelte 5)
+// instead of the workspace root (Svelte 4). Without this, workspace hoisting defeats the test.
 function resolveFromSvelte5Package(): Plugin {
   const anchor = path.join(__dirname, 'package.json')
 

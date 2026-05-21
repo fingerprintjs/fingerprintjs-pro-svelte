@@ -1,3 +1,5 @@
+<!-- FingerprintProvider + TestApp. Mount point for component tests.
+     Svelte 4 syntax so it compiles under both Svelte 4 and 5. -->
 <script lang="ts">
   import type { StartOptions } from '@fingerprint/agent'
   import { FingerprintProvider } from '../src/lib'
