@@ -32,7 +32,7 @@ The `FpjsProvider` component has been renamed to `FingerprintProvider` with a si
 
 ```diff
  <script>
--  import { FpjsProvider, FingerprintJSPro } from '@fingerprint/svelte'
+-  import { FpjsProvider, FingerprintJSPro } from '@fingerprintjs/fingerprintjs-pro-svelte'
 +  import { FingerprintProvider } from '@fingerprint/svelte'
 
    const options = {
@@ -72,7 +72,8 @@ The hook now takes a single options object instead of two arguments.
 
 ```diff
  <script>
-   import { useVisitorData } from '@fingerprint/svelte'
+-  import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-svelte'
++  import { useVisitorData } from '@fingerprint/svelte'
 
 -  const { getData, data, isLoading, error } = useVisitorData({ extendedResult: true }, { immediate: true })
 +  const { getData, data, isLoading, isFetched, error } = useVisitorData({
