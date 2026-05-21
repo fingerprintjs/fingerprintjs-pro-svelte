@@ -187,6 +187,28 @@ importers:
         specifier: ^5.4.21
         version: 5.4.21(@types/node@20.11.30)
 
+  examples/svelte5-svelte-kit:
+    dependencies:
+      '@fingerprintjs/fingerprintjs-pro-svelte':
+        specifier: workspace:*
+        version: link:../..
+    devDependencies:
+      '@sveltejs/adapter-auto':
+        specifier: ^3.0.0
+        version: 3.1.1(@sveltejs/kit@2.20.6(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.55.9)(vite@5.4.21(@types/node@20.11.30)))(svelte@5.55.9)(vite@5.4.21(@types/node@20.11.30)))
+      '@sveltejs/kit':
+        specifier: ^2.0.0
+        version: 2.20.6(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.55.9)(vite@5.4.21(@types/node@20.11.30)))(svelte@5.55.9)(vite@5.4.21(@types/node@20.11.30))
+      '@sveltejs/vite-plugin-svelte':
+        specifier: ^4.0.0
+        version: 4.0.4(svelte@5.55.9)(vite@5.4.21(@types/node@20.11.30))
+      svelte:
+        specifier: ^5.0.0
+        version: 5.55.9
+      vite:
+        specifier: ^5.4.21
+        version: 5.4.21(@types/node@20.11.30)
+
 packages:
 
   '@aashutoshrathi/word-wrap@1.2.6':
@@ -4172,6 +4194,11 @@ snapshots:
       '@sveltejs/kit': 2.20.6(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.20)(vite@5.4.21(@types/node@20.11.30)))(svelte@4.2.20)(vite@5.4.21(@types/node@20.11.30))
       import-meta-resolve: 4.0.0
 
+  '@sveltejs/adapter-auto@3.1.1(@sveltejs/kit@2.20.6(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.55.9)(vite@5.4.21(@types/node@20.11.30)))(svelte@5.55.9)(vite@5.4.21(@types/node@20.11.30)))':
+    dependencies:
+      '@sveltejs/kit': 2.20.6(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.55.9)(vite@5.4.21(@types/node@20.11.30)))(svelte@5.55.9)(vite@5.4.21(@types/node@20.11.30))
+      import-meta-resolve: 4.0.0
+
   '@sveltejs/kit@2.20.6(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.20)(vite@5.4.21(@types/node@20.11.30)))(svelte@4.2.20)(vite@5.4.21(@types/node@20.11.30))':
     dependencies:
       '@sveltejs/vite-plugin-svelte': 3.1.2(svelte@4.2.20)(vite@5.4.21(@types/node@20.11.30))
@@ -4187,6 +4214,23 @@ snapshots:
       set-cookie-parser: 2.7.1
       sirv: 3.0.1
       svelte: 4.2.20
+      vite: 5.4.21(@types/node@20.11.30)
+
+  '@sveltejs/kit@2.20.6(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.55.9)(vite@5.4.21(@types/node@20.11.30)))(svelte@5.55.9)(vite@5.4.21(@types/node@20.11.30))':
+    dependencies:
+      '@sveltejs/vite-plugin-svelte': 4.0.4(svelte@5.55.9)(vite@5.4.21(@types/node@20.11.30))
+      '@types/cookie': 0.6.0
+      cookie: 0.6.0
+      devalue: 5.1.1
+      esm-env: 1.2.2
+      import-meta-resolve: 4.1.0
+      kleur: 4.1.5
+      magic-string: 0.30.17
+      mrmime: 2.0.1
+      sade: 1.8.1
+      set-cookie-parser: 2.7.1
+      sirv: 3.0.1
+      svelte: 5.55.9
       vite: 5.4.21(@types/node@20.11.30)
 
   '@sveltejs/package@2.3.0(svelte@4.2.20)(typescript@5.4.3)':

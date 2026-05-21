@@ -12,5 +12,5 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": ["spa", "svelte-kit-example", "svelte5-spa", "svelte5-tests"]
+  "ignore": ["spa", "svelte-kit-example", "svelte5-spa", "svelte5-svelte-kit", "svelte5-tests"]
 }

@@ -29,6 +29,7 @@ function resolveFromSvelte5Package(): Plugin {
       ) {
         return this.resolve(source, anchor, { ...options, skipSelf: true })
       }
+      return undefined
     },
   }
 }
