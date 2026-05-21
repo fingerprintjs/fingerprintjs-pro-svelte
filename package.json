@@ -44,7 +44,7 @@
     "test:coverage:diff": "vitest run --coverage --reporter json --outputFile.json=report.json",
     "test:dts": "tsc --noEmit --isolatedModules dist/index.d.ts",
     "test:svelte5": "pnpm --filter svelte5-tests test",
-    "test:smoke": "bash scripts/smoke-test.sh",
+    "test:smoke": "bash __tests__/smoke/smoke-test.sh",
     "generate-version": "node scripts/syncVersion.js",
     "prebuild": "pnpm generate-version",
     "pretest": "pnpm generate-version",

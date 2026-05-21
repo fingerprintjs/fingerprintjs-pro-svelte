@@ -1,11 +1,13 @@
 /**
- * Smoke test: verify that the packed tarball can be imported and types resolve
- * when installed alongside Svelte 5.
+ * Smoke test: verify that every public export from the packed tarball
+ * resolves and type-checks when installed alongside Svelte 5.
+ *
+ * Each assignment below is a type-level assertion: if the export is
+ * missing from the tarball or its type signature has drifted, tsc fails.
  */
 import { FingerprintProvider, useVisitorData, Fingerprint } from '@fingerprintjs/fingerprintjs-pro-svelte'
 import type { FingerprintSvelteOptions, UseVisitorDataOptions } from '@fingerprintjs/fingerprintjs-pro-svelte'
 
-// Type-level assertions — these verify that the types are correctly exported.
 const _provider: typeof FingerprintProvider = FingerprintProvider
 const _hook: typeof useVisitorData = useVisitorData
 const _start: typeof Fingerprint.start = Fingerprint.start
