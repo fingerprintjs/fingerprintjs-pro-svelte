@@ -5,7 +5,7 @@
   "type": "module",
   "comment": "The file: dep points to a tarball copied here by smoke-test.sh. Installed with --ignore-workspace so pnpm resolves it from the tarball, not the workspace.",
   "dependencies": {
-    "@fingerprintjs/fingerprintjs-pro-svelte": "file:./fingerprintjs-pro-svelte.tgz",
+    "@fingerprint/svelte": "file:./fingerprint-svelte.tgz",
     "svelte": "^5.0.0"
   },
   "devDependencies": {

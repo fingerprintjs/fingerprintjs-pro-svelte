@@ -3,7 +3,7 @@
   "changelog": [
     "@fingerprintjs/changesets-changelog-format",
     {
-      "repo": "fingerprintjs/fingerprintjs-pro-svelte"
+      "repo": "fingerprintjs/svelte"
     }
   ],
   "commit": false,

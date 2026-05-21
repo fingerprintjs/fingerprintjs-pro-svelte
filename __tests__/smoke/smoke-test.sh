@@ -27,8 +27,8 @@ echo "    Tarball: $TARBALL_NAME"
 
 cleanup() {
   rm -f "$SMOKE_DIR/$TARBALL_NAME"
-  rm -f "$SMOKE_DIR/svelte4/fingerprintjs-pro-svelte.tgz"
-  rm -f "$SMOKE_DIR/svelte5/fingerprintjs-pro-svelte.tgz"
+  rm -f "$SMOKE_DIR/svelte4/fingerprint-svelte.tgz"
+  rm -f "$SMOKE_DIR/svelte5/fingerprint-svelte.tgz"
   rm -rf "$SMOKE_DIR/svelte4/node_modules" "$SMOKE_DIR/svelte4/pnpm-lock.yaml"
   rm -rf "$SMOKE_DIR/svelte5/node_modules" "$SMOKE_DIR/svelte5/pnpm-lock.yaml"
 }
@@ -37,8 +37,8 @@ cleanup() {
 trap cleanup EXIT
 
 # Copy tarball into each fixture with the expected name
-cp "$SMOKE_DIR/$TARBALL_NAME" "$SMOKE_DIR/svelte4/fingerprintjs-pro-svelte.tgz"
-cp "$SMOKE_DIR/$TARBALL_NAME" "$SMOKE_DIR/svelte5/fingerprintjs-pro-svelte.tgz"
+cp "$SMOKE_DIR/$TARBALL_NAME" "$SMOKE_DIR/svelte4/fingerprint-svelte.tgz"
+cp "$SMOKE_DIR/$TARBALL_NAME" "$SMOKE_DIR/svelte5/fingerprint-svelte.tgz"
 
 for fixture in svelte4 svelte5; do
   echo ""

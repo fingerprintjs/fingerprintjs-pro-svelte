@@ -1,20 +1,21 @@
 {
-  "name": "@fingerprintjs/fingerprintjs-pro-svelte",
+  "name": "@fingerprint/svelte",
   "version": "2.2.1",
   "packageManager": "pnpm@9.12.2",
-  "description": "FingerprintJS Pro integration for Svelte",
+  "description": "Fingerprint Svelte SDK",
   "author": "Fingerprint, Inc (https://fingerprint.com)",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/fingerprintjs/fingerprintjs-pro-svelte.git"
+    "url": "https://github.com/fingerprintjs/svelte.git"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "type": "module",
   "publishConfig": {
     "access": "public",
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://registry.npmjs.org/",
+    "provenance": true
   },
   "private": false,
   "keywords": [

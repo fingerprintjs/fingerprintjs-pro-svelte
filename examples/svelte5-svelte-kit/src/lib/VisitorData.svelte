@@ -1,7 +1,7 @@
 <script lang="ts">
   // The SDK exposes Svelte stores (not runes), so we use $store syntax even in Svelte 5.
   // Svelte 5 supports this via its built-in legacy mode.
-  import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-svelte'
+  import { useVisitorData } from '@fingerprint/svelte'
 
   const { getData, data, isLoading, error } = useVisitorData({ immediate: false })
 

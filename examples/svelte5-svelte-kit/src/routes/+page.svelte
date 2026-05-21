@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { FingerprintProvider } from '@fingerprintjs/fingerprintjs-pro-svelte'
+  import { FingerprintProvider } from '@fingerprint/svelte'
   import VisitorData from '$lib/VisitorData.svelte'
 
   const options = {

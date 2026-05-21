@@ -1,6 +1,22 @@
 # Migrating from v2 to v3
 
-This guide covers breaking changes when upgrading `@fingerprintjs/fingerprintjs-pro-svelte` from v2 (JS Agent v3) to v3 (JS Agent v4).
+This guide covers breaking changes when upgrading from `@fingerprintjs/fingerprintjs-pro-svelte` v2 (JS Agent v3) to `@fingerprint/svelte` v3 (JS Agent v4).
+
+## Package renamed
+
+The package has been renamed from `@fingerprintjs/fingerprintjs-pro-svelte` to `@fingerprint/svelte`. Update your dependencies:
+
+```shell
+npm uninstall @fingerprintjs/fingerprintjs-pro-svelte
+npm install @fingerprint/svelte
+```
+
+Update all imports:
+
+```diff
+- import { FingerprintProvider, useVisitorData } from '@fingerprintjs/fingerprintjs-pro-svelte'
++ import { FingerprintProvider, useVisitorData } from '@fingerprint/svelte'
+```
 
 ## Svelte 5 support
 
@@ -16,8 +32,8 @@ The `FpjsProvider` component has been renamed to `FingerprintProvider` with a si
 
 ```diff
  <script>
--  import { FpjsProvider, FingerprintJSPro } from '@fingerprintjs/fingerprintjs-pro-svelte'
-+  import { FingerprintProvider } from '@fingerprintjs/fingerprintjs-pro-svelte'
+-  import { FpjsProvider, FingerprintJSPro } from '@fingerprint/svelte'
++  import { FingerprintProvider } from '@fingerprint/svelte'
 
    const options = {
 -    loadOptions: {
@@ -56,7 +72,7 @@ The hook now takes a single options object instead of two arguments.
 
 ```diff
  <script>
-   import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-svelte'
+   import { useVisitorData } from '@fingerprint/svelte'
 
 -  const { getData, data, isLoading, error } = useVisitorData({ extendedResult: true }, { immediate: true })
 +  const { getData, data, isLoading, isFetched, error } = useVisitorData({
@@ -89,7 +105,7 @@ See the [JS Agent v4 caching documentation](https://docs.fingerprint.com/referen
 
 The following re-exports from `@fingerprintjs/fingerprintjs-pro-spa` have been removed:
 
-- `FingerprintJSPro` namespace (use `Fingerprint` re-exported from `@fingerprintjs/fingerprintjs-pro-svelte` instead)
+- `FingerprintJSPro` namespace (use `Fingerprint` re-exported from `@fingerprint/svelte` instead)
 - `FpjsClient` class
 - `FpjsSvelteContext`, `FpjsVisitorQueryData`, `FpjsSvelteOptions` types (renamed to `FingerprintSvelteContext`, `FingerprintVisitorQueryData`, `FingerprintSvelteOptions`)
 - `LocalStorageCache`, `SessionStorageCache`, `InMemoryCache`, `CacheLocation`
@@ -125,7 +141,7 @@ The `FPJSAgentError` error name rewriting from v2 has been removed — errors no
 
 ```svelte
 <script>
-  import { useVisitorData, Fingerprint } from '@fingerprintjs/fingerprintjs-pro-svelte'
+  import { useVisitorData, Fingerprint } from '@fingerprint/svelte'
 
   const { getData, data, error } = useVisitorData({ immediate: false })
 
