@@ -1,6 +1,6 @@
 {
   "name": "@fingerprint/svelte",
-  "version": "2.2.1",
+  "version": "3.0.0-rc.0",
   "packageManager": "pnpm@9.12.2",
   "description": "Fingerprint Svelte SDK",
   "author": "Fingerprint, Inc (https://fingerprint.com)",
