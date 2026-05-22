@@ -2,6 +2,10 @@
 
 This guide covers breaking changes when upgrading `@fingerprintjs/fingerprintjs-pro-svelte` from v2 (JS Agent v3) to v3 (JS Agent v4).
 
+## Svelte 5 support
+
+The `svelte` peer dependency has been widened to `^4.0.0 || ^5.0.0`. The SDK source uses Svelte 4 syntax, which Svelte 5 compiles automatically via its built-in legacy mode. No code changes are needed to use the SDK in a Svelte 5 project.
+
 ## JS Agent upgrade (v3 to v4)
 
 The underlying Fingerprint JS Agent has been upgraded from v3 (`@fingerprintjs/fingerprintjs-pro-spa`) to v4 (`@fingerprint/agent`). See the [JS Agent v3 to v4 migration guide](https://docs.fingerprint.com/reference/migrating-from-v3-to-v4) for the full list of agent-level changes.

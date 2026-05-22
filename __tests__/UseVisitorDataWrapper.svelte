@@ -1,3 +1,5 @@
+<!-- FingerprintProvider + UseVisitorDataHarness. Mount point for hook-level tests.
+     Svelte 4 syntax so it compiles under both Svelte 4 and 5. -->
 <script lang="ts">
   import { FingerprintProvider } from '../src/lib'
   import UseVisitorDataHarness from './UseVisitorDataHarness.svelte'

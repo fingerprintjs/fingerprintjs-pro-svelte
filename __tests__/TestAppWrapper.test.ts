@@ -106,4 +106,15 @@ describe('FingerprintProvider + useVisitorData', () => {
 
     expect(mockStart).toHaveBeenCalledTimes(1)
   })
+
+  it('passes per-call GetOptions through to the agent', async () => {
+    mockGet.mockResolvedValue(testData)
+
+    const getDataOptions = { tag: 'my-tag', linkedId: 'my-link' }
+    const { getByRole } = render(TestApp, { props: { immediate: false, getDataOptions } })
+
+    await userEvent.click(getByRole('button', { name: /get data/i }))
+
+    expect(mockGet).toHaveBeenCalledWith(getDataOptions)
+  })
 })
