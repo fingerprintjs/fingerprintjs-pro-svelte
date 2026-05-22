@@ -3,7 +3,7 @@ import { render, waitFor } from '@testing-library/svelte'
 import TestApp from './TestAppWrapper.svelte'
 import { mockGet, mockStart } from './setup'
 import userEvent from '@testing-library/user-event'
-import { VERSION, PACKAGE_NAME } from '../src/lib/version'
+import { VERSION, INTEGRATION_INFO_PACKAGE_NAME } from '../src/lib/version'
 
 const testData = {
   visitor_id: '#visitor_id',
@@ -90,7 +90,7 @@ describe('FingerprintProvider + useVisitorData', () => {
         apiKey: 'test-api-key',
         region: 'eu',
         endpoints: ['https://metrics.example.com'],
-        integrationInfo: expect.arrayContaining(['custom/1.0', `${PACKAGE_NAME}/${VERSION}`]),
+        integrationInfo: expect.arrayContaining(['custom/1.0', `${INTEGRATION_INFO_PACKAGE_NAME}/${VERSION}`]),
       })
     )
   })

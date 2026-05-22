@@ -5,8 +5,8 @@
  * Each assignment below is a type-level assertion: if the export is
  * missing from the tarball or its type signature has drifted, tsc fails.
  */
-import { FingerprintProvider, useVisitorData, Fingerprint } from '@fingerprintjs/fingerprintjs-pro-svelte'
-import type { FingerprintSvelteOptions, UseVisitorDataOptions } from '@fingerprintjs/fingerprintjs-pro-svelte'
+import { FingerprintProvider, useVisitorData, Fingerprint } from '@fingerprint/svelte'
+import type { FingerprintSvelteOptions, UseVisitorDataOptions } from '@fingerprint/svelte'
 
 const _provider: typeof FingerprintProvider = FingerprintProvider
 const _hook: typeof useVisitorData = useVisitorData

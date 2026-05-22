@@ -9,17 +9,17 @@
 
 </p>
 <p align="center">
-   <a href="https://github.com/fingerprintjs/fingerprintjs-pro-svelte/actions/workflows/release.yml"><img src="https://github.com/fingerprintjs/fingerprintjs-pro-svelte/actions/workflows/release.yml/badge.svg" alt="Release status"></a>
-   <a href="https://github.com/fingerprintjs/fingerprintjs-pro-svelte/actions/workflows/test.yml"><img src="https://github.com/fingerprintjs/fingerprintjs-pro-svelte/actions/workflows/test.yml/badge.svg" alt="Tests status"></a>
-   <a href="https://www.npmjs.com/package/@fingerprintjs/fingerprintjs-pro-svelte"><img src="https://img.shields.io/npm/v/@fingerprintjs/fingerprintjs-pro-svelte.svg" alt="Current NPM version"></a>
-   <a href="https://www.npmjs.com/package/@fingerprintjs/fingerprintjs-pro-svelte"><img src="https://img.shields.io/npm/dm/@fingerprintjs/fingerprintjs-pro-svelte.svg" alt="Monthly downloads from NPM"></a>
-   <a href="https://fingerprintjs.github.io/fingerprintjs-pro-svelte/coverage/"><img src="https://fingerprintjs.github.io/fingerprintjs-pro-svelte/coverage/badges.svg" alt="coverage"></a>
+   <a href="https://github.com/fingerprintjs/svelte/actions/workflows/release.yml"><img src="https://github.com/fingerprintjs/svelte/actions/workflows/release.yml/badge.svg" alt="Release status"></a>
+   <a href="https://github.com/fingerprintjs/svelte/actions/workflows/test.yml"><img src="https://github.com/fingerprintjs/svelte/actions/workflows/test.yml/badge.svg" alt="Tests status"></a>
+   <a href="https://www.npmjs.com/package/@fingerprint/svelte"><img src="https://img.shields.io/npm/v/@fingerprint/svelte.svg" alt="Current NPM version"></a>
+   <a href="https://www.npmjs.com/package/@fingerprint/svelte"><img src="https://img.shields.io/npm/dm/@fingerprint/svelte.svg" alt="Monthly downloads from NPM"></a>
+   <a href="https://fingerprintjs.github.io/svelte/coverage/"><img src="https://fingerprintjs.github.io/svelte/coverage/badges.svg" alt="coverage"></a>
    <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/:license-mit-blue.svg" alt="MIT license"></a>
    <a href="https://discord.gg/39EpE2neBg"><img src="https://img.shields.io/discord/852099967190433792?style=logo&label=Discord&logo=Discord&logoColor=white" alt="Discord server"></a> 
-   <a href="https://fingerprintjs.github.io/fingerprintjs-pro-svelte/"><img src="https://img.shields.io/badge/-Documentation-green" alt="Discord server"></a>
+   <a href="https://fingerprintjs.github.io/svelte/"><img src="https://img.shields.io/badge/-Documentation-green" alt="Documentation"></a>
 </p>
 
-# FingerprintJS Pro Svelte
+# Fingerprint Svelte SDK
 
 [Fingerprint](https://fingerprint.com/) is a device intelligence platform offering industry-leading accuracy.
 
@@ -41,17 +41,17 @@ This package works with the commercial [Fingerprint platform](https://fingerprin
 
 Yarn:
 ```shell
-yarn add @fingerprintjs/fingerprintjs-pro-svelte
+yarn add @fingerprint/svelte
 ```
 
 npm:
 ```shell
-npm install @fingerprintjs/fingerprintjs-pro-svelte
+npm install @fingerprint/svelte
 ```
 
 pnpm:
 ```shell
-pnpm add @fingerprintjs/fingerprintjs-pro-svelte
+pnpm add @fingerprint/svelte
 ```
 
 ## Getting started
@@ -64,7 +64,7 @@ To get your API key and get started, see the [Quick start guide in our documenta
 ```svelte
 // App.svelte
 <script>
-  import { FingerprintProvider } from '@fingerprintjs/fingerprintjs-pro-svelte'
+  import { FingerprintProvider } from '@fingerprint/svelte'
   import VisitorData from './VisitorData.svelte'
 
   const options = {
@@ -84,7 +84,7 @@ To get your API key and get started, see the [Quick start guide in our documenta
 ```svelte
 // VisitorData.svelte
 <script>
-  import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-svelte'
+  import { useVisitorData } from '@fingerprint/svelte'
 
   const { getData, data, isLoading, isFetched, error } = useVisitorData({ immediate: true })
 
@@ -121,7 +121,7 @@ Associate the visitor ID with your data using the `linkedId` or `tag` parameter 
 
 ```svelte
 <script>
-  import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-svelte'
+  import { useVisitorData } from '@fingerprint/svelte'
 
   const { getData, data, isLoading, error } = useVisitorData({
     linkedId: 'user_1234',
@@ -141,7 +141,7 @@ Starting with JS Agent v4, there is **no caching by default**. To enable caching
 
 ```svelte
 <script>
-  import { FingerprintProvider } from '@fingerprintjs/fingerprintjs-pro-svelte'
+  import { FingerprintProvider } from '@fingerprint/svelte'
 
   const options = {
     apiKey: '<YOUR_API_KEY>',
@@ -165,7 +165,7 @@ Version 3.0 upgrades the underlying Fingerprint agent from v3 to v4 and introduc
 
 ## Documentation
 
-See the [generated SDK API reference here](https://fingerprintjs.github.io/fingerprintjs-pro-svelte/).
+See the [generated SDK API reference here](https://fingerprintjs.github.io/svelte/).
 
 This library uses Fingerprint Pro JavaScript agent under the hood. See our documentation for the full [JavaScript Agent API reference](https://docs.fingerprint.com/reference/js-agent-v4).
 
@@ -175,9 +175,9 @@ This library uses Fingerprint Pro JavaScript agent under the hood. See our docum
 
 ## Support and feedback
 
-To report problems, ask questions or provide feedback, please use [Issues](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/issues). If you need private support, you can email us at [oss-support@fingerprint.com](mailto:oss-support@fingerprint.com).
+To report problems, ask questions or provide feedback, please use [Issues](https://github.com/fingerprintjs/svelte/issues). If you need private support, you can email us at [oss-support@fingerprint.com](mailto:oss-support@fingerprint.com).
 
 ## License
 
-This project is licensed under the [MIT license](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/blob/main/LICENSE).
+This project is licensed under the [MIT license](https://github.com/fingerprintjs/svelte/blob/main/LICENSE).
 
