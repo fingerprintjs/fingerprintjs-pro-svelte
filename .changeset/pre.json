@@ -1,0 +1,13 @@
+{
+  "mode": "pre",
+  "tag": "rc",
+  "initialVersions": {
+    "@fingerprint/svelte": "2.2.1",
+    "svelte5-tests": "0.0.0",
+    "spa": "0.0.0",
+    "svelte-kit-example": "0.0.1",
+    "svelte5-spa": "0.0.0",
+    "svelte5-svelte-kit": "0.0.1"
+  },
+  "changesets": []
+}
