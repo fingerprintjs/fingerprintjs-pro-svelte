@@ -1,3 +1,5 @@
+# @fingerprint/svelte
+
 ## [2.2.1](https://github.com/fingerprintjs/fingerprintjs-pro-svelte/compare/v2.2.0...v2.2.1) (2024-07-22)
 
 
