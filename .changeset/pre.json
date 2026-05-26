@@ -9,5 +9,5 @@
     "svelte5-spa": "0.0.0",
     "svelte5-svelte-kit": "0.0.1"
   },
-  "changesets": []
+  "changesets": ["rename-package", "switch-to-agent-v4", "widen-svelte-peer-dep"]
 }
