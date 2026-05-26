@@ -47,12 +47,17 @@ describe('FingerprintProvider validation', () => {
   })
 
   it('rejects the old loadOptions format', () => {
+    const invalidOptions = { loadOptions: { apiKey: 'test' } }
     expect(() =>
-      render(FingerprintProvider, { props: { options: { loadOptions: { apiKey: 'test' } } as any } })
+      // @ts-expect-error intentionally invalid v2-style options
+      render(FingerprintProvider, { props: { options: invalidOptions } })
     ).toThrow(/loadOptions/)
   })
 
   it('throws when apiKey is missing', () => {
-    expect(() => render(FingerprintProvider, { props: { options: {} as any } })).toThrow(/apiKey/)
+    expect(() =>
+      // @ts-expect-error intentionally missing apiKey
+      render(FingerprintProvider, { props: { options: {} } })
+    ).toThrow(/apiKey/)
   })
 })
