@@ -8,8 +8,7 @@ The main branch is locked for the push action. For proposing changes, use the st
 
 ### Development playground
 
-This project was generated with [svelte-kit](https://kit.svelte.dev/).
-Library code can be found in the [src/lib](./src/lib) directory.
+This project was generated with [svelte-kit](https://kit.svelte.dev/). Library code can be found in the [src/lib](./src/lib) directory.
 
 Run `pnpm package:watch` to rebuild the library on each update.
 

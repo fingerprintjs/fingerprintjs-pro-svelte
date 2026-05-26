@@ -93,12 +93,12 @@ Key changes:
 
 **Caching is now disabled by default.** In v2, results were cached in `sessionStorage` automatically. In v3, you must explicitly configure caching via the `cache` option passed to `FingerprintProvider`. If you relied on the default `sessionStorage` cache, add an explicit cache configuration to preserve that behavior.
 
-| v2 (JS Agent v3)                                                       | v3 (JS Agent v4)                                          |
-| ---------------------------------------------------------------------- | --------------------------------------------------------- |
-| Cached by default (`sessionStorage`)                                   | **No caching by default** — must opt in explicitly        |
-| `cacheLocation: 'memory' \| 'localstorage' \| 'sessionstorage'`        | `cache: { storage: 'sessionStorage', duration: 3600 }`    |
-| `ignoreCache: true` in `useVisitorData` options                        | Removed — no cache to ignore unless explicitly configured |
-| `LocalStorageCache`, `SessionStorageCache`, `InMemoryCache` re-exports | Removed — configure via `@fingerprint/agent` directly     |
+| v2 (JS Agent v3) | v3 (JS Agent v4) |
+| --- | --- |
+| Cached by default (`sessionStorage`) | **No caching by default** — must opt in explicitly |
+| `cacheLocation: 'memory' \| 'localstorage' \| 'sessionstorage'` | `cache: { storage: 'sessionStorage', duration: 3600 }` |
+| `ignoreCache: true` in `useVisitorData` options | Removed — no cache to ignore unless explicitly configured |
+| `LocalStorageCache`, `SessionStorageCache`, `InMemoryCache` re-exports | Removed — configure via `@fingerprint/agent` directly |
 
 See the [JS Agent v4 caching documentation](https://docs.fingerprint.com/reference/js-agent-v4-start-function#cache) for configuration details.
 
