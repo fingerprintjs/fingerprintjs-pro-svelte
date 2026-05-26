@@ -7,7 +7,7 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 echo "==> Checking Svelte 4 examples..."
 pnpm -C "$ROOT/examples/svelte-kit" exec svelte-kit sync
 svelte-check --tsconfig "$ROOT/examples/svelte-kit/tsconfig.json"
-svelte-check --tsconfig "$ROOT/examples/spa/jsconfig.json"
+svelte-check --tsconfig "$ROOT/examples/spa/tsconfig.json"
 
 echo "==> Checking Svelte 5 examples..."
 pnpm -C "$ROOT/examples/svelte5-svelte-kit" exec svelte-kit sync

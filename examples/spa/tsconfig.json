@@ -1,9 +1,8 @@
 {
   "compilerOptions": {
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "target": "esnext",
     "module": "esnext",
-    "verbatimModuleSyntax": true,
     "isolatedModules": true,
     "resolveJsonModule": true,
     "sourceMap": true,
@@ -11,7 +10,11 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
-    "checkJs": true,
+    "strict": true,
+    "verbatimModuleSyntax": true,
+    "paths": {
+      "@fingerprint/svelte": ["../../dist/index.d.ts"],
+    },
   },
-  "include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.svelte"],
+  "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js", "src/**/*.svelte"],
 }
