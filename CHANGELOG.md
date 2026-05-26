@@ -1,5 +1,25 @@
 # @fingerprint/svelte
 
+## 3.0.0
+
+### Major Changes
+
+- Rename package from `@fingerprintjs/fingerprintjs-pro-svelte` to `@fingerprint/svelte`. Update all imports to use the new package name. ([eec67b0](https://github.com/fingerprintjs/svelte/commit/eec67b0d6870881f795535de9ad2d58fc3fe5f69))
+- Switch to JS Agent v4 (`@fingerprint/agent`). This is a breaking change.
+
+  - `FpjsProvider` renamed to `FingerprintProvider` with flat options (no `loadOptions` wrapper)
+  - `useVisitorData` takes a single merged options object instead of two arguments
+  - `getData()` now rethrows errors after storing them in the error store
+  - Added `isFetched` store to track successful fetches
+  - **Caching is now disabled by default** — you must explicitly configure it via the `cache` option in `FingerprintProvider` to enable caching
+  - Removed cache-related exports (`LocalStorageCache`, `SessionStorageCache`, `InMemoryCache`, `CacheLocation`, `ignoreCache`)
+  - Removed granular subpath exports — import everything from the package root
+  - Removed `FingerprintJSPro` namespace re-export (use `Fingerprint` from `@fingerprint/svelte` or import `@fingerprint/agent` directly) ([2883a96](https://github.com/fingerprintjs/svelte/commit/2883a961feb1ca6aed27a9567583b2554bfceeee))
+
+### Minor Changes
+
+- Widen `svelte` peer dependency to `^4.0.0 || ^5.0.0`, adding official Svelte 5 support. The SDK source uses Svelte 4 syntax which Svelte 5 compiles automatically via its built-in [legacy mode](https://svelte.dev/docs/svelte/legacy-overview). ([73e1588](https://github.com/fingerprintjs/svelte/commit/73e15881410548c5d74f30effa9154906d30f449))
+
 ## 3.0.0-rc.0
 
 ### Major Changes
